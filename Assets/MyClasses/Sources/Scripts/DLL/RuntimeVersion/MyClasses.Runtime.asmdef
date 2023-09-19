@@ -1,0 +1,23 @@
+{
+    "name": "MyClasses.Runtime",
+    "rootNamespace": "MyClasses",
+    "references": [],
+    "includePlatforms": [],
+    "excludePlatforms": [
+        "Editor"
+    ],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "MyClasses.dll"
+    ],
+    "autoReferenced": false,
+    "defineConstraints": [
+        "UNITY_ANDROID",
+        "UNITY_IOS",
+        "UNITY_WEBGL",
+        "UNITY_STANDALONE"
+    ],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

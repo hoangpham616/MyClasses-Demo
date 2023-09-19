@@ -1,0 +1,115 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -770653900, guid: 3e1b75d5e43a2204dae0f757e26aad05, type: 3}
+  m_Name: MyUGUIConfigPopups
+  m_EditorClassIdentifier: 
+  NumDefault: 3
+  ListPopup:
+  - IsFoldOut: 1
+    ID: 0
+    ScriptPathIndex: 0
+    ScriptPath: Assets/Frameworks/MyClasses/Sources/Scripts/CSharp/UGUI/Core/MyUGUIPopup0Button.cs
+    ScriptName: MyUGUIPopup0Button
+    PrefabNameIndexCanvas: -1
+    PrefabNameIndex3D: -1
+    PrefabNameCanvas: Dialog0ButtonPopup
+    PrefabName3D: 
+    AssetBundleURL: 
+    AssetBundleVersion: 0
+  - IsFoldOut: 1
+    ID: 1
+    ScriptPathIndex: 0
+    ScriptPath: Assets/Frameworks/MyClasses/Sources/Scripts/CSharp/UGUI/Core/MyUGUIPopup1Button.cs
+    ScriptName: MyUGUIPopup1Button
+    PrefabNameIndexCanvas: -1
+    PrefabNameIndex3D: -1
+    PrefabNameCanvas: Dialog1ButtonPopup
+    PrefabName3D: 
+    AssetBundleURL: 
+    AssetBundleVersion: 0
+  - IsFoldOut: 1
+    ID: 2
+    ScriptPathIndex: 0
+    ScriptPath: Assets/Frameworks/MyClasses/Sources/Scripts/CSharp/UGUI/Core/MyUGUIPopup2Buttons.cs
+    ScriptName: MyUGUIPopup2Buttons
+    PrefabNameIndexCanvas: -1
+    PrefabNameIndex3D: -1
+    PrefabNameCanvas: Dialog2ButtonsPopup
+    PrefabName3D: 
+    AssetBundleURL: 
+    AssetBundleVersion: 0
+  - IsFoldOut: 1
+    ID: 3
+    ScriptPathIndex: 30
+    ScriptPath: Assets/_MyAssets/Scripts/Scenes/MainUnityScene/MainMenuScene/PoolPopup.cs
+    ScriptName: PoolPopup
+    PrefabNameIndexCanvas: 3
+    PrefabNameIndex3D: 6
+    PrefabNameCanvas: PoolPopupCanvas
+    PrefabName3D: 
+    AssetBundleURL: 
+    AssetBundleVersion: 0
+  - IsFoldOut: 1
+    ID: 4
+    ScriptPathIndex: 28
+    ScriptPath: Assets/_MyAssets/Scripts/Scenes/MainUnityScene/MainMenuScene/LocalizationPopup.cs
+    ScriptName: LocalizationPopup
+    PrefabNameIndexCanvas: 2
+    PrefabNameIndex3D: 6
+    PrefabNameCanvas: LocalizationPopupCanvas
+    PrefabName3D: 
+    AssetBundleURL: 
+    AssetBundleVersion: 0
+  - IsFoldOut: 1
+    ID: 5
+    ScriptPathIndex: 26
+    ScriptPath: Assets/_MyAssets/Scripts/Scenes/MainUnityScene/MainMenuScene/AdMobPopup.cs
+    ScriptName: AdMobPopup
+    PrefabNameIndexCanvas: 0
+    PrefabNameIndex3D: 6
+    PrefabNameCanvas: AdMobPopupCanvas
+    PrefabName3D: 
+    AssetBundleURL: 
+    AssetBundleVersion: 0
+  - IsFoldOut: 1
+    ID: 6
+    ScriptPathIndex: 54
+    ScriptPath: Assets/_MyAssets/Scripts/Scenes/MainUnityScene/MainMenuScene/ResusableListViewPopup/ReusableListViewPopup.cs
+    ScriptName: ReusableListViewPopup
+    PrefabNameIndexCanvas: 4
+    PrefabNameIndex3D: 6
+    PrefabNameCanvas: ReusableListViewPopupCanvas
+    PrefabName3D: 
+    AssetBundleURL: 
+    AssetBundleVersion: 0
+  - IsFoldOut: 1
+    ID: 7
+    ScriptPathIndex: 56
+    ScriptPath: Assets/_MyAssets/Scripts/Scenes/MainUnityScene/MainMenuScene/ResusableListViewPopup2/ReusableListViewPopup2.cs
+    ScriptName: ReusableListViewPopup2
+    PrefabNameIndexCanvas: 5
+    PrefabNameIndex3D: 6
+    PrefabNameCanvas: ReusableListViewPopupCanvas2
+    PrefabName3D: 
+    AssetBundleURL: 
+    AssetBundleVersion: 0
+  - IsFoldOut: 1
+    ID: 8
+    ScriptPathIndex: 27
+    ScriptPath: Assets/_MyAssets/Scripts/Scenes/MainUnityScene/MainMenuScene/ExtensionPopup.cs
+    ScriptName: ExtensionPopup
+    PrefabNameIndexCanvas: 1
+    PrefabNameIndex3D: 6
+    PrefabNameCanvas: ExtensionPopupCanvas
+    PrefabName3D: 
+    AssetBundleURL: 
+    AssetBundleVersion: 0
