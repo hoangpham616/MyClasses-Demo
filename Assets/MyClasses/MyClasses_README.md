@@ -8,6 +8,16 @@
 
 
 
+********** DEMO **********
+
+GitHub: https://github.com/hoangpham616/MyClasses-Demo
+
+**************************
+
+
+
+
+
 ********** Compile Flag **********
 
 Ads: DEBUG_MY_UNITY_ADS | USE_MY_UNITY_ADS

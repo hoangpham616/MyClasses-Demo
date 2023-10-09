@@ -110,14 +110,20 @@ namespace MyClasses.Tool
                 script.LoadLanguage(script.Language, true);
             }
 
-            MyLocalization[] scripts = GameObject.FindObjectsOfType<MyLocalization>();
+            MyLocalizationText[] scripts = GameObject.FindObjectsOfType<MyLocalizationText>();
             foreach (var item in scripts)
             {
                 item.Initialize();
                 item.Localize();
             }
 
-            Debug.Log("[MyClasses] All " + typeof(MyLocalization).Name + "s in scene were lozalized.");
+            MyLocalizationGameObject[] scripts2 = GameObject.FindObjectsOfType<MyLocalizationGameObject>();
+            foreach (var item in scripts2)
+            {
+                item.Localize();
+            }
+
+            Debug.Log("[MyClasses] All " + typeof(MyLocalizationText).Name + "s and " + typeof(MyLocalizationGameObject).Name + "s in scene were lozalized.");
         }
 
         /// <summary>
@@ -162,9 +168,18 @@ namespace MyClasses.Tool
         #region ----- Panels -----
 
         /// <summary>
+        /// Open Easing Curve Panel.
+        /// </summary>
+        [MenuItem("MyClasses/Panels/Easing Curve", false, 1)]
+        public static void OpenEasingCurvePanel()
+        {
+            EditorWindow.GetWindow(typeof(MyEasingCurveEditorWindow));
+        }
+
+        /// <summary>
         /// Open Screnshot Panel.
         /// </summary>
-        [MenuItem("MyClasses/Panels/Screenshot", false, 1)]
+        [MenuItem("MyClasses/Panels/Screenshot", false, 2)]
         public static void OpenScreenshotPanel()
         {
             EditorWindow.GetWindow(typeof(MyScreenshotEditorWindow));
@@ -173,7 +188,7 @@ namespace MyClasses.Tool
         /// <summary>
         /// Open UV Viewer Panel.
         /// </summary>
-        [MenuItem("MyClasses/Panels/UV Viewer", false, 2)]
+        [MenuItem("MyClasses/Panels/UV Viewer", false, 3)]
         public static void OpenUVViewerPanel()
         {
             EditorWindow.GetWindow(typeof(MyUVViewerEditorWindow));

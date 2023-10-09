@@ -49,7 +49,7 @@ MonoBehaviour:
     AssetBundleVersion: 0
   - IsFoldOut: 1
     ID: 3
-    ScriptPathIndex: 30
+    ScriptPathIndex: 33
     ScriptPath: Assets/_MyAssets/Scripts/Scenes/MainUnityScene/MainMenuScene/PoolPopup.cs
     ScriptName: PoolPopup
     PrefabNameIndexCanvas: 3
@@ -60,7 +60,7 @@ MonoBehaviour:
     AssetBundleVersion: 0
   - IsFoldOut: 1
     ID: 4
-    ScriptPathIndex: 28
+    ScriptPathIndex: 31
     ScriptPath: Assets/_MyAssets/Scripts/Scenes/MainUnityScene/MainMenuScene/LocalizationPopup.cs
     ScriptName: LocalizationPopup
     PrefabNameIndexCanvas: 2
@@ -71,7 +71,7 @@ MonoBehaviour:
     AssetBundleVersion: 0
   - IsFoldOut: 1
     ID: 5
-    ScriptPathIndex: 26
+    ScriptPathIndex: 29
     ScriptPath: Assets/_MyAssets/Scripts/Scenes/MainUnityScene/MainMenuScene/AdMobPopup.cs
     ScriptName: AdMobPopup
     PrefabNameIndexCanvas: 0
@@ -82,7 +82,7 @@ MonoBehaviour:
     AssetBundleVersion: 0
   - IsFoldOut: 1
     ID: 6
-    ScriptPathIndex: 54
+    ScriptPathIndex: 57
     ScriptPath: Assets/_MyAssets/Scripts/Scenes/MainUnityScene/MainMenuScene/ResusableListViewPopup/ReusableListViewPopup.cs
     ScriptName: ReusableListViewPopup
     PrefabNameIndexCanvas: 4
@@ -93,7 +93,7 @@ MonoBehaviour:
     AssetBundleVersion: 0
   - IsFoldOut: 1
     ID: 7
-    ScriptPathIndex: 56
+    ScriptPathIndex: 59
     ScriptPath: Assets/_MyAssets/Scripts/Scenes/MainUnityScene/MainMenuScene/ResusableListViewPopup2/ReusableListViewPopup2.cs
     ScriptName: ReusableListViewPopup2
     PrefabNameIndexCanvas: 5
@@ -104,7 +104,7 @@ MonoBehaviour:
     AssetBundleVersion: 0
   - IsFoldOut: 1
     ID: 8
-    ScriptPathIndex: 27
+    ScriptPathIndex: 30
     ScriptPath: Assets/_MyAssets/Scripts/Scenes/MainUnityScene/MainMenuScene/ExtensionPopup.cs
     ScriptName: ExtensionPopup
     PrefabNameIndexCanvas: 1

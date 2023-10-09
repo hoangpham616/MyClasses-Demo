@@ -867,7 +867,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -400}
+  m_AnchoredPosition: {x: 0, y: -275}
   m_SizeDelta: {x: 500, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8266447743714604656
@@ -938,7 +938,6 @@ MonoBehaviour:
   mLowestRatio: {x: 3.02, y: 2}
   mLowestScale: {x: 1.3, y: 1.3, z: 1}
   mDeviceOrientation: 0
-  mIsCurrentAnchorLoaded: 1
 --- !u!1 &4418343539082209916
 GameObject:
   m_ObjectHideFlags: 0
@@ -1277,6 +1276,170 @@ MonoBehaviour:
   _maxSize: {x: 1000, y: 1000}
   _originalSize: {x: 200, y: 150}
   _targetLastSize: {x: 100, y: 100}
+--- !u!1 &4654325622972519568
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4485967593374630107}
+  - component: {fileID: 6200820662098543052}
+  - component: {fileID: 4963682902074789779}
+  - component: {fileID: 6441486960868864126}
+  m_Layer: 5
+  m_Name: Text (TMP)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &4485967593374630107
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4654325622972519568}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2812298918412058455}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -525}
+  m_SizeDelta: {x: 700, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &6200820662098543052
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4654325622972519568}
+  m_CullTransparentMesh: 1
+--- !u!114 &4963682902074789779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4654325622972519568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: '<c=rainbow,s=1,t=right>Rainbow of Hope</c>
+
+    <c=silver,s=-0.75,t=left>Silver
+    Spoon</c>
+
+    <c=gold>Golden Fork</c>
+
+    <c=diamond,t=right>Sparking Diamond</c>
+
+'
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 70
+  m_fontSizeBase: 70
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 1
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &6441486960868864126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4654325622972519568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4978b37126f44d545935af0bb9da7580, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _config: {fileID: 0}
+  _tilt: 0
+  _speed: 0.5
+  _gradientLengthType: 0
+  _gradientLengthPlus: 6
+  _gradientLength: 8
+  _gradientLengthPercent: 100
 --- !u!1 &4948311894492939589
 GameObject:
   m_ObjectHideFlags: 0
@@ -1389,13 +1552,14 @@ RectTransform:
   - {fileID: 5229320921541387264}
   - {fileID: 5268588564659518952}
   - {fileID: 7746115228112644858}
+  - {fileID: 4485967593374630107}
   m_Father: {fileID: 5479617360996047029}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 800, y: 1500}
+  m_SizeDelta: {x: 900, y: 1500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6237669732156367353
 CanvasRenderer:
@@ -1706,7 +1870,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 25, y: -200}
+  m_AnchoredPosition: {x: 25, y: -150}
   m_SizeDelta: {x: 500, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3862654254818909298
@@ -1769,42 +1933,41 @@ MonoBehaviour:
   mHighestPivot: {x: 0.5, y: 0.5}
   mHighestAnchorMin: {x: 0.5, y: 0.5}
   mHighestAnchorMax: {x: 0.5, y: 0.5}
-  mHighestOffsetMin: {x: -325, y: -250}
-  mHighestOffsetMax: {x: 175, y: -150}
+  mHighestOffsetMin: {x: -325, y: -200}
+  mHighestOffsetMax: {x: 175, y: -100}
   mHigherRatio: {x: 19.4, y: 9}
   mHigherPivot: {x: 0.5, y: 0.5}
   mHigherAnchorMin: {x: 0.5, y: 0.5}
   mHigherAnchorMax: {x: 0.5, y: 0.5}
-  mHigherOffsetMin: {x: -300, y: -250}
-  mHigherOffsetMax: {x: 200, y: -150}
+  mHigherOffsetMin: {x: -300, y: -200}
+  mHigherOffsetMax: {x: 200, y: -100}
   mHighRatio: {x: 18.4, y: 9}
   mHighPivot: {x: 0.5, y: 0.5}
   mHighAnchorMin: {x: 0.5, y: 0.5}
   mHighAnchorMax: {x: 0.5, y: 0.5}
-  mHighOffsetMin: {x: -275, y: -250}
-  mHighOffsetMax: {x: 225, y: -150}
+  mHighOffsetMin: {x: -275, y: -200}
+  mHighOffsetMax: {x: 225, y: -100}
   mDefaultPivot: {x: 0.5, y: 0.5}
   mDefaultAnchorMin: {x: 0.5, y: 0.5}
   mDefaultAnchorMax: {x: 0.5, y: 0.5}
-  mDefaultOffsetMin: {x: -250, y: -250}
-  mDefaultOffsetMax: {x: 250, y: -150}
+  mDefaultOffsetMin: {x: -250, y: -200}
+  mDefaultOffsetMax: {x: 250, y: -100}
   mLowRatio: {x: 16.6, y: 9}
   mLowPivot: {x: 0.5, y: 0.5}
   mLowAnchorMin: {x: 0.5, y: 0.5}
   mLowAnchorMax: {x: 0.5, y: 0.5}
-  mLowOffsetMin: {x: -225, y: -250}
-  mLowOffsetMax: {x: 275, y: -150}
+  mLowOffsetMin: {x: -225, y: -200}
+  mLowOffsetMax: {x: 275, y: -100}
   mLowerRatio: {x: 16.1, y: 10}
   mLowerPivot: {x: 0.5, y: 0.5}
   mLowerAnchorMin: {x: 0.5, y: 0.5}
   mLowerAnchorMax: {x: 0.5, y: 0.5}
-  mLowerOffsetMin: {x: -200, y: -250}
-  mLowerOffsetMax: {x: 300, y: -150}
+  mLowerOffsetMin: {x: -200, y: -200}
+  mLowerOffsetMax: {x: 300, y: -100}
   mLowestRatio: {x: 3.02, y: 2}
   mLowestPivot: {x: 0.5, y: 0.5}
   mLowestAnchorMin: {x: 0.5, y: 0.5}
   mLowestAnchorMax: {x: 0.5, y: 0.5}
-  mLowestOffsetMin: {x: -175, y: -250}
-  mLowestOffsetMax: {x: 325, y: -150}
+  mLowestOffsetMin: {x: -175, y: -200}
+  mLowestOffsetMax: {x: 325, y: -100}
   mDeviceOrientation: 0
-  mIsCurrentAnchorLoaded: 1

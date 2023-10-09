@@ -2,7 +2,7 @@
  * Copyright (c) 2016 Phạm Minh Hoàng
  * Email:       hoangpham61691@gmail.com
  * Framework:   MyClasses
- * Class:       MyUGUIBooter (version 2.12)
+ * Class:       MyUGUIBooter (version 2.13)
  */
 
 #pragma warning disable 0414
@@ -13,17 +13,40 @@ using UnityEditor;
 #endif
 
 using UnityEngine;
+using UnityEngine.Events;
+using System;
+using System.Collections;
 
 namespace MyClasses.UI
 {
-    public class MyUGUIBooter : MyUGUIBooterBase
+    public class MyUGUIBooter : MonoBehaviour
     {
         #region ----- Variable -----
 
         [SerializeField]
+        private EBootMode _bootMode = EBootMode.Instant;
+        [SerializeField]
+        private EShowMode _showMode = EShowMode.Default;
+        [SerializeField]
         private EUnitySceneID _defaultUnitySceneID;
         [SerializeField]
         private ESceneID _defaultSceneID;
+#if UNITY_EDITOR
+        [SerializeField]
+        private float _delayTimeOnEditor = 0;
+#endif
+        [SerializeField]
+        private float _delayTimeOnDevice = 0;
+        [SerializeField]
+        private UnityEvent<Action> _onPreShowSync;
+        [SerializeField]
+        private UnityEvent _onPreShow;
+        [SerializeField]
+        private UnityEvent _onCustomShow;
+        [SerializeField]
+        private UnityEvent _onPostShow;
+
+        private static bool _isBooted = false;
 
         #endregion
 
@@ -95,16 +118,119 @@ namespace MyClasses.UI
 #endif
         }
 
+        /// <summary>
+        /// Start.
+        /// </summary>
+        void Start()
+        {
+            if (_isBooted)
+            {
+                return;
+            }
+
+            switch (_bootMode)
+            {
+                case EBootMode.Instant:
+                    {
+                        if (_onPreShow != null)
+                        {
+                            _onPreShow.Invoke();
+                        }
+
+                        _ShowDefaultScene();
+                    }
+                    break;
+
+                case EBootMode.FixedTimeDelay:
+                    {
+                        if (_onPreShow != null)
+                        {
+                            _onPreShow.Invoke();
+                        }
+
+#if UNITY_EDITOR
+                        if (_delayTimeOnEditor > 0)
+                        {
+                            StartCoroutine(_ShowDefaultSceneWithDelay(_delayTimeOnEditor));
+                        }
+#else
+                        if (_delayTimeOnDevice > 0)
+                        {
+                            StartCoroutine(_ShowDefaultSceneWithDelay(_delayTimeOnDevice));
+                        }
+#endif
+                        else
+                        {
+                            _ShowDefaultScene();
+                        }
+                    }
+                    break;
+
+                case EBootMode.WaitForInitializing:
+                    {
+                        if (_onPreShowSync != null)
+                        {
+                            _onPreShowSync.Invoke(_ShowDefaultScene);
+                        }
+                        else
+                        {
+                            _ShowDefaultScene();
+                        }
+                    }
+                    break;
+            }
+        }
+
         #endregion
 
-        #region ----- MyUGUIBooterBase Implementation -----
+        #region ----- Private Method -----
 
-        // <summary>
-        // Show scene.
-        // </summary>
-        protected override void _ShowScene()
+        /// <summary>
+        /// Show default unity scene.
+        /// </summary>
+        private IEnumerator _ShowDefaultSceneWithDelay(float delayTime)
         {
-            MyUGUIManager.Instance.ShowUnityScene(_defaultUnitySceneID, _defaultSceneID);
+            yield return new WaitForSeconds(delayTime);
+            _ShowDefaultScene();
+        }
+
+        /// <summary>
+        /// Show default scene.
+        /// </summary>
+        private void _ShowDefaultScene()
+        {
+            if (_showMode == EShowMode.Custom && _onCustomShow != null)
+            {
+                _onCustomShow.Invoke();
+            }
+            else
+            {
+                MyUGUIManager.Instance.ShowUnityScene(_defaultUnitySceneID, _defaultSceneID);
+            }
+
+            _isBooted = true;
+
+            if (_onPostShow != null)
+            {
+                _onPostShow.Invoke();
+            }
+        }
+
+        #endregion
+
+        #region ----- Enumeration -----
+
+        public enum EShowMode
+        {
+            Default = 0,
+            Custom = 1,
+        }
+
+        public enum EBootMode
+        {
+            Instant = 0,
+            FixedTimeDelay = 1,
+            WaitForInitializing = 2,
         }
 
         #endregion
