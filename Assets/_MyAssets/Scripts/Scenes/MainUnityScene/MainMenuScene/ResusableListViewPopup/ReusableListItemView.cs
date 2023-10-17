@@ -9,7 +9,18 @@ namespace MyApp
         #region  ----- Variable -----
 
         [SerializeField]
+        private MyUGUIButton _button;
+        [SerializeField]
         private Text _textIndex;
+
+        #endregion
+
+        #region  ----- Property -----
+
+        public MyUGUIButton Button
+        {
+            get { return _button; }
+        }
 
         #endregion
 

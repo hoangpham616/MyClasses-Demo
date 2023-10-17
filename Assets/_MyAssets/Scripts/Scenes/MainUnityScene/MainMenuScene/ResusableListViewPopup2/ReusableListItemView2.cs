@@ -11,7 +11,7 @@ namespace MyApp
         [SerializeField]
         private Text _text;
         [SerializeField]
-        private Image _image;
+        private GameObject[] _gameObjects;
 
         #endregion
 
@@ -21,11 +21,21 @@ namespace MyApp
         {
             ReusableListViewItemModel2 model = (ReusableListViewItemModel2)Model;
             _text.text = Index + ": " + (model != null ? model.Letter : string.Empty);
-            _image.color = model.Color;
-            var sizeDelta = SizeDelta;
-            sizeDelta.x = model.Size;
-            sizeDelta.y = model.Size;
-            SizeDelta = sizeDelta;
+            for (int i = 0; i < _gameObjects.Length; ++i)
+            {
+                if (i == model.Size % _gameObjects.Length)
+                {
+                    _gameObjects[i].SetActive(true);
+                    RectTransform rectTransform = _gameObjects[i].GetComponent<RectTransform>();
+                    Vector2 sizeDelta = SizeDelta;
+                    sizeDelta.y = rectTransform.sizeDelta.y;
+                    SizeDelta = sizeDelta;
+                }
+                else
+                {
+                    _gameObjects[i].SetActive(false);
+                }
+            }
         }
 
         #endregion
@@ -34,7 +44,6 @@ namespace MyApp
     public class ReusableListViewItemModel2
     {
         public string Letter;
-        public Color Color;
         public int Size;
     }
 }

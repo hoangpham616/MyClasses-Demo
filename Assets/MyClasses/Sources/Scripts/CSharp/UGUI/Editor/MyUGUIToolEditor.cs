@@ -529,7 +529,7 @@ namespace MyClasses.UI.Tool
         [MenuItem("MyClasses/UGUI/Create/Game Object/Reusable List View (Fixed Item Size)", false, 6)]
         public static void CreateMyUGUIReusableListView()
 		{
-            MyUGUIReusableListView.CreateTemplate();
+            // MyUGUIReusableListView.CreateTemplate();
 
             Debug.Log("[MyClasses] Reusable List View (Fixed Item Size) was created.");
         }

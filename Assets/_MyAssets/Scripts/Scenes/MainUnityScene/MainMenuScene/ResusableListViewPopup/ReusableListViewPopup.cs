@@ -6,6 +6,7 @@ using System.Collections;
 using System.Collections.Generic;
 using MyClasses;
 using MyClasses.UI;
+using System.Linq;
 
 namespace MyApp
 {
@@ -57,8 +58,11 @@ namespace MyApp
             _buttonTop.OnEventPointerClick.AddListener(_OnClickTop);
             _buttonMid.OnEventPointerClick.AddListener(_OnClickMid);
             _buttonBot.OnEventPointerClick.AddListener(_OnClickBot);
+            _listView.OnPullAtTheStart += _OnPullAtTheStart;
+            _listView.OnPullAtTheEnd += _OnPullAtTheEnd;
 
-            int quantity = 1000;
+            _listView.Initialize();
+            int quantity = UnityEngine.Random.Range(15, 150);
             ReusableListItemViewModel[] models = new ReusableListItemViewModel[quantity];
             for (int i = 0; i < quantity; ++i)
             {
@@ -67,9 +71,13 @@ namespace MyApp
                     Letter = ((char)UnityEngine.Random.Range(65, 90)).ToString()
                 };
             }
-            _listView.Initialize();
+            for (int i = 0, count = _listView.ItemViews.Length; i < count; ++i)
+            {
+                ReusableListItemView itemView = (ReusableListItemView)_listView.ItemViews[i];
+                itemView.Button.OnEventPointerClick.AddListener(_OnClickItem);
+            }
             _listView.SetModels(models);
-            _listView.Reload(quantity);
+            _listView.Reload(_listView.Models.Length);
         }
 
         public override bool OnUGUIVisible()
@@ -77,7 +85,7 @@ namespace MyApp
             if (base.OnUGUIVisible())
             {
                 this.LogInfo("OnUGUIVisible", null, ELogColor.DARK_UI);
-
+                
                 return true;
             }
             return false;
@@ -97,6 +105,15 @@ namespace MyApp
             _buttonTop.OnEventPointerClick.RemoveAllListeners();
             _buttonMid.OnEventPointerClick.RemoveAllListeners();
             _buttonBot.OnEventPointerClick.RemoveAllListeners();
+            _listView.OnPullAtTheStart -= _OnPullAtTheStart;
+            _listView.OnPullAtTheEnd -= _OnPullAtTheEnd;
+            for (int i = 0, count = _listView.ItemViews.Length; i < count; ++i)
+            {
+                ReusableListItemView itemView = (ReusableListItemView)_listView.ItemViews[i];
+                itemView.Button.OnEventPointerClick.RemoveAllListeners();
+            }
+
+            _listView.Reload(0);
         }
 
         public override bool OnUGUIInvisible()
@@ -119,6 +136,24 @@ namespace MyApp
 
         #endregion
 
+        #region ----- List View Event -----
+
+        private void _OnPullAtTheStart()
+        {
+            this.LogInfo("_OnPullAtTheStart", null, ELogColor.UI);
+
+            MyUGUIManager.Instance.ShowLoadingIndicator(2);
+        }
+
+        private void _OnPullAtTheEnd()
+        {
+            this.LogInfo("_OnPullAtTheEnd", null, ELogColor.UI);
+
+            MyUGUIManager.Instance.ShowLoadingIndicator(2);
+        }
+
+        #endregion
+
         #region ----- Button Event -----
 
         private void _OnClickClose(PointerEventData arg0)
@@ -126,6 +161,17 @@ namespace MyApp
             this.LogInfo("_OnClickClose", null, ELogColor.UI);
 
             Hide();
+        }
+
+        private void _OnClickItem(PointerEventData arg0)
+        {
+            this.LogInfo("_OnClickItem", null, ELogColor.UI);
+
+            ReusableListItemView itemView = arg0.pointerClick.transform.parent.GetComponent<ReusableListItemView>();
+            if (itemView != null)
+            {
+                MyUGUIManager.Instance.ShowToastMessage("Click on item " + itemView.Index);
+            }
         }
 
         private void _OnClickTop(PointerEventData arg0)

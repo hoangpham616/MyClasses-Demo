@@ -1,9 +1,6 @@
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using MyClasses;
 using MyClasses.UI;
 
@@ -20,8 +17,9 @@ namespace MyApp
         private MyUGUIButton _buttonTop;
         private MyUGUIButton _buttonMid;
         private MyUGUIButton _buttonBot;
+        private MyUGUIButton _buttonUp;
+        private MyUGUIButton _buttonDown;
         private MyUGUIReusableListView2 _listView;
-        private MyUGUIScrollView _scrollView;
 
         #endregion
 
@@ -49,8 +47,9 @@ namespace MyApp
             _buttonTop = MyUtilities.FindObject(GameObjectCanvas, "Container/ButtonTop").GetComponent<MyUGUIButton>();
             _buttonMid = MyUtilities.FindObject(GameObjectCanvas, "Container/ButtonMid").GetComponent<MyUGUIButton>();
             _buttonBot = MyUtilities.FindObject(GameObjectCanvas, "Container/ButtonBot").GetComponent<MyUGUIButton>();
+            _buttonUp = MyUtilities.FindObject(GameObjectCanvas, "Container/ListView/ButtonUp").GetComponent<MyUGUIButton>();
+            _buttonDown = MyUtilities.FindObject(GameObjectCanvas, "Container/ListView/ButtonDown").GetComponent<MyUGUIButton>();
             _listView = MyUtilities.FindObject(GameObjectCanvas, "Container/ListView").GetComponent<MyUGUIReusableListView2>();
-            _scrollView = _listView.GetComponent<MyUGUIScrollView>();
         }
 
         public override void OnUGUIEnter()
@@ -66,7 +65,12 @@ namespace MyApp
             _buttonTop.OnEventPointerClick.AddListener(_OnClickTop);
             _buttonMid.OnEventPointerClick.AddListener(_OnClickMid);
             _buttonBot.OnEventPointerClick.AddListener(_OnClickBot);
+            _buttonUp.OnEventPointerClick.AddListener(_OnClickTop);
+            _buttonDown.OnEventPointerClick.AddListener(_OnClickBot);
+            _listView.OnPullAtTheStart += _OnPullAtTheStart;
+            _listView.OnPullAtTheEnd += _OnPullAtTheEnd;
 
+            _listView.Initialize(MyUGUIReusableListView2.EStartPosition.Head);
             int quantity = 1000;
             ReusableListViewItemModel2[] models = new ReusableListViewItemModel2[quantity];
             for (int i = 0; i < quantity; ++i)
@@ -74,14 +78,15 @@ namespace MyApp
                 ReusableListViewItemModel2 model = new ReusableListViewItemModel2()
                 {
                     Letter = ((char)UnityEngine.Random.Range(65, 90)).ToString(),
-                    Color = i % 4 == 3 ? Color.red : (i % 4 == 2 ? Color.magenta : (i % 4 == 1 ? Color.green : Color.yellow)),
-                    Size = ((i % 5) + 1) * 100,
+                    Size = UnityEngine.Random.Range(1, 100),
                 };
                 models[i] = model;
             }
-            _listView.Initialize(MyUGUIReusableListView2.EStartPosition.Head);
             _listView.SetModels(models);
             _listView.Reload();
+            
+            _buttonUp.gameObject.SetActive(false);
+            _buttonDown.gameObject.SetActive(false);
         }
 
         public override bool OnUGUIVisible()
@@ -97,6 +102,8 @@ namespace MyApp
 
         public override void OnUGUIUpdate(float deltaTime)
         {
+            _buttonUp.gameObject.SetActive(_listView.IsHasHeadUnreadItem);
+            _buttonDown.gameObject.SetActive(_listView.IsHasTailUnreadItem);
         }
 
         public override void OnUGUIExit()
@@ -112,6 +119,10 @@ namespace MyApp
             _buttonTop.OnEventPointerClick.RemoveAllListeners();
             _buttonMid.OnEventPointerClick.RemoveAllListeners();
             _buttonBot.OnEventPointerClick.RemoveAllListeners();
+            _buttonUp.OnEventPointerClick.RemoveAllListeners();
+            _buttonDown.OnEventPointerClick.RemoveAllListeners();
+            _listView.OnPullAtTheStart -= _OnPullAtTheStart;
+            _listView.OnPullAtTheEnd -= _OnPullAtTheEnd;
         }
 
         public override bool OnUGUIInvisible()
@@ -134,6 +145,24 @@ namespace MyApp
 
         #endregion
 
+        #region ----- List View Event -----
+
+        private void _OnPullAtTheStart()
+        {
+            this.LogInfo("_OnPullAtTheStart", null, ELogColor.UI);
+
+            MyUGUIManager.Instance.ShowLoadingIndicator(2);
+        }
+
+        private void _OnPullAtTheEnd()
+        {
+            this.LogInfo("_OnPullAtTheEnd", null, ELogColor.UI);
+
+            MyUGUIManager.Instance.ShowLoadingIndicator(2);
+        }
+
+        #endregion
+
         #region ----- Button Event -----
 
         private void _OnClickClose(PointerEventData arg0)
@@ -143,7 +172,6 @@ namespace MyApp
             Hide();
         }
 
-
         private void _OnClickInsert(PointerEventData arg0)
         {
             this.LogInfo("_OnClickInsert", null, ELogColor.UI);
@@ -151,8 +179,7 @@ namespace MyApp
             _listView.InsertModel(new ReusableListViewItemModel2()
             {
                 Letter = ((char)UnityEngine.Random.Range(65, 90)).ToString(),
-                Color = _listView.Models.Count % 4 == 3 ? Color.red : (_listView.Models.Count % 4 == 2 ? Color.magenta : (_listView.Models.Count % 4 == 1 ? Color.green : Color.yellow)),
-                Size = ((_listView.Models.Count % 5) + 1) * 100,
+                Size = UnityEngine.Random.Range(1, 100),
             });
             _listView.Reload();
             _listView.RefreshDisplayItems();
@@ -169,8 +196,7 @@ namespace MyApp
                 ReusableListViewItemModel2 model = new ReusableListViewItemModel2()
                 {
                     Letter = ((char)UnityEngine.Random.Range(65, 90)).ToString(),
-                    Color = i % 4 == 3 ? Color.red : (i % 4 == 2 ? Color.magenta : (i % 4 == 1 ? Color.green : Color.yellow)),
-                    Size = ((i % 5) + 1) * 100,
+                    Size = UnityEngine.Random.Range(1, 100),
                 };
                 models[i] = model;
             }
@@ -186,8 +212,7 @@ namespace MyApp
             _listView.AddModel(new ReusableListViewItemModel2()
             {
                 Letter = ((char)UnityEngine.Random.Range(65, 90)).ToString(),
-                Color = _listView.Models.Count % 4 == 3 ? Color.red : (_listView.Models.Count % 4 == 2 ? Color.magenta : (_listView.Models.Count % 4 == 1 ? Color.green : Color.yellow)),
-                Size = ((_listView.Models.Count % 5) + 1) * 100,
+                Size = UnityEngine.Random.Range(1, 100),
             });
             _listView.Reload();
         }
