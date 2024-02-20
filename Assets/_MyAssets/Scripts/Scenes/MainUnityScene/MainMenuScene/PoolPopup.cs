@@ -23,8 +23,8 @@ namespace MyApp
 
         #region ----- Constructor -----
 
-        public PoolPopup(EPopupID id, string prefabName, bool isFloat = false, bool isRepeatable = false)
-            : base(id, prefabName, isFloat, isRepeatable)
+        public PoolPopup(EPopupID id, string prefabNameCanvas, string prefabName3D, string addressableCanvas, string addressable3D, bool isRepeatable = false)
+            : base(id, prefabNameCanvas, prefabName3D, addressableCanvas, addressable3D, isRepeatable)
         {
         }
 

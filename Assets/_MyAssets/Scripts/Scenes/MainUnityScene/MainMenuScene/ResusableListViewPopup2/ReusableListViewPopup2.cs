@@ -3,6 +3,7 @@ using UnityEngine.EventSystems;
 using System;
 using MyClasses;
 using MyClasses.UI;
+using System.Threading;
 
 namespace MyApp
 {
@@ -25,8 +26,8 @@ namespace MyApp
 
         #region ----- Constructor -----
 
-        public ReusableListViewPopup2(EPopupID id, string prefabName, bool isFloat = false, bool isRepeatable = false)
-            : base(id, prefabName, isFloat, isRepeatable)
+        public ReusableListViewPopup2(EPopupID id, string prefabNameCanvas, string prefabName3D, string addressableCanvas, string addressable3D, bool isRepeatable = false)
+            : base(id, prefabNameCanvas, prefabName3D, addressableCanvas, addressable3D, isRepeatable)
         {
         }
 
@@ -70,15 +71,15 @@ namespace MyApp
             _listView.OnPullAtTheStart += _OnPullAtTheStart;
             _listView.OnPullAtTheEnd += _OnPullAtTheEnd;
 
-            _listView.Initialize(MyUGUIReusableListView2.EStartPosition.Head);
-            int quantity = 1000;
+            _listView.Initialize(MyUGUIReusableListView2.EStartPosition.Tail);
+            int quantity = 50;
             ReusableListViewItemModel2[] models = new ReusableListViewItemModel2[quantity];
             for (int i = 0; i < quantity; ++i)
             {
                 ReusableListViewItemModel2 model = new ReusableListViewItemModel2()
                 {
-                    Letter = ((char)UnityEngine.Random.Range(65, 90)).ToString(),
-                    Size = UnityEngine.Random.Range(1, 100),
+                    Type = _GenerateType(),
+                    Message = _GenerateMessage(),
                 };
                 models[i] = model;
             }
@@ -94,6 +95,8 @@ namespace MyApp
             if (base.OnUGUIVisible())
             {
                 this.LogInfo("OnUGUIVisible", null, ELogColor.DARK_UI);
+
+                _listView.RefreshDisplayItems();
 
                 return true;
             }
@@ -178,8 +181,8 @@ namespace MyApp
 
             _listView.InsertModel(new ReusableListViewItemModel2()
             {
-                Letter = ((char)UnityEngine.Random.Range(65, 90)).ToString(),
-                Size = UnityEngine.Random.Range(1, 100),
+                Type = _GenerateType(),
+                Message = _GenerateMessage(),
             });
             _listView.Reload();
             _listView.RefreshDisplayItems();
@@ -189,14 +192,14 @@ namespace MyApp
         {
             this.LogInfo("_OnClickNew", null, ELogColor.UI);
 
-            int quantity = UnityEngine.Random.Range(1, 10);
+            int quantity = UnityEngine.Random.Range(0, 5);
             ReusableListViewItemModel2[] models = new ReusableListViewItemModel2[quantity];
             for (int i = 0; i < quantity; ++i)
             {
                 ReusableListViewItemModel2 model = new ReusableListViewItemModel2()
                 {
-                    Letter = ((char)UnityEngine.Random.Range(65, 90)).ToString(),
-                    Size = UnityEngine.Random.Range(1, 100),
+                    Type = _GenerateType(),
+                    Message = _GenerateMessage(),
                 };
                 models[i] = model;
             }
@@ -211,8 +214,8 @@ namespace MyApp
 
             _listView.AddModel(new ReusableListViewItemModel2()
             {
-                Letter = ((char)UnityEngine.Random.Range(65, 90)).ToString(),
-                Size = UnityEngine.Random.Range(1, 100),
+                Type = _GenerateType(),
+                Message = _GenerateMessage(),
             });
             _listView.Reload();
         }
@@ -264,7 +267,22 @@ namespace MyApp
 
         #region ----- Private Method -----
 
+        private int _GenerateType()
+        {
+            return UnityEngine.Random.Range(0, 100);
+        }
 
+        private string _GenerateMessage()
+        {
+            string message = string.Empty;
+            for (int i = 0, count = UnityEngine.Random.Range(1, 100); i < count; ++i)
+            {
+                int randomChar = UnityEngine.Random.Range((int)KeyCode.A, (int)KeyCode.Z + 5);
+                message += randomChar > (int)KeyCode.Z ? " " : (char)randomChar;
+            }
+            message += ".";
+            return message;
+        }
 
         #endregion
     }

@@ -16,6 +16,9 @@ namespace MyClasses.UI
 	{
 		MainMenuScene,
 		GameScene,
+		TabAScene,
+		TabBScene,
+		TabCScene,
 	}
 
 	public enum EPopupID
@@ -29,5 +32,11 @@ namespace MyClasses.UI
 		ReusableListViewPopup,
 		ReusableListViewPopup2,
 		ExtensionPopup,
+		ForbiddenTextPopup,
+	}
+
+	public enum EToastNotificationID
+	{
+		TopCenterToastNotification,
 	}
 }

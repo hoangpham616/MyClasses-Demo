@@ -15,8 +15,8 @@ namespace MyApp
 
         #region ----- Constructor -----
 
-        public GameScene(ESceneID id, string prefabName, bool isInitWhenLoadScene, bool isHideHUD = false, float fadeInDuration = 0.5f, float fadeOutDuration = 0.5f)
-        : base(id, prefabName, isInitWhenLoadScene, isHideHUD, fadeInDuration, fadeOutDuration)
+        public GameScene(ESceneID id, string prefabNameCanvas, string prefabName3D, string addressableCanvas, string addressable3D, bool isInitWhenLoadUnityScene = false, bool isHideHUD = false)
+            : base(id, prefabNameCanvas, prefabName3D, addressableCanvas, addressable3D, isInitWhenLoadUnityScene, isHideHUD)
         {
         }
 
@@ -35,15 +35,13 @@ namespace MyApp
 
         public override void OnUGUIEnter()
         {
-            this.LogInfo("OnUGUIEnter", "scene id = " + MyUGUIManager.Instance.CurrentScene.ID.ToString(), ELogColor.DARK_UI);
+            this.LogInfo("OnUGUIEnter", "SceneId=" + MyUGUIManager.Instance.CurrentScene.ID.ToString(), ELogColor.DARK_UI);
 
             base.OnUGUIEnter();
             
             _buttonMainMenuScene.OnEventPointerClick.AddListener(_OnClickMainMenuScene);
 
             GameObject3D.transform.localScale = Vector3.one * UnityEngine.Random.Range(0.5f, 1.5f);
-
-            
         }
 
         public override bool OnUGUIVisible()
@@ -94,7 +92,7 @@ namespace MyApp
 
         private void _OnClickMainMenuScene(PointerEventData arg0)
         {
-            MyUGUIManager.Instance.ShowScene(ESceneID.MainMenuScene);
+            MyUGUIManager.Instance.ShowScene(ESceneID.MainMenuScene, ESceneTransition.FadeIn, 0.4f);
         }
 
         #endregion

@@ -1,9 +1,5 @@
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.EventSystems;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using MyClasses;
 using MyClasses.UI;
 
@@ -22,9 +18,10 @@ namespace MyApp
 
         #region ----- Constructor -----
 
-        public ExtensionPopup(EPopupID id, string prefabName, bool isFloat = false, bool isRepeatable = false)
-            : base(id, prefabName, isFloat, isRepeatable)
+        public ExtensionPopup(EPopupID id, string prefabNameCanvas, string prefabName3D, string addressableCanvas, string addressable3D, bool isRepeatable = false)
+            : base(id, prefabNameCanvas, prefabName3D, addressableCanvas, addressable3D, isRepeatable)
         {
+            Debug.LogError("extension popup");
         }
 
         #endregion

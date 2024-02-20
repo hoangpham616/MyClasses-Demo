@@ -2,7 +2,7 @@
  * Copyright (c) 2016 Phạm Minh Hoàng
  * Email:       hoangpham61691@gmail.com
  * Framework:   MyClasses
- * Class:       MyUGUISampleScene (version 2.26)
+ * Class:       MyUGUISampleScene (version 2.27)
  */
 
 using UnityEngine;
@@ -26,8 +26,8 @@ namespace MyApp
 
         #region ----- Constructor -----
 
-        public MyUGUISampleScene(ESceneID id, string prefabNameCanvas, string prefabName3D, bool isInitWhenLoadUnityScene, bool isHideHUD = false, float fadeInDuration = 0.2f, float fadeOutDuration = 0.2f)
-            : base(id, prefabNameCanvas, prefabName3D, isInitWhenLoadUnityScene, isHideHUD, fadeInDuration, fadeOutDuration)
+        public MyUGUISampleScene(ESceneID id, string prefabNameCanvas, string prefabName3D, string addressableCanvas, string addressable3D, bool isInitWhenLoadUnityScene = false, bool isHideHUD = false)
+            : base(id, prefabNameCanvas, prefabName3D, addressableCanvas, addressable3D, isInitWhenLoadUnityScene, isHideHUD)
         {
         }
 
@@ -46,7 +46,7 @@ namespace MyApp
 
         public override void OnUGUIEnter()
         {
-            this.LogInfo("OnUGUIEnter", null, ELogColor.DARK_UI);
+            this.LogInfo("OnUGUIEnter", ID.ToString(), ELogColor.DARK_UI);
 
             base.OnUGUIEnter();
 

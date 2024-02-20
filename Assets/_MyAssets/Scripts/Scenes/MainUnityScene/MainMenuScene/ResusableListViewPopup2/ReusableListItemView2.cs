@@ -1,6 +1,7 @@
 using UnityEngine;
-using UnityEngine.UI;
 using MyClasses.UI;
+using TMPro;
+using UnityEngine.UI;
 
 namespace MyApp
 {
@@ -9,9 +10,9 @@ namespace MyApp
         #region  ----- Variable -----
 
         [SerializeField]
-        private Text _text;
+        private RectTransform[] _rectTransformTypes;
         [SerializeField]
-        private GameObject[] _gameObjects;
+        private TextMeshProUGUI[] _textMessages;
 
         #endregion
 
@@ -20,20 +21,36 @@ namespace MyApp
         public override void OnReload()
         {
             ReusableListViewItemModel2 model = (ReusableListViewItemModel2)Model;
-            _text.text = Index + ": " + (model != null ? model.Letter : string.Empty);
-            for (int i = 0; i < _gameObjects.Length; ++i)
+            for (int i = 0; i < _rectTransformTypes.Length; ++i)
             {
-                if (i == model.Size % _gameObjects.Length)
+                RectTransform rectTransformType = _rectTransformTypes[i];
+                int typeIndex = model.Type % _rectTransformTypes.Length;
+                if (i == typeIndex)
                 {
-                    _gameObjects[i].SetActive(true);
-                    RectTransform rectTransform = _gameObjects[i].GetComponent<RectTransform>();
+                    rectTransformType.gameObject.SetActive(true);
+                    
                     Vector2 sizeDelta = SizeDelta;
-                    sizeDelta.y = rectTransform.sizeDelta.y;
+                    TextMeshProUGUI textMessage = _textMessages[i];
+                    if (textMessage != null)
+                    {
+                        textMessage.text = Index + ": " + (model != null ? model.Message : string.Empty);
+                        LayoutRebuilder.ForceRebuildLayoutImmediate(textMessage.rectTransform);
+
+                        Vector2 sizeDeltaType = rectTransformType.sizeDelta;
+                        sizeDeltaType.y = textMessage.GetPreferredValues().y;
+                        rectTransformType.sizeDelta = sizeDeltaType;
+
+                        sizeDelta.y = textMessage.GetPreferredValues().y + 10;
+                    }
+                    else
+                    {
+                        sizeDelta.y = rectTransformType.sizeDelta.y + 10;
+                    }
                     SizeDelta = sizeDelta;
                 }
                 else
                 {
-                    _gameObjects[i].SetActive(false);
+                    rectTransformType.gameObject.SetActive(false);
                 }
             }
         }
@@ -43,7 +60,7 @@ namespace MyApp
 
     public class ReusableListViewItemModel2
     {
-        public string Letter;
-        public int Size;
+        public int Type;
+        public string Message;
     }
 }

@@ -2,8 +2,79 @@
  * Copyright (c) 2016 Phạm Minh Hoàng
  * Email:       hoangpham61691@gmail.com
  * Framework:   MyClasses
- * Version:     2023.10.17
+ * Version:     2024.2.20
  */
+
+
+
+********** 2024.2.20 **********
+
+* MyUGUIManagerBase: fix "close popup by clicking outside", remove "float popup"
+
+********************************
+
+
+
+********** 2024.1.30 **********
+
+* MyUGUIManager
+* MyUGUIManagerBase
+* MyUGUIScene
+* MyUGUISceneBase
+* MyUGUIConfigSceneEditorWindowBase
+* MyUGUISampleScene
+
+********************************
+
+
+
+********** 2024.1.25 **********
+
+* MyCoroutiner
+* MyLocalizationText
+
+********************************
+
+
+
+********** 2023.12.8 **********
+
++ MyUGUIScrollingUV
+* MyForbbidenManager
+* MyCoroutiner
+
+********************************
+
+
+
+********** 2023.11.25 **********
+
++ MyPosition
++ MyScale
++ MyUGUIToastNotification
+* MyUGUIBase constructor
+
+********************************
+
+
+
+********** 2023.11.3 **********
+
+* MyUGUIManager
+* MyUGUIManagerBase
+* MyUGUIPopupBase
+* MyMonoSingleton
+
+*******************************
+
+
+
+********** 2023.10.21 **********
+
+* MyUGUIReusableListItemView2
+* MyUGUIReusableListView2
+
+********************************
 
 
 
@@ -12,7 +83,7 @@
 * MyUGUIReusableListView
 * MyUGUIReusableListView2
 
-**************************
+********************************
 
 
 
@@ -22,7 +93,7 @@
 * rename MyShaderGraphSpriteLitScrollingUV.shadergraph to MyShaderGraphSpriteUnlitScrollingUV.shadergraph
 * MyUGUIParticleSystem
 
-**************************
+*******************************
 
 
 
@@ -31,7 +102,7 @@
 * fix MyUGUIBooter
 + MyUGUITextMeshEffect
 
-**************************
+*******************************
 
 
 
@@ -45,4 +116,4 @@
 + MyEasingCurveEditorWindow.cs
 * MyScreenshotEditorWindow.cs
 
-**************************
+*******************************

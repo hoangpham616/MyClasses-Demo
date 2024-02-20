@@ -32,7 +32,7 @@ Logger: DISABLE_MY_LOGGER_ALL | DISABLE_MY_LOGGER_INFO | DISABLE_MY_LOGGER_WARNI
 
 Sound: DEBUG_MY_SOUND
 
-UGUI: DEBUG_MY_UI
+UGUI: DEBUG_MY_UI | USE_MY_UI_ADDRESSABLE
 
 **********************************
 
@@ -85,16 +85,6 @@ UGUI: DEBUG_MY_UI
   - MyUGUIManager.Instance.ShowToastMessage("This is Toast Message", EToastMessageDuration.Medium)
 
   - MyUGUIManager.Instance.Back()
-
- + Methods that support AssetBundles:
-
-  - MyUGUIManager.Instance.SetAssetBundleForCore("url", 1)
-
-  - MyUGUIManager.Instance.SetAssetBundleForHUDs("url", 1)
-
-  - MyUGUIManager.Instance.SetAssetBundleForScene(ESceneID.Login, "url", 1)
-
-  - MyUGUIManager.Instance.SetAssetBundleForPopup(EPopupID.Event, "url", 1)
 
 ********************************
 

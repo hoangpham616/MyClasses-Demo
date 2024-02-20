@@ -2,7 +2,7 @@
  * Copyright (c) 2016 Phạm Minh Hoàng
  * Email:       hoangpham61691@gmail.com
  * Framework:   MyClasses
- * Class:       MyToolEditor (version 1.7)
+ * Class:       MyToolEditor (version 1.8)
  */
 
 #if UNITY_EDITOR
@@ -18,24 +18,24 @@ namespace MyClasses.Tool
         #region ----- Managers -----
 
         /// <summary>
-        /// Create a game object with MyForbbidenTextManager attached.
+        /// Create a game object with MyForbiddenTextManager attached.
         /// </summary>
-        [MenuItem("MyClasses/Managers/MyForbbidenTextManager/Create", false, 1)]
-        public static void CreateMyForbbidenTextManager()
+        [MenuItem("MyClasses/Managers/MyForbiddenTextManager/Create", false, 1)]
+        public static void CreateMyForbiddenTextManager()
 		{
-            MyForbbidenTextManager script = GameObject.FindObjectOfType<MyForbbidenTextManager>();
+            MyForbiddenTextManager script = GameObject.FindObjectOfType<MyForbiddenTextManager>();
             if (script != null)
             {
                 EditorGUIUtility.PingObject(script);
                 Selection.activeGameObject = script.gameObject;
 
-                Debug.Log("[MyClasses] " + typeof(MyForbbidenTextManager).Name + " is existed.");
+                Debug.Log("[MyClasses] " + typeof(MyForbiddenTextManager).Name + " is existed.");
             }
             else
             {
-                MyForbbidenTextManager.CreateTemplate();
+                MyForbiddenTextManager.CreateTemplate();
 
-                Debug.Log("[MyClasses] " + typeof(MyForbbidenTextManager).Name + " was created.");
+                Debug.Log("[MyClasses] " + typeof(MyForbiddenTextManager).Name + " was created.");
             }
         }
 

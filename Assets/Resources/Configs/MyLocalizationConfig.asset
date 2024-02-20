@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 1875315950, guid: 3e1b75d5e43a2204dae0f757e26aad05, type: 3}
   m_Name: MyLocalizationConfig
   m_EditorClassIdentifier: 
-  Location: 0
+  Location: 2
   PersistentPath: /localization.csv
   ResourcesPath: Configs/localization
-  TextAsset: {fileID: 0}
+  TextAsset: {fileID: 4900000, guid: dcd21364065c6b74bab0b10fb919aaa1, type: 3}
   Mode: 2
   DefaultLanguage: 10

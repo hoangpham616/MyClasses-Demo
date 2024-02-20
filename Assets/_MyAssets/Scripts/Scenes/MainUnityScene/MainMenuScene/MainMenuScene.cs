@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
+using System.Collections;
 using MyClasses;
 using MyClasses.UI;
 
@@ -15,23 +16,26 @@ namespace MyApp.UI
         private MyUGUIButton _buttonFlyingMessage;
         private MyUGUIButton _buttonToastMessage;
         private MyUGUIButton _buttonLoadingIndicator;
+        private MyUGUIButton _buttonToastNotification;
         private MyUGUIButton _buttonDialog2Buttons;
         private MyUGUIButton _buttonReuasbleListView;
         private MyUGUIButton _buttonReuasbleListView2;
         private MyUGUIButton _buttonExtension;
         private MyUGUIButton _buttonGameScene;
+        private MyUGUIButton _buttonTabAScene;
         private MyUGUIButton _buttonLogger;
         private MyUGUIButton _buttonCoroutine;
         private MyUGUIButton _buttonPool;
         private MyUGUIButton _buttonLocalization;
+        private MyUGUIButton _buttonForbiddenText;
         private MyUGUIButton _buttonAdMob;
 
         #endregion
 
         #region ----- Constructor -----
 
-        public MainMenuScene(ESceneID id, string prefabName, bool isInitWhenLoadScene, bool isHideHUD = false, float fadeInDuration = 0.2f, float fadeOutDuration = 0.2f)
-        : base(id, prefabName, isInitWhenLoadScene, isHideHUD, fadeInDuration, fadeOutDuration)
+        public MainMenuScene(ESceneID id, string prefabNameCanvas, string prefabName3D, string addressableCanvas, string addressable3D, bool isInitWhenLoadUnityScene = false, bool isHideHUD = false)
+            : base(id, prefabNameCanvas, prefabName3D, addressableCanvas, addressable3D, isInitWhenLoadUnityScene, isHideHUD)
         {
         }
 
@@ -51,21 +55,24 @@ namespace MyApp.UI
             _buttonFlyingMessage = MyUtilities.FindObject(GameObjectCanvas, "Buttons/ButtonFlyingMessage").GetComponent<MyUGUIButton>();
             _buttonToastMessage = MyUtilities.FindObject(GameObjectCanvas, "Buttons/ButtonToastMessage").GetComponent<MyUGUIButton>();
             _buttonLoadingIndicator = MyUtilities.FindObject(GameObjectCanvas, "Buttons/ButtonLoadingIndicator").GetComponent<MyUGUIButton>();
+            _buttonToastNotification = MyUtilities.FindObject(GameObjectCanvas, "Buttons/ButtonToastNotification").GetComponent<MyUGUIButton>();
             _buttonDialog2Buttons = MyUtilities.FindObject(GameObjectCanvas, "Buttons/ButtonDialog2Buttons").GetComponent<MyUGUIButton>();
             _buttonReuasbleListView = MyUtilities.FindObject(GameObjectCanvas, "Buttons/ButtonReusableListView").GetComponent<MyUGUIButton>();
             _buttonReuasbleListView2 = MyUtilities.FindObject(GameObjectCanvas, "Buttons/ButtonReusableListView2").GetComponent<MyUGUIButton>();
             _buttonExtension = MyUtilities.FindObject(GameObjectCanvas, "Buttons/ButtonExtension").GetComponent<MyUGUIButton>();
             _buttonGameScene = MyUtilities.FindObject(GameObjectCanvas, "Buttons/ButtonGameScene").GetComponent<MyUGUIButton>();
+            _buttonTabAScene = MyUtilities.FindObject(GameObjectCanvas, "Buttons/ButtonTabAScene").GetComponent<MyUGUIButton>();
             _buttonLogger = MyUtilities.FindObject(GameObjectCanvas, "Buttons/ButtonLogger").GetComponent<MyUGUIButton>();
             _buttonCoroutine = MyUtilities.FindObject(GameObjectCanvas, "Buttons/ButtonCoroutine").GetComponent<MyUGUIButton>();
             _buttonPool = MyUtilities.FindObject(GameObjectCanvas, "Buttons/ButtonPool").GetComponent<MyUGUIButton>();
             _buttonLocalization = MyUtilities.FindObject(GameObjectCanvas, "Buttons/ButtonLocalization").GetComponent<MyUGUIButton>();
+            _buttonForbiddenText = MyUtilities.FindObject(GameObjectCanvas, "Buttons/ButtonForbiddenText").GetComponent<MyUGUIButton>();
             _buttonAdMob = MyUtilities.FindObject(GameObjectCanvas, "Buttons/ButtonAdMob").GetComponent<MyUGUIButton>();
         }
 
         public override void OnUGUIEnter()
         {
-            this.LogInfo("OnUGUIEnter", "scene id = " + MyUGUIManager.Instance.CurrentScene.ID.ToString(), ELogColor.DARK_UI);
+            this.LogInfo("OnUGUIEnter", "SceneId=" + MyUGUIManager.Instance.CurrentScene.ID.ToString(), ELogColor.DARK_UI);
 
             base.OnUGUIEnter();
 
@@ -75,15 +82,18 @@ namespace MyApp.UI
             _buttonFlyingMessage.OnEventPointerClick.AddListener(_OnClickFlyingMessage);
             _buttonToastMessage.OnEventPointerClick.AddListener(_OnClickToastMessage);
             _buttonLoadingIndicator.OnEventPointerClick.AddListener(_OnClickLoadingIndicator);
+            _buttonToastNotification.OnEventPointerClick.AddListener(_OnClickToastNotification);
             _buttonDialog2Buttons.OnEventPointerClick.AddListener(_OnClickDialog2Buttons);
             _buttonReuasbleListView.OnEventPointerClick.AddListener(_OnClickReuasbleListView);
             _buttonReuasbleListView2.OnEventPointerClick.AddListener(_OnClickReuasbleListView2);
             _buttonExtension.OnEventPointerClick.AddListener(_OnClickExtension);
             _buttonGameScene.OnEventPointerClick.AddListener(_OnClickGameScene);
+            _buttonTabAScene.OnEventPointerClick.AddListener(_OnClickTabAScene);
             _buttonLogger.OnEventPointerClick.AddListener(_OnClickLogger);
             _buttonCoroutine.OnEventPointerClick.AddListener(_OnClickCoroutine);
             _buttonPool.OnEventPointerClick.AddListener(_OnClickPool);
             _buttonLocalization.OnEventPointerClick.AddListener(_OnClickLocalization);
+            _buttonForbiddenText.OnEventPointerClick.AddListener(_OnClickForbiddenText);
             _buttonAdMob.OnEventPointerClick.AddListener(_OnClickAdMob);
 
             _toggleToggle.SetToggle(false, false);
@@ -116,15 +126,18 @@ namespace MyApp.UI
             _buttonFlyingMessage.OnEventPointerClick.RemoveAllListeners();
             _buttonToastMessage.OnEventPointerClick.RemoveAllListeners();
             _buttonLoadingIndicator.OnEventPointerClick.RemoveAllListeners();
+            _buttonToastNotification.OnEventPointerClick.RemoveAllListeners();
             _buttonDialog2Buttons.OnEventPointerClick.RemoveAllListeners();
             _buttonReuasbleListView.OnEventPointerClick.RemoveAllListeners();
             _buttonReuasbleListView2.OnEventPointerClick.RemoveAllListeners();
             _buttonExtension.OnEventPointerClick.RemoveAllListeners();
             _buttonGameScene.OnEventPointerClick.RemoveAllListeners();
+            _buttonTabAScene.OnEventPointerClick.RemoveAllListeners();
             _buttonLogger.OnEventPointerClick.RemoveAllListeners();
             _buttonCoroutine.OnEventPointerClick.RemoveAllListeners();
             _buttonPool.OnEventPointerClick.RemoveAllListeners();
             _buttonLocalization.OnEventPointerClick.RemoveAllListeners();
+            _buttonForbiddenText.OnEventPointerClick.RemoveAllListeners();
             _buttonAdMob.OnEventPointerClick.RemoveAllListeners();
         }
 
@@ -227,17 +240,31 @@ namespace MyApp.UI
             });
         }
 
+        private void _OnClickToastNotification(PointerEventData arg0)
+        {
+            this.LogInfo("_OnClickToastNotification", null, ELogColor.UI);
+
+            MyUGUIManager.Instance.ShowToastNotification(EToastNotificationID.TopCenterToastNotification, UnityEngine.Random.Range(1, 10000));
+        }
+
         private void _OnClickDialog2Buttons(PointerEventData arg0)
         {
+            MyUGUIManager.Instance.IsClosePopupByClickingOutside = true;
             this.LogInfo("_OnClickDialog2Buttons", null, ELogColor.UI);
 
-            MyUGUIPopup2Buttons popup = (MyUGUIPopup2Buttons)MyUGUIManager.Instance.ShowPopup(EPopupID.Dialog2ButtonsPopup);
-            popup.SetData("TITLE", "Body", "Left", (data) =>
+            MyUGUIPopup2Buttons popup2 = (MyUGUIPopup2Buttons)MyUGUIManager.Instance.ShowPopup(EPopupID.Dialog2ButtonsPopup);
+            popup2.SetData("2 Buttons Popup\n(TITLE)", "Do you want to open another popup?\n(BODY)", "No\n(LEFT)", (data) =>
             {
                 this.LogInfo("_OnClickDialog2Buttons", "Click Left Button", ELogColor.UI);
-            }, "Right", (data) =>
+            }, "Yes\n(RIGHT)", (data) =>
             {
                 this.LogInfo("_OnClickDialog2Buttons", "Click Right Button", ELogColor.UI);
+
+                MyUGUIPopup1Button popup1 = (MyUGUIPopup1Button)MyUGUIManager.Instance.ShowPopup(EPopupID.Dialog1ButtonPopup);
+                popup1.SetData("1 Button Popup\n(TITLE)", "Click to close\n(BODY)", "Close\n(MAIN)", (data) =>
+                {
+                    this.LogInfo("_OnClickDialog1Button", "Click Main Button", ELogColor.UI);
+                });
             }, (data) =>
             {
                 this.LogInfo("_OnClickDialog2Buttons", "Click Close Button", ELogColor.UI);
@@ -269,7 +296,14 @@ namespace MyApp.UI
         {
             this.LogInfo("_OnClickGameScene", null, ELogColor.UI);
 
-            MyUGUIManager.Instance.ShowScene(ESceneID.GameScene);
+            MyUGUIManager.Instance.ShowScene(ESceneID.GameScene, ESceneTransition.FadeIn, 0.4f);
+        }
+
+        private void _OnClickTabAScene(PointerEventData arg0)
+        {
+            this.LogInfo("_OnClickTabAScene", null, ELogColor.UI);
+
+            MyUGUIManager.Instance.ShowScene(ESceneID.TabAScene);
         }
 
         private void _OnClickLogger(PointerEventData arg0)
@@ -298,6 +332,9 @@ namespace MyApp.UI
             MyCoroutiner.ExecuteAfterDelayTime("DelaySecond", 1.5f, () =>
             {
                 this.LogInfo("_OnClickCoroutine", "callback after 1.5 second delay");
+                this.LogInfo("_OnClickCoroutine", "stop all coroutines starting with 'ListCoroutine_'");
+
+                MyCoroutiner.StopPrefix("ListCoroutine_");
             });
             MyCoroutiner.ExecuteAfterEndOfFrame(() =>
             {
@@ -307,6 +344,9 @@ namespace MyApp.UI
             {
                 this.LogInfo("_OnClickCoroutine", "callback frame by frame (" + frame + ")");
             });
+            MyCoroutiner.StartWithoutReplace("ListCoroutine_1", _TestCoroutine());
+            MyCoroutiner.StartWithoutReplace("ListCoroutine_1", _TestCoroutine());
+            MyCoroutiner.Start("ListCoroutine_2", _TestCoroutine());
         }
 
         private void _OnClickPool(PointerEventData arg0)
@@ -321,6 +361,13 @@ namespace MyApp.UI
             this.LogInfo("_OnClickLocalization", null, ELogColor.UI);
 
             MyUGUIManager.Instance.ShowPopup(EPopupID.LocalizationPopup);
+        }
+
+        private void _OnClickForbiddenText(PointerEventData arg0)
+        {
+            this.LogInfo("_OnClickForbiddenText", null, ELogColor.UI);
+
+            MyUGUIManager.Instance.ShowPopup(EPopupID.ForbiddenTextPopup);
         }
 
         private void _OnClickAdMob(PointerEventData arg0)
@@ -340,7 +387,15 @@ namespace MyApp.UI
 
         #region ----- Private Method -----
 
+        private IEnumerator _TestCoroutine()
+        {
+            for (int i = 0; i < 100; ++i)
+            {
+                yield return new WaitForSeconds(0.3f);
 
+                MyLogger.Info(typeof(MainMenuScene).Name, "_TestCoroutine", (i * 0.3f).ToString());
+            }
+        }
 
         #endregion
     }

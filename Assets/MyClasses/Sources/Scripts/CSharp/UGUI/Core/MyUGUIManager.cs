@@ -2,7 +2,7 @@
  * Copyright (c) 2016 Phạm Minh Hoàng
  * Email:       hoangpham61691@gmail.com
  * Framework:   MyClasses
- * Class:       MyUGUIManager (version 2.43)
+ * Class:       MyUGUIManager (version 2.47)
  */
 
 #pragma warning disable 0108
@@ -14,6 +14,10 @@ using UnityEngine;
 using UnityEngine.UI;
 #if UNITY_URP || USE_MY_URP
 using UnityEngine.Rendering.Universal;
+#endif
+#if USE_MY_UI_ADDRESSABLE
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 #endif
 
 namespace MyClasses.UI
@@ -59,11 +63,6 @@ namespace MyClasses.UI
             get { return _canvasOnTopPopup; }
         }
 
-        public GameObject CanvasOnTopFloatPopup
-        {
-            get { return _canvasOnTopFloatPopup; }
-        }
-
         public MyUGUIUnityScene CurrentUnityScene
         {
             get { return (MyUGUIUnityScene)_currentUnityScene; }
@@ -92,11 +91,6 @@ namespace MyClasses.UI
         public MyUGUIPopup CurrentPopup
         {
             get { return (MyUGUIPopup)_currentPopup; }
-        }
-
-        public MyUGUIPopup CurrentFloatPopup
-        {
-            get { return (MyUGUIPopup)_currentFloatPopup; }
         }
 
         public MyUGUILoadingIndicator CurrentLoadingIndicator
@@ -179,38 +173,6 @@ namespace MyClasses.UI
         }
 
         /// <summary>
-        /// Set asset bundle for core UI (scene fading, popup overlay, toast, running text, loading indicator).
-        /// </summary>
-        public void SetAssetBundleForCore(string url, int version)
-        {
-            _SetAssetBundleForCore(url, version);
-        }
-
-        /// <summary>
-        /// Set asset bundle for HUDs.
-        /// </summary>
-        public void SetAssetBundleForHUDs(string url, int version)
-        {
-            _SetAssetBundleForHUDs(url, version);
-        }
-
-        /// <summary>
-        /// Set asset bundle for scene.
-        /// </summary>
-        public void SetAssetBundleForScene(ESceneID sceneID, string url, int version)
-        {
-            _SetAssetBundleForScene((int)sceneID, url, version);
-        }
-
-        /// <summary>
-        /// Set asset bundle for popup.
-        /// </summary>
-        public void SetAssetBundleForPopup(EPopupID popupID, string url, int version)
-        {
-            _SetAssetBundleForPopup((int)popupID, url, version);
-        }
-
-        /// <summary>
         /// Back to previous scene.
         /// </summary>
         public bool Back()
@@ -238,9 +200,25 @@ namespace MyClasses.UI
         /// <summary>
         /// Show a scene.
         /// </summary>
-        public void ShowScene(ESceneID sceneID, bool isHideRunningMessageWhenSwitchingScene = false, bool isHideToastWhenSwitchingScene = true, Action onPreEnterCallback = null, Action onPostEnterCallback = null, Action onPostVisibleCallback = null)
+        public void ShowScene(ESceneID sceneID, Action<MyUGUISceneBase> onPreEnterCallback = null, Action<MyUGUISceneBase> onPostEnterCallback = null, Action<MyUGUISceneBase> onPostVisibleCallback = null)
         {
-            _ShowScene((int)sceneID, isHideRunningMessageWhenSwitchingScene, isHideToastWhenSwitchingScene, onPreEnterCallback, onPostEnterCallback, onPostVisibleCallback);
+            _ShowScene((int)sceneID, ESceneTransition.None, 0, false, false, false, onPreEnterCallback, onPostEnterCallback, onPostVisibleCallback);
+        }
+
+        /// <summary>
+        /// Show a scene.
+        /// </summary>
+        public void ShowScene(ESceneID sceneID, ESceneTransition transition, float transitionDuration = 0.2f, bool isHideRunningMessageWhenSwitchingScene = false, bool isHideToastMessageWhenSwitchingScene = false, bool isHideToastNotificationWhenSwitchingScene = false, Action<MyUGUISceneBase> onPreEnterCallback = null, Action<MyUGUISceneBase> onPostEnterCallback = null, Action<MyUGUISceneBase> onPostVisibleCallback = null)
+        {
+            _ShowScene((int)sceneID, transition, transitionDuration, isHideRunningMessageWhenSwitchingScene, isHideToastMessageWhenSwitchingScene, isHideToastNotificationWhenSwitchingScene, onPreEnterCallback, onPostEnterCallback, onPostVisibleCallback);
+        }
+
+        /// <summary>
+        /// Return an active popup.
+        /// </summary>
+        public MyUGUIPopup GetActivePopup(EPopupID popupID)
+        {
+            return (MyUGUIPopup)_GetActivePopup((int)popupID);
         }
 
         /// <summary>
@@ -248,7 +226,7 @@ namespace MyClasses.UI
         /// </summary>
         public MyUGUIPopup ShowPopup(EPopupID popupID)
         {
-            return (MyUGUIPopup)_ShowPopup((int)popupID);
+            return (MyUGUIPopup)_ShowPopup((int)popupID, null, null, null);
         }
 
         /// <summary>
@@ -256,7 +234,7 @@ namespace MyClasses.UI
         /// </summary>
         public MyUGUIPopup ShowPopup(EPopupID popupID, Action<MyUGUIPopupBase> onCloseCallback)
         {
-            return (MyUGUIPopup)_ShowPopup((int)popupID, onCloseCallback);
+            return (MyUGUIPopup)_ShowPopup((int)popupID, null, null, onCloseCallback);
         }
 
         /// <summary>
@@ -264,7 +242,7 @@ namespace MyClasses.UI
         /// </summary>
         public MyUGUIPopup ShowPopup(EPopupID popupID, Action<MyUGUIPopupBase> onEnterCallback, Action<MyUGUIPopupBase> onCloseCallback)
         {
-            return (MyUGUIPopup)_ShowPopup((int)popupID, onEnterCallback, onCloseCallback);
+            return (MyUGUIPopup)_ShowPopup((int)popupID, null, onEnterCallback, onCloseCallback);
         }
 
         /// <summary>
@@ -272,7 +250,7 @@ namespace MyClasses.UI
         /// </summary>
         public MyUGUIPopup ShowPopup(EPopupID popupID, object attachedData, Action<MyUGUIPopupBase> onCloseCallback)
         {
-            return (MyUGUIPopup)_ShowPopup((int)popupID, attachedData, onCloseCallback);
+            return (MyUGUIPopup)_ShowPopup((int)popupID, attachedData, null, onCloseCallback);
         }
 
         /// <summary>
@@ -288,7 +266,7 @@ namespace MyClasses.UI
         /// </summary>
         public MyUGUIPopup ShowRepeatablePopup(EPopupID popupID)
         {
-            return (MyUGUIPopup)_ShowRepeatablePopup((int)popupID);
+            return (MyUGUIPopup)_ShowRepeatablePopup((int)popupID, null, null, null);
         }
 
         /// <summary>
@@ -296,7 +274,7 @@ namespace MyClasses.UI
         /// </summary>
         public MyUGUIPopup ShowRepeatablePopup(EPopupID popupID, Action<MyUGUIPopupBase> onCloseCallback)
         {
-            return (MyUGUIPopup)_ShowRepeatablePopup((int)popupID, onCloseCallback);
+            return (MyUGUIPopup)_ShowRepeatablePopup((int)popupID, null, null, onCloseCallback);
         }
 
         /// <summary>
@@ -304,7 +282,7 @@ namespace MyClasses.UI
         /// </summary>
         public MyUGUIPopup ShowRepeatablePopup(EPopupID popupID, Action<MyUGUIPopupBase> onEnterCallback, Action<MyUGUIPopupBase> onCloseCallback)
         {
-            return (MyUGUIPopup)_ShowRepeatablePopup((int)popupID);
+            return (MyUGUIPopup)_ShowRepeatablePopup((int)popupID, null, onEnterCallback, onCloseCallback);
         }
 
         /// <summary>
@@ -312,7 +290,7 @@ namespace MyClasses.UI
         /// </summary>
         public MyUGUIPopup ShowRepeatablePopup(EPopupID popupID, object attachedData)
         {
-            return (MyUGUIPopup)_ShowRepeatablePopup((int)popupID, attachedData);
+            return (MyUGUIPopup)_ShowRepeatablePopup((int)popupID, attachedData, null, null);
         }
 
         /// <summary>
@@ -320,7 +298,7 @@ namespace MyClasses.UI
         /// </summary>
         public MyUGUIPopup ShowRepeatablePopup(EPopupID popupID, object attachedData, Action<MyUGUIPopupBase> onCloseCallback)
         {
-            return (MyUGUIPopup)_ShowRepeatablePopup((int)popupID, attachedData, onCloseCallback);
+            return (MyUGUIPopup)_ShowRepeatablePopup((int)popupID, attachedData, null, onCloseCallback);
         }
 
         /// <summary>
@@ -332,22 +310,6 @@ namespace MyClasses.UI
         }
 
         /// <summary>
-        /// Show a float popup.
-        /// </summary>
-        public MyUGUIPopup ShowFloatPopup(EPopupID popupID, object attachedData = null)
-        {
-            return (MyUGUIPopup)_ShowFloatPopup((int)popupID, attachedData);
-        }
-
-        /// <summary>
-        /// Show a repeatable float popup.
-        /// </summary>
-        public MyUGUIPopup ShowRepeatableFloatPopup(EPopupID popupID, object attachedData = null)
-        {
-            return (MyUGUIPopup)_ShowRepeatableFloatPopup((int)popupID, attachedData);
-        }
-
-        /// <summary>
         /// Hide current popup.
         /// </summary>
         public void HideCurrentPopup()
@@ -356,19 +318,35 @@ namespace MyClasses.UI
         }
 
         /// <summary>
-        /// Hide current float popup.
+        /// Hide all popups.
         /// </summary>
-        public void HideCurrentFloatPopup()
+        public void HideAllPopups(bool isHide = true)
         {
-            _HideCurrentFloatPopup();
+            _HideAllPopups(isHide);
         }
 
         /// <summary>
-        /// Hide all popups.
+        /// Show a toast notification.
         /// </summary>
-        public void HideAllPopups(bool isHidePopup = true, bool isHideFloatPopup = true)
+        public void ShowToastNotification(EToastNotificationID toastNotificationID, object attachedData, Action<MyUGUIToastNotificationBase> onEnterCallback = null, Action<MyUGUIToastNotificationBase> onCloseCallback = null)
         {
-            _HideAllPopups(isHidePopup, isHideFloatPopup);
+            _QueueOrShowToastNotification((int)toastNotificationID, attachedData, onEnterCallback, onCloseCallback);
+        }
+
+        /// <summary>
+        /// Hide toast notifications by id.
+        /// </summary>
+        public void HideToastNotifications(EToastNotificationID toastNotificationID)
+        {
+            _HideToastNotifications((int)toastNotificationID);
+        }
+
+        /// <summary>
+        /// Hide all toast notifications.
+        /// </summary>
+        public void HideAllToastNotifications()
+        {
+            _HideAllToastNotifications();
         }
 
         /// <summary>
@@ -503,6 +481,25 @@ namespace MyClasses.UI
             textMeshPro.color = color;
         }
 
+        /// <summary>
+        /// Load a prefab from addressable.
+        /// </summary>
+        public override GameObject LoadAddressable(string addressable)
+        {
+#if USE_MY_UI_ADDRESSABLE
+            AsyncOperationHandle<GameObject> handle = Addressables.LoadAssetAsync<GameObject>(addressable);
+            if (handle.Status == AsyncOperationStatus.Succeeded)
+            {
+                return handle.Result;
+            }
+#else
+            Debug.LogWarning("[" + typeof(MyUGUIManager).Name + "] LoadAddressable(): You need to add compile flag 'USE_MY_UI_ADDRESSABLE' to use Addressable for MyUGUI.");
+            Debug.LogError("[" + typeof(MyUGUIManager).Name + "] LoadAddressable(): You need to add compile flag 'USE_MY_UI_ADDRESSABLE' to use Addressable for MyUGUI.");
+            Debug.Break();
+#endif
+            return null;
+        }
+
         #endregion
 
         #region ----- Private Method -----
@@ -512,8 +509,7 @@ namespace MyClasses.UI
         /// </summary>
         protected override void _CreateHUD(ref MyUGUIUnitySceneBase unitySceneBase, MyUGUIConfigUnityScene unitySceneConfig)
         {
-            MyUGUIHUDBase hud = (MyUGUIHUDBase)Activator.CreateInstance(MyUtilities.FindTypesByName(unitySceneConfig.HUDScriptName)[0], unitySceneConfig.HUDPrefabNameCanvas);
-            hud.SetPrefabName3D(unitySceneConfig.HUDPrefabName3D);
+            MyUGUIHUDBase hud = (MyUGUIHUDBase)Activator.CreateInstance(MyUtilities.FindTypesByName(unitySceneConfig.HUDScriptName)[0], unitySceneConfig.HUDPrefabNameCanvas, unitySceneConfig.HUDPrefabName3D);
             unitySceneBase.SetHUD((MyUGUIHUD)hud);
         }
 
@@ -522,8 +518,7 @@ namespace MyClasses.UI
         /// </summary>
         protected override void _CreateScene(ref MyUGUIUnitySceneBase unitySceneBase, MyUGUIConfigScene sceneConfig)
         {
-            MyUGUIScene scene = (MyUGUIScene)Activator.CreateInstance(MyUtilities.FindTypesByName(sceneConfig.ScriptName)[0], (ESceneID)sceneConfig.ID, sceneConfig.PrefabNameCanvas, sceneConfig.IsInitWhenLoadUnityScene, sceneConfig.IsHideHUD, sceneConfig.FadeInDuration, sceneConfig.FadeOutDuration);
-            scene.SetPrefabName3D(sceneConfig.PrefabName3D);
+            MyUGUIScene scene = (MyUGUIScene)Activator.CreateInstance(MyUtilities.FindTypesByName(sceneConfig.ScriptName)[0], (ESceneID)sceneConfig.ID, sceneConfig.PrefabNameCanvas, sceneConfig.PrefabName3D, sceneConfig.AddressableCanvas, sceneConfig.Addressable3D, sceneConfig.IsInitWhenLoadUnityScene, sceneConfig.IsHideHUD);
             unitySceneBase.AddScene((MyUGUISceneBase)scene);
         }
 
@@ -532,7 +527,15 @@ namespace MyClasses.UI
         /// </summary>
         protected override void _CreatePopup(ref MyUGUIPopupBase popupBase, MyUGUIConfigPopup popupConfig, bool isRepeatable)
         {
-            popupBase = (MyUGUIPopupBase)Activator.CreateInstance(MyUtilities.FindTypesByName(popupConfig.ScriptName)[0], (EPopupID)popupConfig.ID, popupConfig.PrefabNameCanvas, false, isRepeatable);
+            popupBase = (MyUGUIPopup)Activator.CreateInstance(MyUtilities.FindTypesByName(popupConfig.ScriptName)[0], (EPopupID)popupConfig.ID, popupConfig.PrefabNameCanvas, popupConfig.PrefabName3D, popupConfig.AddressableCanvas, popupConfig.Addressable3D, isRepeatable);
+        }
+
+        /// <summary>
+        /// Create toast notification according to config.
+        /// </summary>
+        protected override void _CreateToastNotification(ref MyUGUIToastNotificationBase toastNotificationBase, MyUGUIConfigToastNotification toastNotificationConfig)
+        {
+            toastNotificationBase = (MyUGUIToastNotificationBase)Activator.CreateInstance(MyUtilities.FindTypesByName(toastNotificationConfig.ScriptName)[0], (EToastNotificationID)toastNotificationConfig.ID, toastNotificationConfig.PrefabNameCanvas, toastNotificationConfig.PrefabName3D);
         }
 
         /// <summary>
@@ -557,6 +560,14 @@ namespace MyClasses.UI
         protected override string _GetPopupName(int id)
         {
             return ((EPopupID)id).ToString();
+        }
+
+        /// <summary>
+        /// Return the name of toast notification.
+        /// </summary>
+        protected override string _GetToastNotificationName(int id)
+        {
+            return ((EToastNotificationID)id).ToString();
         }
 
         #endregion

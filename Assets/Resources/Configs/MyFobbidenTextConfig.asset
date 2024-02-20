@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: MyFobbidenTextConfig
   m_EditorClassIdentifier: 
   Location: 0
-  PersistentPath: /fobbiden_word.csv
-  ResourcesPath: Configs/fobbiden_word
+  PersistentPath: /forbidden_text.csv
+  ResourcesPath: Configs/forbidden_text
   TextAsset: {fileID: 0}

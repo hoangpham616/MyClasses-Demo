@@ -25,6 +25,9 @@ MonoBehaviour:
     ListID:
     - MainMenuScene
     - GameScene
+    - TabAScene
+    - TabBScene
+    - TabCScene
   - IsFoldOut: 1
     Name: EPopupID
     NumDefault: 3
@@ -36,4 +39,11 @@ MonoBehaviour:
     - LocalizationPopup
     - AdMobPopup
     - ReusableListViewPopup
+    - ReusableListViewPopup2
     - ExtensionPopup
+    - ForbiddenTextPopup
+  - IsFoldOut: 1
+    Name: EToastNotificationID
+    NumDefault: 0
+    ListID:
+    - TopCenterToastNotification

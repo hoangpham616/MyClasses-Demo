@@ -26,8 +26,8 @@ namespace MyApp
 
         #region ----- Constructor -----
 
-        public MyUGUISamplePopup(EPopupID id, string prefabNameCanvas, string prefabName3D, bool isFloat = false, bool isRepeatable = false)
-            : base(id, prefabNameCanvas, prefabName3D, isFloat, isRepeatable)
+        public MyUGUISamplePopup(EPopupID id, string prefabNameCanvas, string prefabName3D, string addressableCanvas, string addressable3D, bool isRepeatable = false)
+            : base(id, prefabNameCanvas, prefabName3D, addressableCanvas, addressable3D, isRepeatable)
         {
         }
 
@@ -47,7 +47,7 @@ namespace MyApp
 
         public override void OnUGUIEnter()
         {
-            this.LogInfo("OnUGUIEnter", null, ELogColor.DARK_UI);
+            this.LogInfo("OnUGUIEnter", ID.ToString(), ELogColor.DARK_UI);
 
             base.OnUGUIEnter();
 

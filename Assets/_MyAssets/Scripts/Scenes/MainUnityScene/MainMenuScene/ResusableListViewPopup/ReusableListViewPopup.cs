@@ -25,8 +25,8 @@ namespace MyApp
 
         #region ----- Constructor -----
 
-        public ReusableListViewPopup(EPopupID id, string prefabName, bool isFloat = false, bool isRepeatable = false)
-            : base(id, prefabName, isFloat, isRepeatable)
+        public ReusableListViewPopup(EPopupID id, string prefabNameCanvas, string prefabName3D, string addressableCanvas, string addressable3D, bool isRepeatable = false)
+            : base(id, prefabNameCanvas, prefabName3D, addressableCanvas, addressable3D, isRepeatable)
         {
         }
 
@@ -77,7 +77,7 @@ namespace MyApp
                 itemView.Button.OnEventPointerClick.AddListener(_OnClickItem);
             }
             _listView.SetModels(models);
-            _listView.Reload(_listView.Models.Length);
+            _listView.Reload();
         }
 
         public override bool OnUGUIVisible()

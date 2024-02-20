@@ -436,14 +436,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 2460023993995248668}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1230384375, guid: 191fba4279798f94f8804ffb9cc3c1b4, type: 3}
+  m_Script: {fileID: 1230384375, guid: 3e1b75d5e43a2204dae0f757e26aad05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _itemPrefab: {fileID: 2065121631604084541, guid: af3681f6c4c31ba45a74cb25a2892589,
     type: 3}
   _isItemFitSize: 1
-  _itemPadding: {x: 10, y: 10, z: 10, w: 10}
-  _itemSpacing: 20
+  _itemPadding: {x: 0, y: 0, z: 0, w: 0}
+  _itemSpacing: 0
   _minScrollOffsetToCheck: 5
   _pullDistance: 30
   _contentItemViews: []

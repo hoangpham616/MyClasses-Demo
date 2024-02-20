@@ -2,7 +2,7 @@
  * Copyright (c) 2016 Phạm Minh Hoàng
  * Email:       hoangpham61691@gmail.com
  * Framework:   MyClasses
- * Class:       MyUGUIPopup1Button (version 2.17)
+ * Class:       MyUGUIPopup1Button (version 2.18)
  */
 
 #pragma warning disable 0414
@@ -39,8 +39,8 @@ namespace MyClasses.UI
         /// <summary>
         /// Constructor.
         /// </summary>
-        public MyUGUIPopup1Button(EPopupID id, string prefabNameCanvas, bool isFloat = false, bool isRepeatable = false)
-            : base(id, prefabNameCanvas, isFloat, isRepeatable)
+        public MyUGUIPopup1Button(EPopupID id, string prefabNameCanvas, string prefabName3D, string addressableCanvas, string addressable3D, bool isRepeatable = false)
+            : base(id, prefabNameCanvas, prefabName3D, addressableCanvas, addressable3D, isRepeatable)
         {
 #if UNITY_EDITOR
             if (!_CheckPrefab())

@@ -723,7 +723,7 @@ GameObject:
   - component: {fileID: 1420185609}
   - component: {fileID: 1420185608}
   m_Layer: 0
-  m_Name: MyForbbidenTextManager
+  m_Name: MyForbiddenTextManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -738,10 +738,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1420185607}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 2041522103, guid: 3e1b75d5e43a2204dae0f757e26aad05, type: 3}
+  m_Script: {fileID: -460851442, guid: 3e1b75d5e43a2204dae0f757e26aad05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _config: {fileID: 11400000, guid: 3fb7078fcd68d4a4ab8b746507232b51, type: 2}
+  _config: {fileID: 11400000, guid: ba4e82a40580b1341b36da0e08e65a29, type: 2}
   _isAutoSaveOnChange: 1
 --- !u!4 &1420185609
 Transform:

@@ -2,7 +2,7 @@
  * Copyright (c) 2016 Phạm Minh Hoàng
  * Email:       hoangpham61691@gmail.com
  * Framework:   MyClasses
- * Class:       MyUGUIScene (version 2.10)
+ * Class:       MyUGUIScene (version 2.12)
  */
 
 #pragma warning disable 0108
@@ -30,16 +30,8 @@ namespace MyClasses.UI
         /// <summary>
         /// Constructor.
         /// </summary>
-        public MyUGUIScene(ESceneID id, string prefabNameCanvas, bool isInitWhenLoadUnityScene, bool isHideHUD = false, float fadeInDuration = 0.2f, float fadeOutDuration = 0.2f)
-            : base((int)id, prefabNameCanvas, isInitWhenLoadUnityScene, isHideHUD, fadeInDuration, fadeOutDuration)
-        {
-        }
-
-        /// <summary>
-        /// Constructor.
-        /// </summary>
-        public MyUGUIScene(ESceneID id, string prefabNameCanvas, string prefabName3D, bool isInitWhenLoadUnityScene, bool isHideHUD = false, float fadeInDuration = 0.2f, float fadeOutDuration = 0.2f)
-            : base((int)id, prefabNameCanvas, prefabName3D, isInitWhenLoadUnityScene, isHideHUD, fadeInDuration, fadeOutDuration)
+        public MyUGUIScene(ESceneID id, string prefabNameCanvas, string prefabName3D, string addressableCanvas, string addressable3D, bool isInitWhenLoadUnityScene = false, bool isHideHUD = false)
+            : base((int)id, prefabNameCanvas, prefabName3D, addressableCanvas, addressable3D, isInitWhenLoadUnityScene, isHideHUD)
         {
         }
 
