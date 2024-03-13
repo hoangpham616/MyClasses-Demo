@@ -21,7 +21,6 @@ namespace MyApp
         public ExtensionPopup(EPopupID id, string prefabNameCanvas, string prefabName3D, string addressableCanvas, string addressable3D, bool isRepeatable = false)
             : base(id, prefabNameCanvas, prefabName3D, addressableCanvas, addressable3D, isRepeatable)
         {
-            Debug.LogError("extension popup");
         }
 
         #endregion

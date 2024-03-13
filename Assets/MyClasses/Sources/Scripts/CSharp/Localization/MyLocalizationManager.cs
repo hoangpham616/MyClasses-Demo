@@ -2,7 +2,7 @@
  * Copyright (c) 2016 Phạm Minh Hoàng
  * Email:       hoangpham61691@gmail.com
  * Framework:   MyClasses
- * Class:       MyLocalizationManager (version 3.9)
+ * Class:       MyLocalizationManager (version 3.10)
  */
 
 #pragma warning disable 0108
@@ -19,7 +19,7 @@ namespace MyClasses
     {
         #region ----- Define -----
 
-#if USE_MY_LOCALIZATION_ARABIC
+#if MY_LOCALIZATION_ARABIC
         public readonly string[] ARABIC_SYMBOLS = new string[] { ".", "؟", "(" };
 #endif
 
@@ -36,16 +36,16 @@ namespace MyClasses
             {
                 if (_instance == null)
                 {
-#if USE_MY_LOCALIZATION_ARABIC
-                    MyCompileFlag.USE_MY_LOCALIZATION_ARABIC = true;
+#if MY_LOCALIZATION_ARABIC
+                    MyCompileFlag.MY_LOCALIZATION_ARABIC = true;
 #else
-                    MyCompileFlag.USE_MY_LOCALIZATION_ARABIC = false;
+                    MyCompileFlag.MY_LOCALIZATION_ARABIC = false;
 #endif
 
-#if USE_MY_LOCALIZATION_KHMER
-                    MyCompileFlag.USE_MY_LOCALIZATION_KHMER = true;
+#if MY_LOCALIZATION_KHMER
+                    MyCompileFlag.MY_LOCALIZATION_KHMER = true;
 #else
-                    MyCompileFlag.USE_MY_LOCALIZATION_KHMER = false;
+                    MyCompileFlag.MY_LOCALIZATION_KHMER = false;
 #endif
 
                     lock (_singletonLock)
@@ -101,7 +101,7 @@ namespace MyClasses
         /// </summary>
         protected override string _LoadArabicKey(string value)
         {
-#if USE_MY_LOCALIZATION_ARABIC
+#if MY_LOCALIZATION_ARABIC
             // please import "Arabic Support" package
             string arabic = ArabicSupport.ArabicFixer.Fix(value, false, false);
             for (int i = 0; i < 10; ++i)

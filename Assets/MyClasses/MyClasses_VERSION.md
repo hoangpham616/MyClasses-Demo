@@ -2,8 +2,29 @@
  * Copyright (c) 2016 Phạm Minh Hoàng
  * Email:       hoangpham61691@gmail.com
  * Framework:   MyClasses
- * Version:     2024.2.20
+ * Version:     2024.3.13
  */
+
+
+
+********** 2024.3.13 **********
+
+* MyMonoSingleton
+* MyUGUIManager: always call HUD.OnUGUISceneSwitch method
+
+********************************
+
+
+
+********** 2024.3.7 **********
+
+* MyLogger: add ELogColor.DARK_NETCODE, ELogColor.NETCODE
+* MyCompileFlag
+* MyUGUIFlyingMessage, MyUGUIPopupBase, MyUGUIPopupOverlay, MyUGUIRunningMessage, MyUGUIToastMessage: use animation state name hash
+* MyUGUIManager: add PreloadScene()
+* combine MyLocalTime and MyOnlineTime into MyTime
+
+********************************
 
 
 

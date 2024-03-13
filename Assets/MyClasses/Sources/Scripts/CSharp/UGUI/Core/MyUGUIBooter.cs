@@ -2,7 +2,7 @@
  * Copyright (c) 2016 Phạm Minh Hoàng
  * Email:       hoangpham61691@gmail.com
  * Framework:   MyClasses
- * Class:       MyUGUIBooter (version 2.13)
+ * Class:       MyUGUIBooter (version 2.14)
  */
 
 #pragma warning disable 0414
@@ -81,40 +81,88 @@ namespace MyClasses.UI
             MyCompileFlag.UNITY_WEBGL = false;
 #endif
 
-#if DISABLE_MY_LOGGER_ALL
-            MyCompileFlag.DISABLE_MY_LOGGER_ALL = true;
+#if MY_UNITY_ADS
+            MyCompileFlag.MY_UNITY_ADS = true;
 #else
-            MyCompileFlag.DISABLE_MY_LOGGER_ALL = false;
+            MyCompileFlag.MY_UNITY_ADS = false;
 #endif
 
-#if DISABLE_MY_LOGGER_INFO
-            MyCompileFlag.DISABLE_MY_LOGGER_INFO = true;
+#if MY_UNITY_ADS_DEBUG
+            MyCompileFlag.MY_UNITY_ADS_DEBUG = true;
 #else
-            MyCompileFlag.DISABLE_MY_LOGGER_INFO = false;
+            MyCompileFlag.MY_UNITY_ADS_DEBUG = false;
 #endif
 
-#if DISABLE_MY_LOGGER_WARNING
-            MyCompileFlag.DISABLE_MY_LOGGER_WARNING = true;
+#if MY_IAP
+            MyCompileFlag.MY_IAP = true;
 #else
-            MyCompileFlag.DISABLE_MY_LOGGER_WARNING = false;
+            MyCompileFlag.MY_IAP = false;
 #endif
 
-#if DISABLE_MY_LOGGER_ERROR
-            MyCompileFlag.DISABLE_MY_LOGGER_ERROR = true;
+#if MY_IAP_DEBUG
+            MyCompileFlag.MY_IAP_DEBUG = true;
 #else
-            MyCompileFlag.DISABLE_MY_LOGGER_ERROR = false;
+            MyCompileFlag.MY_IAP_DEBUG = false;
 #endif
 
-#if DEBUG_MY_SOUND
-            MyCompileFlag.DEBUG_MY_SOUND = true;
+#if MY_LOCALIZATION_ARABIC
+            MyCompileFlag.MY_LOCALIZATION_ARABIC = true;
 #else
-            MyCompileFlag.DEBUG_MY_SOUND = false;
+            MyCompileFlag.MY_LOCALIZATION_ARABIC = false;
 #endif
 
-#if DEBUG_MY_UI
-            MyCompileFlag.DEBUG_MY_UI = true;
+#if MY_LOCALIZATION_KHMER
+            MyCompileFlag.MY_LOCALIZATION_KHMER = true;
 #else
-            MyCompileFlag.DEBUG_MY_UI = false;
+            MyCompileFlag.MY_LOCALIZATION_KHMER = false;
+#endif
+
+#if MY_LOGGER_ALL
+            MyCompileFlag.MY_LOGGER_ALL = true;
+#else
+            MyCompileFlag.MY_LOGGER_ALL = false;
+#endif
+
+#if MY_LOGGER_INFO
+            MyCompileFlag.MY_LOGGER_INFO = true;
+#else
+            MyCompileFlag.MY_LOGGER_INFO = false;
+#endif
+
+#if MY_LOGGER_WARNING
+            MyCompileFlag.MY_LOGGER_WARNING = true;
+#else
+            MyCompileFlag.MY_LOGGER_WARNING = false;
+#endif
+
+#if MY_LOGGER_ERROR
+            MyCompileFlag.MY_LOGGER_ERROR = true;
+#else
+            MyCompileFlag.MY_LOGGER_ERROR = false;
+#endif
+
+#if MY_SOUND_DEBUG
+            MyCompileFlag.MY_SOUND_DEBUG = true;
+#else
+            MyCompileFlag.MY_SOUND_DEBUG = false;
+#endif
+
+#if MY_UI_ADDRESSABLE
+            MyCompileFlag.MY_UI_ADDRESSABLE = true;
+#else
+            MyCompileFlag.MY_UI_ADDRESSABLE = false;
+#endif
+
+#if MY_UI_URP
+            MyCompileFlag.MY_UI_URP = true;
+#else
+            MyCompileFlag.MY_UI_URP = false;
+#endif
+
+#if MY_UI_DEBUG
+            MyCompileFlag.MY_UI_DEBUG = true;
+#else
+            MyCompileFlag.MY_UI_DEBUG = false;
 #endif
         }
 

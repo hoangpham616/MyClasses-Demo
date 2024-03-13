@@ -56,7 +56,7 @@ MonoBehaviour:
     PrefabNameIndex3D: 7
     PrefabNameCanvas: PoolPopupCanvas
     PrefabName3D: 
-    AddressableCanvas: Assets/PoolPopupCanvas.prefab
+    AddressableCanvas: 
     Addressable3D: 
   - IsFoldOut: 1
     ID: 4

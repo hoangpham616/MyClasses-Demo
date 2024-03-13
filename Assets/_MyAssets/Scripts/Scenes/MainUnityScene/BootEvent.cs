@@ -1,3 +1,8 @@
+
+#if UNITY_EDITOR
+#define MY_UI_DEBUG
+#endif
+
 using UnityEngine;
 using MyClasses;
 using MyClasses.UI;

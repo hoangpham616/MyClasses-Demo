@@ -2,7 +2,7 @@
  * Copyright (c) 2016 Phạm Minh Hoàng
  * Email:       hoangpham61691@gmail.com
  * Framework:   MyClasses
- * Class:       MyUGUIManager (version 2.47)
+ * Class:       MyUGUIManager (version 2.48)
  */
 
 #pragma warning disable 0108
@@ -12,10 +12,10 @@ using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-#if UNITY_URP || USE_MY_URP
+#if UNITY_URP || MY_UI_URP
 using UnityEngine.Rendering.Universal;
 #endif
-#if USE_MY_UI_ADDRESSABLE
+#if MY_UI_ADDRESSABLE
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 #endif
@@ -141,7 +141,7 @@ namespace MyClasses.UI
 
         #region ----- Public Method -----
 
-#if UNITY_URP || USE_MY_URP
+#if UNITY_URP || MY_UI_URP
         /// <summary>
         /// Add camera UI to the stack of 3D camera.
         /// </summary>
@@ -195,6 +195,14 @@ namespace MyClasses.UI
         public MyUGUIScene GetScene(ESceneID sceneID)
         {
             return (MyUGUIScene)_GetScene((int)sceneID);
+        }
+
+        /// <summary>
+        /// Preload a scene.
+        /// </summary>
+        public void PreloadScene(ESceneID sceneID, Action<bool> onCompleteCallback = null)
+        {
+            _PreloadScene((int)sceneID, onCompleteCallback);
         }
 
         /// <summary>
@@ -486,15 +494,15 @@ namespace MyClasses.UI
         /// </summary>
         public override GameObject LoadAddressable(string addressable)
         {
-#if USE_MY_UI_ADDRESSABLE
+#if MY_UI_ADDRESSABLE
             AsyncOperationHandle<GameObject> handle = Addressables.LoadAssetAsync<GameObject>(addressable);
             if (handle.Status == AsyncOperationStatus.Succeeded)
             {
                 return handle.Result;
             }
 #else
-            Debug.LogWarning("[" + typeof(MyUGUIManager).Name + "] LoadAddressable(): You need to add compile flag 'USE_MY_UI_ADDRESSABLE' to use Addressable for MyUGUI.");
-            Debug.LogError("[" + typeof(MyUGUIManager).Name + "] LoadAddressable(): You need to add compile flag 'USE_MY_UI_ADDRESSABLE' to use Addressable for MyUGUI.");
+            Debug.LogWarning("[" + typeof(MyUGUIManager).Name + "] LoadAddressable(): You need to add compile flag 'MY_UI_ADDRESSABLE' to use Addressable for MyUGUI.");
+            Debug.LogError("[" + typeof(MyUGUIManager).Name + "] LoadAddressable(): You need to add compile flag 'MY_UI_ADDRESSABLE' to use Addressable for MyUGUI.");
             Debug.Break();
 #endif
             return null;
