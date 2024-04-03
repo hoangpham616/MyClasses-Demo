@@ -11,10 +11,6 @@ namespace MyApp
         #region ----- Variable -----
 
         private Text _textSceneName;
-        private GameObject _gameObjectFooter;
-        private MyUGUIButton _buttonTabAScene;
-        private MyUGUIButton _buttonTabBScene;
-        private MyUGUIButton _buttonTabCScene;
 
         #endregion
 
@@ -36,10 +32,6 @@ namespace MyApp
             base.OnUGUIInit();
 
             _textSceneName = MyUtilities.FindObject(GameObjectCanvas, "Header/SceneName").GetComponent<Text>();
-            _gameObjectFooter = MyUtilities.FindObject(GameObjectCanvas, "Footer");
-            _buttonTabAScene = MyUtilities.FindObject(_gameObjectFooter, "ButtonTabAScene").GetComponent<MyUGUIButton>();
-            _buttonTabBScene = MyUtilities.FindObject(_gameObjectFooter, "ButtonTabBScene").GetComponent<MyUGUIButton>();
-            _buttonTabCScene = MyUtilities.FindObject(_gameObjectFooter, "ButtonTabCScene").GetComponent<MyUGUIButton>();
         }
 
         public override void OnUGUIEnter()
@@ -47,10 +39,6 @@ namespace MyApp
             this.LogInfo("OnUGUIEnter", null, ELogColor.DARK_UI);
 
             base.OnUGUIEnter();
-
-            _buttonTabAScene.OnEventPointerClick.AddListener(_OnClickTabAScene);
-            _buttonTabBScene.OnEventPointerClick.AddListener(_OnClickTabBScene);
-            _buttonTabCScene.OnEventPointerClick.AddListener(_OnClickTabCScene);
         }
 
         public override void OnUGUIUpdate(float deltaTime)
@@ -62,10 +50,6 @@ namespace MyApp
             this.LogInfo("OnUGUIExit", null, ELogColor.DARK_UI);
 
             base.OnUGUIExit();
-
-            _buttonTabAScene.OnEventPointerClick.RemoveAllListeners();
-            _buttonTabBScene.OnEventPointerClick.RemoveAllListeners();
-            _buttonTabCScene.OnEventPointerClick.RemoveAllListeners();
         }
 
         public override void OnUGUISceneSwitch(MyUGUIScene scene)
@@ -74,55 +58,21 @@ namespace MyApp
 
             switch (scene.ID)
             {
-                case ESceneID.MainMenuScene:
+                case ESceneID.MainScene:
                     {
-                        _textSceneName.text = "HUD\nMAIN MENU SCENE";
-                        _gameObjectFooter.SetActive(false);
+                        _textSceneName.text = "HUD\nMAIN SCENE";
+                    }
+                    break;
+
+                case ESceneID.GroupScene:
+                    {
+                        _textSceneName.text = "HUD\nGROUP SCENE";
                     }
                     break;
 
                 case ESceneID.GameScene:
                     {
                         _textSceneName.text = "HUD\nGAME SCENE";
-                    }
-                    break;
-
-                case ESceneID.TabAScene:
-                    {
-                        _textSceneName.text = "HUD\nTAB A SCENE";
-                        _gameObjectFooter.SetActive(true);
-                        _buttonTabAScene.SetDark(true);
-                        _buttonTabAScene.SetEnable(false);
-                        _buttonTabBScene.SetDark(false);
-                        _buttonTabBScene.SetEnable(true);
-                        _buttonTabCScene.SetDark(false);
-                        _buttonTabCScene.SetEnable(true);
-                    }
-                    break;
-
-                case ESceneID.TabBScene:
-                    {
-                        _textSceneName.text = "HUD\nTAB B SCENE";
-                        _gameObjectFooter.SetActive(true);
-                        _buttonTabAScene.SetDark(false);
-                        _buttonTabAScene.SetEnable(true);
-                        _buttonTabBScene.SetDark(true);
-                        _buttonTabBScene.SetEnable(false);
-                        _buttonTabCScene.SetDark(false);
-                        _buttonTabCScene.SetEnable(true);
-                    }
-                    break;
-
-                case ESceneID.TabCScene:
-                    {
-                        _textSceneName.text = "HUD\nTAB C SCENE";
-                        _gameObjectFooter.SetActive(true);
-                        _buttonTabAScene.SetDark(false);
-                        _buttonTabAScene.SetEnable(true);
-                        _buttonTabBScene.SetDark(false);
-                        _buttonTabBScene.SetEnable(true);
-                        _buttonTabCScene.SetDark(true);
-                        _buttonTabCScene.SetEnable(false);
                     }
                     break;
                     
@@ -143,33 +93,7 @@ namespace MyApp
 
         #region ----- Button Event -----
 
-        private void _OnClickTabAScene(PointerEventData arg0)
-        {
-            this.LogInfo("_OnClickTabAScene", null, ELogColor.UI);
-
-            MyUGUIManager.Instance.ShowScene(ESceneID.TabAScene, ESceneTransition.SlideInFromLeft);
-        }
-
-        private void _OnClickTabBScene(PointerEventData arg0)
-        {
-            this.LogInfo("_OnClickTabBScene", null, ELogColor.UI);
-
-            if (MyUGUIManager.Instance.CurrentScene.ID == ESceneID.TabAScene)
-            {
-                MyUGUIManager.Instance.ShowScene(ESceneID.TabBScene, ESceneTransition.SlideInFromRight);
-            }
-            else
-            {
-                MyUGUIManager.Instance.ShowScene(ESceneID.TabBScene, ESceneTransition.SlideInFromLeft);
-            }
-        }
-
-        private void _OnClickTabCScene(PointerEventData arg0)
-        {
-            this.LogInfo("_OnClickTabCScene", null, ELogColor.UI);
-
-            MyUGUIManager.Instance.ShowScene(ESceneID.TabCScene, ESceneTransition.SlideInFromRight);
-        }
+        
 
         #endregion
 

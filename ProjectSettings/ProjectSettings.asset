@@ -782,7 +782,7 @@ PlayerSettings:
   webGLDecompressionFallback: 0
   webGLPowerPreference: 2
   scriptingDefineSymbols:
-    Android: DEBUG_MY_UI;USE_MY_UI_ADDRESSABLE
+    Android: MY_UI_DEBUG;MY_UI_ADDRESSABLE;MY_LOGGER_ALL;MY_LOGGER_INFO
     Standalone: DEBUG_MY_UI;UNITY_EDITOR
   additionalCompilerArguments: {}
   platformArchitecture: {}

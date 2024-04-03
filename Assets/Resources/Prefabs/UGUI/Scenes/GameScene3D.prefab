@@ -549,7 +549,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6153334096831944094}
   m_Layer: 0
-  m_Name: GameScene
+  m_Name: GameScene3D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

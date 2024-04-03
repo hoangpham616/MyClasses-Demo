@@ -2,7 +2,7 @@
  * Copyright (c) 2016 Phạm Minh Hoàng
  * Email:       hoangpham61691@gmail.com
  * Framework:   MyClasses
- * Class:       MyUGUIConfigSceneEditorWindow (version 2.11)
+ * Class:       MyUGUIConfigSceneEditorWindow (version 2.12)
  */
 
 using UnityEditor;
@@ -39,13 +39,28 @@ namespace MyClasses.UI.Tool
         }
 
         /// <summary>
-        /// Create scene enum popup.
+        /// Return the name of sub scene.
         /// </summary>
-        protected override int _CreateSceneEnumPopup(int sceneId)
+        protected override string _GetSubSceneName(int id)
         {
-            return (int)(ESceneID)EditorGUILayout.EnumPopup("ID", (ESceneID)sceneId);
+            return ((ESubSceneID)id).ToString();
         }
 
+        /// <summary>
+        /// Create scene enum popup.
+        /// </summary>
+        protected override int _CreateSceneEnumPopup(int id)
+        {
+            return (int)(ESceneID)EditorGUILayout.EnumPopup("ID", (ESceneID)id);
+        }
+
+        /// <summary>
+        /// Create sub scene enum popup.
+        /// </summary>
+        protected override int _CreateSubSceneEnumPopup(int id)
+        {
+            return (int)(ESubSceneID)EditorGUILayout.EnumPopup("ID", (ESubSceneID)id);
+        }
 
         #endregion
     }

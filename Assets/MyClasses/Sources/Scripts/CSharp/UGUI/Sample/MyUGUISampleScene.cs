@@ -26,6 +26,11 @@ namespace MyApp
 
         #region ----- Constructor -----
 
+        public MyUGUISampleScene(ESceneID id, string prefabNameCanvas, string prefabName3D, string addressableCanvas, string addressable3D, bool isInitWhenLoadUnityScene = false, bool isHideHUD = false, List<MyUGUIConfigSubScene> subSceneConfigs = null, float minWidthPercentToSwitchSubScene = 10, float switchSubSceneTime = 0.1f, Action<MyUGUISceneBase, MyUGUISubSceneBase> onSubSceneSwitchCallback = null)
+            : base(id, prefabNameCanvas, prefabName3D, addressableCanvas, addressable3D, isInitWhenLoadUnityScene, isHideHUD, subSceneConfigs, minWidthPercentToSwitchSubScene, switchSubSceneTime, onSubSceneSwitchCallback)
+        {
+        }
+
         public MyUGUISampleScene(ESceneID id, string prefabNameCanvas, string prefabName3D, string addressableCanvas, string addressable3D, bool isInitWhenLoadUnityScene = false, bool isHideHUD = false)
             : base(id, prefabNameCanvas, prefabName3D, addressableCanvas, addressable3D, isInitWhenLoadUnityScene, isHideHUD)
         {
@@ -93,6 +98,10 @@ namespace MyApp
             this.LogInfo("OnUGUIBackKey", null, ELogColor.DARK_UI);
 
             MyUGUIManager.Instance.Back();
+        }
+
+        public override void OnUGUISubSceneSwitch(MyUGUISubSceneBase subScene)
+        {
         }
 
         #endregion

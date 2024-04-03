@@ -49,7 +49,7 @@ MonoBehaviour:
     Addressable3D: 
   - IsFoldOut: 1
     ID: 3
-    ScriptPathIndex: 32
+    ScriptPathIndex: 35
     ScriptPath: Assets/_MyAssets/Scripts/Scenes/MainUnityScene/MainMenuScene/PoolPopup.cs
     ScriptName: PoolPopup
     PrefabNameIndexCanvas: 4
@@ -60,7 +60,7 @@ MonoBehaviour:
     Addressable3D: 
   - IsFoldOut: 1
     ID: 4
-    ScriptPathIndex: 30
+    ScriptPathIndex: 33
     ScriptPath: Assets/_MyAssets/Scripts/Scenes/MainUnityScene/MainMenuScene/LocalizationPopup.cs
     ScriptName: LocalizationPopup
     PrefabNameIndexCanvas: 3
@@ -71,7 +71,7 @@ MonoBehaviour:
     Addressable3D: 
   - IsFoldOut: 1
     ID: 5
-    ScriptPathIndex: 27
+    ScriptPathIndex: 30
     ScriptPath: Assets/_MyAssets/Scripts/Scenes/MainUnityScene/MainMenuScene/AdMobPopup.cs
     ScriptName: AdMobPopup
     PrefabNameIndexCanvas: 0
@@ -82,7 +82,7 @@ MonoBehaviour:
     Addressable3D: 
   - IsFoldOut: 1
     ID: 6
-    ScriptPathIndex: 63
+    ScriptPathIndex: 65
     ScriptPath: Assets/_MyAssets/Scripts/Scenes/MainUnityScene/MainMenuScene/ResusableListViewPopup/ReusableListViewPopup.cs
     ScriptName: ReusableListViewPopup
     PrefabNameIndexCanvas: 5
@@ -93,7 +93,7 @@ MonoBehaviour:
     Addressable3D: 
   - IsFoldOut: 1
     ID: 7
-    ScriptPathIndex: 65
+    ScriptPathIndex: 67
     ScriptPath: Assets/_MyAssets/Scripts/Scenes/MainUnityScene/MainMenuScene/ResusableListViewPopup2/ReusableListViewPopup2.cs
     ScriptName: ReusableListViewPopup2
     PrefabNameIndexCanvas: 6
@@ -104,7 +104,7 @@ MonoBehaviour:
     Addressable3D: 
   - IsFoldOut: 1
     ID: 8
-    ScriptPathIndex: 28
+    ScriptPathIndex: 31
     ScriptPath: Assets/_MyAssets/Scripts/Scenes/MainUnityScene/MainMenuScene/ExtensionPopup.cs
     ScriptName: ExtensionPopup
     PrefabNameIndexCanvas: 1
@@ -115,7 +115,7 @@ MonoBehaviour:
     Addressable3D: 
   - IsFoldOut: 1
     ID: 9
-    ScriptPathIndex: 29
+    ScriptPathIndex: 32
     ScriptPath: Assets/_MyAssets/Scripts/Scenes/MainUnityScene/MainMenuScene/ForbiddenTextPopup.cs
     ScriptName: ForbiddenTextPopup
     PrefabNameIndexCanvas: 2

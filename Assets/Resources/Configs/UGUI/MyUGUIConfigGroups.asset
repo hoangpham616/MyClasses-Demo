@@ -23,11 +23,18 @@ MonoBehaviour:
     Name: ESceneID
     NumDefault: 0
     ListID:
-    - MainMenuScene
+    - MainScene
+    - GroupScene
     - GameScene
-    - TabAScene
-    - TabBScene
-    - TabCScene
+  - IsFoldOut: 1
+    Name: ESubSceneID
+    NumDefault: 0
+    ListID:
+    - GroupASubScene
+    - GroupBSubScene
+    - GroupCSubScene
+    - GroupDSubScene
+    - GroupESubScene
   - IsFoldOut: 1
     Name: EPopupID
     NumDefault: 3

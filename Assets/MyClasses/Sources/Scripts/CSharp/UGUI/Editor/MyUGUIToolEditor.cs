@@ -2,7 +2,7 @@
  * Copyright (c) 2016 Phạm Minh Hoàng
  * Email:       hoangpham61691@gmail.com
  * Framework:   MyClasses
- * Class:       MyUGUIToolEditor (version 2.34)
+ * Class:       MyUGUIToolEditor (version 2.35)
  */
 
 #if UNITY_EDITOR
@@ -348,9 +348,42 @@ namespace MyClasses.UI.Tool
         }
 
         /// <summary>
+        /// Create a sample MyUGUISubScene script.
+        /// </summary>
+        [MenuItem("MyClasses/UGUI/Create/Script/Sub Scene", false, 3)]
+        public static void CreateMyUGUISubScene()
+        {
+            string directory = "Assets";
+            Object selectedObject = Selection.activeObject;
+            if (selectedObject != null && selectedObject.GetType() == typeof(DefaultAsset))
+            {
+                directory = AssetDatabase.GetAssetPath(selectedObject);
+            }
+
+            string filePath = EditorUtility.SaveFilePanel("Save Text File", directory, "YourSubScene", "cs");
+            string fileName = filePath.Substring(filePath.LastIndexOf("/") + 1);
+            fileName = fileName.Substring(0, fileName.Length - 3);
+
+            string[] samplePaths = new string[] { "Assets/MyClasses", "Assets/Core/MyClasses", "Assets/Plugin/MyClasses", "Assets/Plugins/MyClasses", "Assets/Framework/MyClasses", "Assets/Frameworks/MyClasses" };
+            for (int i = 0; i < samplePaths.Length; i++)
+            {
+                string samplePath = samplePaths[i] + "/Sources/Scripts/CSharp/UGUI/Sample/MyUGUISampleSubScene.cs";
+                if (File.Exists(samplePath))
+                {
+                    string content = File.ReadAllText(samplePath);
+                    content = content.Substring(content.IndexOf("using")).Replace("MyUGUISampleSubScene", fileName);
+                    File.WriteAllText(filePath, content);
+                    AssetDatabase.Refresh();
+                    Debug.Log("[MyClasses] " + fileName + ".cs was created.");
+                    return;
+                }
+            }
+        }
+
+        /// <summary>
         /// Create a sample MyUGUIPopup script.
         /// </summary>
-        [MenuItem("MyClasses/UGUI/Create/Script/Popup", false, 3)]
+        [MenuItem("MyClasses/UGUI/Create/Script/Popup", false, 4)]
         public static void CreateMyUGUIPopup()
         {
             string directory = "Assets";
@@ -383,7 +416,7 @@ namespace MyClasses.UI.Tool
         /// <summary>
         /// Create a sample MyUGUIToastNotification script.
         /// </summary>
-        [MenuItem("MyClasses/UGUI/Create/Script/Toast Notification", false, 4)]
+        [MenuItem("MyClasses/UGUI/Create/Script/Toast Notification", false, 5)]
         public static void CreateMyUGUIToastNotification()
         {
             string directory = "Assets";
@@ -416,7 +449,7 @@ namespace MyClasses.UI.Tool
         /// <summary>
         /// Create a sample MyUGUISampleReusableListItemView script.
         /// </summary>
-        [MenuItem("MyClasses/UGUI/Create/Script/Reusable List Item View (Fixed Size)", false, 5)]
+        [MenuItem("MyClasses/UGUI/Create/Script/Reusable List Item View (Fixed Size)", false, 6)]
         public static void CreateMyUGUIReusableListViewItem()
         {
             string directory = "Assets";
@@ -449,7 +482,7 @@ namespace MyClasses.UI.Tool
         /// <summary>
         /// Create a sample MyUGUISampleReusableListItemView2 script.
         /// </summary>
-        [MenuItem("MyClasses/UGUI/Create/Script/Reusable List Item View 2 (Dynamic Size)", false, 6)]
+        [MenuItem("MyClasses/UGUI/Create/Script/Reusable List Item View 2 (Dynamic Size)", false, 7)]
         public static void CreateMyUGUIReusableListViewItem2()
         {
             string directory = "Assets";

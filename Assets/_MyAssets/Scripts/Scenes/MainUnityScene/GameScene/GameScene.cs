@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
+using System.Collections.Generic;
 using MyClasses;
 using MyClasses.UI;
 
@@ -9,7 +10,7 @@ namespace MyApp
     {
         #region ----- Variable -----
         
-        private MyUGUIButton _buttonMainMenuScene;
+        private MyUGUIButton _buttonMainScene;
 
         #endregion
 
@@ -30,7 +31,7 @@ namespace MyApp
 
             base.OnUGUIInit();
 
-            _buttonMainMenuScene = MyUtilities.FindObject(GameObjectCanvas, "Buttons/ButtonMainMenuScene").GetComponent<MyUGUIButton>();
+            _buttonMainScene = MyUtilities.FindObject(GameObjectCanvas, "Buttons/ButtonMainScene").GetComponent<MyUGUIButton>();
         }
 
         public override void OnUGUIEnter()
@@ -39,7 +40,7 @@ namespace MyApp
 
             base.OnUGUIEnter();
             
-            _buttonMainMenuScene.OnEventPointerClick.AddListener(_OnClickMainMenuScene);
+            _buttonMainScene.OnEventPointerClick.AddListener(_OnClickMainMenuScene);
 
             GameObject3D.transform.localScale = Vector3.one * UnityEngine.Random.Range(0.5f, 1.5f);
         }
@@ -65,7 +66,7 @@ namespace MyApp
 
             base.OnUGUIExit();
 
-            _buttonMainMenuScene.OnEventPointerClick.RemoveAllListeners();
+            _buttonMainScene.OnEventPointerClick.RemoveAllListeners();
         }
 
         public override bool OnUGUIInvisible()
@@ -92,7 +93,7 @@ namespace MyApp
 
         private void _OnClickMainMenuScene(PointerEventData arg0)
         {
-            MyUGUIManager.Instance.ShowScene(ESceneID.MainMenuScene, ESceneTransition.FadeIn, 0.4f);
+            MyUGUIManager.Instance.ShowScene(ESceneID.MainScene, ESceneTransition.FadeIn, 0.4f);
         }
 
         #endregion

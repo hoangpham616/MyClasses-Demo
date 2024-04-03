@@ -14,11 +14,18 @@ namespace MyClasses.UI
 
 	public enum ESceneID
 	{
-		MainMenuScene,
+		MainScene,
+		GroupScene,
 		GameScene,
-		TabAScene,
-		TabBScene,
-		TabCScene,
+	}
+
+	public enum ESubSceneID
+	{
+		GroupASubScene,
+		GroupBSubScene,
+		GroupCSubScene,
+		GroupDSubScene,
+		GroupESubScene,
 	}
 
 	public enum EPopupID

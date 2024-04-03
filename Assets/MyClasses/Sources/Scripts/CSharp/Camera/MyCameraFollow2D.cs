@@ -2,7 +2,7 @@
  * Copyright (c) 2016 Phạm Minh Hoàng
  * Email:       hoangpham61691@gmail.com
  * Framework:   MyClasses
- * Class:       MyCameraFollow2D (version 1.3)
+ * Class:       MyCameraFollow2D (version 1.4)
  */
 
 #pragma warning disable 0649
@@ -20,6 +20,8 @@ namespace MyClasses
     {
         #region ----- Variable -----
 
+        [SerializeField]
+        private Camera _camera;
         [SerializeField]
         private Transform _target;
 
@@ -40,6 +42,11 @@ namespace MyClasses
         #endregion
 
         #region ----- Property -----
+
+        public Camera Camera
+        {
+            get { return _camera; }
+        }
 
         public Vector2 Velocity
         {
@@ -89,6 +96,17 @@ namespace MyClasses
         #endregion
 
         #region ----- MonoBehaviour Implementation -----
+
+        /// <summary>
+        /// Awake.
+        /// </summary>
+        void Awake()
+        {
+            if (_camera == null)
+            {
+                _camera = GetComponent<Camera>();
+            }
+        }
 
         /// <summary>
         /// LateUpdate.

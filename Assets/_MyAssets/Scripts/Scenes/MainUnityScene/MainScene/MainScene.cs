@@ -6,7 +6,7 @@ using MyClasses.UI;
 
 namespace MyApp.UI
 {
-    public class MainMenuScene : MyUGUIScene
+    public class MainScene : MyUGUIScene
     {
         #region ----- Variable -----
 
@@ -21,8 +21,8 @@ namespace MyApp.UI
         private MyUGUIButton _buttonReuasbleListView;
         private MyUGUIButton _buttonReuasbleListView2;
         private MyUGUIButton _buttonExtension;
+        private MyUGUIButton _buttonGroupScene;
         private MyUGUIButton _buttonGameScene;
-        private MyUGUIButton _buttonTabAScene;
         private MyUGUIButton _buttonLogger;
         private MyUGUIButton _buttonCoroutine;
         private MyUGUIButton _buttonPool;
@@ -34,7 +34,7 @@ namespace MyApp.UI
 
         #region ----- Constructor -----
 
-        public MainMenuScene(ESceneID id, string prefabNameCanvas, string prefabName3D, string addressableCanvas, string addressable3D, bool isInitWhenLoadUnityScene = false, bool isHideHUD = false)
+        public MainScene(ESceneID id, string prefabNameCanvas, string prefabName3D, string addressableCanvas, string addressable3D, bool isInitWhenLoadUnityScene = false, bool isHideHUD = false)
             : base(id, prefabNameCanvas, prefabName3D, addressableCanvas, addressable3D, isInitWhenLoadUnityScene, isHideHUD)
         {
         }
@@ -60,8 +60,8 @@ namespace MyApp.UI
             _buttonReuasbleListView = MyUtilities.FindObject(GameObjectCanvas, "Buttons/ButtonReusableListView").GetComponent<MyUGUIButton>();
             _buttonReuasbleListView2 = MyUtilities.FindObject(GameObjectCanvas, "Buttons/ButtonReusableListView2").GetComponent<MyUGUIButton>();
             _buttonExtension = MyUtilities.FindObject(GameObjectCanvas, "Buttons/ButtonExtension").GetComponent<MyUGUIButton>();
+            _buttonGroupScene = MyUtilities.FindObject(GameObjectCanvas, "Buttons/ButtonGroupScene").GetComponent<MyUGUIButton>();
             _buttonGameScene = MyUtilities.FindObject(GameObjectCanvas, "Buttons/ButtonGameScene").GetComponent<MyUGUIButton>();
-            _buttonTabAScene = MyUtilities.FindObject(GameObjectCanvas, "Buttons/ButtonTabAScene").GetComponent<MyUGUIButton>();
             _buttonLogger = MyUtilities.FindObject(GameObjectCanvas, "Buttons/ButtonLogger").GetComponent<MyUGUIButton>();
             _buttonCoroutine = MyUtilities.FindObject(GameObjectCanvas, "Buttons/ButtonCoroutine").GetComponent<MyUGUIButton>();
             _buttonPool = MyUtilities.FindObject(GameObjectCanvas, "Buttons/ButtonPool").GetComponent<MyUGUIButton>();
@@ -87,8 +87,8 @@ namespace MyApp.UI
             _buttonReuasbleListView.OnEventPointerClick.AddListener(_OnClickReuasbleListView);
             _buttonReuasbleListView2.OnEventPointerClick.AddListener(_OnClickReuasbleListView2);
             _buttonExtension.OnEventPointerClick.AddListener(_OnClickExtension);
+            _buttonGroupScene.OnEventPointerClick.AddListener(_OnClickGroupScene);
             _buttonGameScene.OnEventPointerClick.AddListener(_OnClickGameScene);
-            _buttonTabAScene.OnEventPointerClick.AddListener(_OnClickTabAScene);
             _buttonLogger.OnEventPointerClick.AddListener(_OnClickLogger);
             _buttonCoroutine.OnEventPointerClick.AddListener(_OnClickCoroutine);
             _buttonPool.OnEventPointerClick.AddListener(_OnClickPool);
@@ -131,8 +131,8 @@ namespace MyApp.UI
             _buttonReuasbleListView.OnEventPointerClick.RemoveAllListeners();
             _buttonReuasbleListView2.OnEventPointerClick.RemoveAllListeners();
             _buttonExtension.OnEventPointerClick.RemoveAllListeners();
+            _buttonGroupScene.OnEventPointerClick.RemoveAllListeners();
             _buttonGameScene.OnEventPointerClick.RemoveAllListeners();
-            _buttonTabAScene.OnEventPointerClick.RemoveAllListeners();
             _buttonLogger.OnEventPointerClick.RemoveAllListeners();
             _buttonCoroutine.OnEventPointerClick.RemoveAllListeners();
             _buttonPool.OnEventPointerClick.RemoveAllListeners();
@@ -292,18 +292,18 @@ namespace MyApp.UI
             MyUGUIManager.Instance.ShowPopup(EPopupID.ExtensionPopup);
         }
 
+        private void _OnClickGroupScene(PointerEventData arg0)
+        {
+            this.LogInfo("_OnClickGroupScene", null, ELogColor.UI);
+
+            MyUGUIManager.Instance.ShowScene(ESceneID.GroupScene, ESubSceneID.GroupCSubScene);
+        }
+
         private void _OnClickGameScene(PointerEventData arg0)
         {
             this.LogInfo("_OnClickGameScene", null, ELogColor.UI);
 
             MyUGUIManager.Instance.ShowScene(ESceneID.GameScene, ESceneTransition.FadeIn, 0.4f);
-        }
-
-        private void _OnClickTabAScene(PointerEventData arg0)
-        {
-            this.LogInfo("_OnClickTabAScene", null, ELogColor.UI);
-
-            MyUGUIManager.Instance.ShowScene(ESceneID.TabAScene);
         }
 
         private void _OnClickLogger(PointerEventData arg0)
@@ -315,10 +315,10 @@ namespace MyApp.UI
             this.LogWarning("_OnClickLogger", "log color CORE", ELogColor.SDK);
             this.LogError("_OnClickLogger", "log color DARK_NETWORK", ELogColor.DARK_NETWORK);
             this.LogWarning("_OnClickLogger", "log color NETWORK", ELogColor.NETWORK);
-            MyLogger.Error(typeof(MainMenuScene).Name, "_OnClickLogger", "log color DARK_UI", ELogColor.DARK_UI);
-            MyLogger.Warning(typeof(MainMenuScene).Name, "_OnClickLogger", "log color UI", ELogColor.UI);
-            MyLogger.Error(typeof(MainMenuScene).Name, "_OnClickLogger", "log color DARK_GAMEPLAY", ELogColor.DARK_GAMEPLAY);
-            MyLogger.Warning(typeof(MainMenuScene).Name, "_OnClickLogger", "log color GAMEPLAY", ELogColor.GAMEPLAY);
+            MyLogger.Error(typeof(MainScene).Name, "_OnClickLogger", "log color DARK_UI", ELogColor.DARK_UI);
+            MyLogger.Warning(typeof(MainScene).Name, "_OnClickLogger", "log color UI", ELogColor.UI);
+            MyLogger.Error(typeof(MainScene).Name, "_OnClickLogger", "log color DARK_GAMEPLAY", ELogColor.DARK_GAMEPLAY);
+            MyLogger.Warning(typeof(MainScene).Name, "_OnClickLogger", "log color GAMEPLAY", ELogColor.GAMEPLAY);
         }
 
         private void _OnClickCoroutine(PointerEventData arg0)
@@ -393,7 +393,7 @@ namespace MyApp.UI
             {
                 yield return new WaitForSeconds(0.3f);
 
-                MyLogger.Info(typeof(MainMenuScene).Name, "_TestCoroutine", (i * 0.3f).ToString());
+                MyLogger.Info(typeof(MainScene).Name, "_TestCoroutine", (i * 0.3f).ToString());
             }
         }
 

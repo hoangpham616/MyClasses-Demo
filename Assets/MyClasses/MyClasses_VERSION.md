@@ -2,8 +2,52 @@
  * Copyright (c) 2016 Phạm Minh Hoàng
  * Email:       hoangpham61691@gmail.com
  * Framework:   MyClasses
- * Version:     2024.3.13
+ * Version:     2024.4.3
  */
+
+
+
+********** 2024.4.3 **********
+
+* MyUGUIManagerBase
+* MyUGUISceneBase
+* MyUGUIScene
+* MyUGUIScrollRectEvent
+* MyUGUISubSceneBase
+
+*******************************
+
+
+
+********** 2024.3.28 **********
+
+* MyCameraFollow2D
+* MyUGUISceneBase
+* MyUGUISubSceneBase
+* MyUGUISampleSubScene
+
+*******************************
+
+
+
+********** 2024.3.27 **********
+
++ MyUGUISubScene
++ MyUGUISubSceneBase
++ MyUGUISampleSubScene
+* MyUGUIManagerBase: event OnSceneSwitch, OnSubSceneSwitch, OnPopupShow
+
+*******************************
+
+
+
+********** 2024.3.22 **********
+
+* MyUtilities.Marco
+* MyLocalizationManagerBase: rename LocalizeKeys() to LoadKeys()
+* MyUGUIManagerBase: fix MyUGUIScene.OnUGUIInit()
+
+*******************************
 
 
 
@@ -12,7 +56,7 @@
 * MyMonoSingleton
 * MyUGUIManager: always call HUD.OnUGUISceneSwitch method
 
-********************************
+*******************************
 
 
 
@@ -24,7 +68,7 @@
 * MyUGUIManager: add PreloadScene()
 * combine MyLocalTime and MyOnlineTime into MyTime
 
-********************************
+*******************************
 
 
 
@@ -32,7 +76,7 @@
 
 * MyUGUIManagerBase: fix "close popup by clicking outside", remove "float popup"
 
-********************************
+*******************************
 
 
 
@@ -45,7 +89,7 @@
 * MyUGUIConfigSceneEditorWindowBase
 * MyUGUISampleScene
 
-********************************
+*******************************
 
 
 
@@ -54,7 +98,7 @@
 * MyCoroutiner
 * MyLocalizationText
 
-********************************
+*******************************
 
 
 
@@ -64,7 +108,7 @@
 * MyForbbidenManager
 * MyCoroutiner
 
-********************************
+*******************************
 
 
 

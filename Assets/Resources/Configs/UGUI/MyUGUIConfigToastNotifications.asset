@@ -15,7 +15,7 @@ MonoBehaviour:
   ListToastNotification:
   - IsFoldOut: 1
     ID: 0
-    ScriptPathIndex: 33
+    ScriptPathIndex: 36
     ScriptPath: Assets/_MyAssets/Scripts/Scenes/MainUnityScene/ToastNotification/TopCenterToastNotification.cs
     ScriptName: TopCenterToastNotification
     PrefabNameIndexCanvas: 0

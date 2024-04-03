@@ -17,7 +17,7 @@ MonoBehaviour:
     ID: 0
     SceneName: MainUnityScene
     SceneNameIndex: 1
-    HUDScriptPathIndex: 27
+    HUDScriptPathIndex: 35
     HUDPrefabNameIndexCanvas: 1
     HUDPrefabNameIndex3D: 0
     HUDScriptPath: Assets/_MyAssets/Scripts/Scenes/MainUnityScene/HUD/MainHUD.cs
@@ -27,81 +27,74 @@ MonoBehaviour:
     ListScene:
     - IsFoldOut: 1
       ID: 0
-      ScriptPathIndex: 32
-      PrefabNameIndexCanvas: 3
+      ScriptPathIndex: 40
+      PrefabNameIndexCanvas: 9
       PrefabNameIndex3D: 0
-      ScriptPath: Assets/_MyAssets/Scripts/Scenes/MainUnityScene/MainMenuScene/MainMenuScene.cs
-      ScriptName: MainMenuScene
-      PrefabNameCanvas: MainMenuSceneCanvas
+      ScriptPath: Assets/_MyAssets/Scripts/Scenes/MainUnityScene/MainScene/MainScene.cs
+      ScriptName: MainScene
+      PrefabNameCanvas: MainSceneCanvas
       PrefabName3D: 
       AddressableCanvas: 
       Addressable3D: 
-      Addressable: 
       IsInitWhenLoadUnityScene: 0
       IsHideHUD: 0
-      FadeInDuration: 0.2
-      FadeOutDuration: 0.2
+      ListSubScene: []
+      MinWidthPercentToSwitchSubScene: 10
+      SwitchSubSceneTime: 0.1
     - IsFoldOut: 1
       ID: 1
-      ScriptPathIndex: 26
+      ScriptPathIndex: 33
+      PrefabNameIndexCanvas: 8
+      PrefabNameIndex3D: 0
+      ScriptPath: Assets/_MyAssets/Scripts/Scenes/MainUnityScene/GroupScene/GroupScene.cs
+      ScriptName: GroupScene
+      PrefabNameCanvas: GroupSceneCanvas
+      PrefabName3D: 
+      AddressableCanvas: 
+      Addressable3D: 
+      IsInitWhenLoadUnityScene: 0
+      IsHideHUD: 0
+      ListSubScene:
+      - ID: 0
+        ScriptPathIndex: 34
+        ScriptPath: Assets/_MyAssets/Scripts/Scenes/MainUnityScene/GroupScene/GroupSubScene.cs
+        ScriptName: GroupSubScene
+        GameObjectPath: SubScenes/GroupASubSceneCanvas
+      - ID: 1
+        ScriptPathIndex: 32
+        ScriptPath: Assets/_MyAssets/Scripts/Scenes/MainUnityScene/GroupScene/GroupBSubScene.cs
+        ScriptName: GroupBSubScene
+        GameObjectPath: SubScenes/GroupBSubSceneCanvas
+      - ID: 2
+        ScriptPathIndex: 34
+        ScriptPath: Assets/_MyAssets/Scripts/Scenes/MainUnityScene/GroupScene/GroupSubScene.cs
+        ScriptName: GroupSubScene
+        GameObjectPath: SubScenes/GroupCSubSceneCanvas
+      - ID: 3
+        ScriptPathIndex: 34
+        ScriptPath: Assets/_MyAssets/Scripts/Scenes/MainUnityScene/GroupScene/GroupSubScene.cs
+        ScriptName: GroupSubScene
+        GameObjectPath: SubScenes/GroupDSubSceneCanvas
+      - ID: 4
+        ScriptPathIndex: 34
+        ScriptPath: Assets/_MyAssets/Scripts/Scenes/MainUnityScene/GroupScene/GroupSubScene.cs
+        ScriptName: GroupSubScene
+        GameObjectPath: SubScenes/GroupESubSceneCanvas
+      MinWidthPercentToSwitchSubScene: 10
+      SwitchSubSceneTime: 0.1
+    - IsFoldOut: 1
+      ID: 2
+      ScriptPathIndex: 31
       PrefabNameIndexCanvas: 2
       PrefabNameIndex3D: 1
       ScriptPath: Assets/_MyAssets/Scripts/Scenes/MainUnityScene/GameScene/GameScene.cs
       ScriptName: GameScene
       PrefabNameCanvas: GameSceneCanvas
-      PrefabName3D: GameScene
+      PrefabName3D: GameScene3D
       AddressableCanvas: 
       Addressable3D: 
-      Addressable: 
       IsInitWhenLoadUnityScene: 0
       IsHideHUD: 0
-      FadeInDuration: 0.2
-      FadeOutDuration: 0.2
-    - IsFoldOut: 1
-      ID: 2
-      ScriptPathIndex: 34
-      PrefabNameIndexCanvas: 4
-      PrefabNameIndex3D: 0
-      ScriptPath: Assets/_MyAssets/Scripts/Scenes/MainUnityScene/TabScene/TabScene.cs
-      ScriptName: TabScene
-      PrefabNameCanvas: TabASceneCanvas
-      PrefabName3D: 
-      AddressableCanvas: 
-      Addressable3D: 
-      Addressable: 
-      IsInitWhenLoadUnityScene: 0
-      IsHideHUD: 0
-      FadeInDuration: 0.2
-      FadeOutDuration: 0.2
-    - IsFoldOut: 1
-      ID: 3
-      ScriptPathIndex: 34
-      PrefabNameIndexCanvas: 5
-      PrefabNameIndex3D: 0
-      ScriptPath: Assets/_MyAssets/Scripts/Scenes/MainUnityScene/TabScene/TabScene.cs
-      ScriptName: TabScene
-      PrefabNameCanvas: TabBSceneCanvas
-      PrefabName3D: 
-      AddressableCanvas: 
-      Addressable3D: 
-      Addressable: 
-      IsInitWhenLoadUnityScene: 0
-      IsHideHUD: 0
-      FadeInDuration: 0.2
-      FadeOutDuration: 0.2
-    - IsFoldOut: 1
-      ID: 4
-      ScriptPathIndex: 34
-      PrefabNameIndexCanvas: 6
-      PrefabNameIndex3D: 0
-      ScriptPath: Assets/_MyAssets/Scripts/Scenes/MainUnityScene/TabScene/TabScene.cs
-      ScriptName: TabScene
-      PrefabNameCanvas: TabCSceneCanvas
-      PrefabName3D: 
-      AddressableCanvas: 
-      Addressable3D: 
-      Addressable: 
-      IsInitWhenLoadUnityScene: 0
-      IsHideHUD: 0
-      FadeInDuration: 0
-      FadeOutDuration: 0
+      ListSubScene: []
+      MinWidthPercentToSwitchSubScene: 10
+      SwitchSubSceneTime: 0.1

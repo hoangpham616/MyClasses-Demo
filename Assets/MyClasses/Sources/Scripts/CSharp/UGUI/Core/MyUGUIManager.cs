@@ -186,7 +186,16 @@ namespace MyClasses.UI
         /// <param name="unitySceneID">Empty: without scene</param>
         public void ShowUnityScene(EUnitySceneID unitySceneID, ESceneID sceneID)
         {
-            _ShowUnityScene((int)unitySceneID, (int)sceneID);
+            _ShowUnityScene((int)unitySceneID, (int)sceneID, -1);
+        }
+
+        /// <summary>
+        /// Show a scene.
+        /// </summary>
+        /// <param name="unitySceneID">Empty: without scene</param>
+        public void ShowUnityScene(EUnitySceneID unitySceneID, ESceneID sceneID, ESubSceneID subSceneID)
+        {
+            _ShowUnityScene((int)unitySceneID, (int)sceneID, (int)subSceneID);
         }
 
         /// <summary>
@@ -210,7 +219,7 @@ namespace MyClasses.UI
         /// </summary>
         public void ShowScene(ESceneID sceneID, Action<MyUGUISceneBase> onPreEnterCallback = null, Action<MyUGUISceneBase> onPostEnterCallback = null, Action<MyUGUISceneBase> onPostVisibleCallback = null)
         {
-            _ShowScene((int)sceneID, ESceneTransition.None, 0, false, false, false, onPreEnterCallback, onPostEnterCallback, onPostVisibleCallback);
+            _ShowScene((int)sceneID, -1, ESceneTransition.None, 0, false, false, false, onPreEnterCallback, onPostEnterCallback, onPostVisibleCallback);
         }
 
         /// <summary>
@@ -218,7 +227,23 @@ namespace MyClasses.UI
         /// </summary>
         public void ShowScene(ESceneID sceneID, ESceneTransition transition, float transitionDuration = 0.2f, bool isHideRunningMessageWhenSwitchingScene = false, bool isHideToastMessageWhenSwitchingScene = false, bool isHideToastNotificationWhenSwitchingScene = false, Action<MyUGUISceneBase> onPreEnterCallback = null, Action<MyUGUISceneBase> onPostEnterCallback = null, Action<MyUGUISceneBase> onPostVisibleCallback = null)
         {
-            _ShowScene((int)sceneID, transition, transitionDuration, isHideRunningMessageWhenSwitchingScene, isHideToastMessageWhenSwitchingScene, isHideToastNotificationWhenSwitchingScene, onPreEnterCallback, onPostEnterCallback, onPostVisibleCallback);
+            _ShowScene((int)sceneID, -1, transition, transitionDuration, isHideRunningMessageWhenSwitchingScene, isHideToastMessageWhenSwitchingScene, isHideToastNotificationWhenSwitchingScene, onPreEnterCallback, onPostEnterCallback, onPostVisibleCallback);
+        }
+
+        /// <summary>
+        /// Show a scene.
+        /// </summary>
+        public void ShowScene(ESceneID sceneID, ESubSceneID subSceneID, Action<MyUGUISceneBase> onPreEnterCallback = null, Action<MyUGUISceneBase> onPostEnterCallback = null, Action<MyUGUISceneBase> onPostVisibleCallback = null)
+        {
+            _ShowScene((int)sceneID, (int)subSceneID, ESceneTransition.None, 0, false, false, false, onPreEnterCallback, onPostEnterCallback, onPostVisibleCallback);
+        }
+
+        /// <summary>
+        /// Show a scene.
+        /// </summary>
+        public void ShowScene(ESceneID sceneID, ESubSceneID subSceneID, ESceneTransition transition, float transitionDuration = 0.2f, bool isHideRunningMessageWhenSwitchingScene = false, bool isHideToastMessageWhenSwitchingScene = false, bool isHideToastNotificationWhenSwitchingScene = false, Action<MyUGUISceneBase> onPreEnterCallback = null, Action<MyUGUISceneBase> onPostEnterCallback = null, Action<MyUGUISceneBase> onPostVisibleCallback = null)
+        {
+            _ShowScene((int)sceneID, (int)subSceneID, transition, transitionDuration, isHideRunningMessageWhenSwitchingScene, isHideToastMessageWhenSwitchingScene, isHideToastNotificationWhenSwitchingScene, onPreEnterCallback, onPostEnterCallback, onPostVisibleCallback);
         }
 
         /// <summary>
@@ -518,16 +543,24 @@ namespace MyClasses.UI
         protected override void _CreateHUD(ref MyUGUIUnitySceneBase unitySceneBase, MyUGUIConfigUnityScene unitySceneConfig)
         {
             MyUGUIHUDBase hud = (MyUGUIHUDBase)Activator.CreateInstance(MyUtilities.FindTypesByName(unitySceneConfig.HUDScriptName)[0], unitySceneConfig.HUDPrefabNameCanvas, unitySceneConfig.HUDPrefabName3D);
-            unitySceneBase.SetHUD((MyUGUIHUD)hud);
+            unitySceneBase.SetHUD(hud);
         }
 
         /// <summary>
         /// Create scene according to config.
         /// </summary>
-        protected override void _CreateScene(ref MyUGUIUnitySceneBase unitySceneBase, MyUGUIConfigScene sceneConfig)
+        protected override void _CreateScene(ref MyUGUIUnitySceneBase unitySceneBase, MyUGUIConfigScene sceneConfig, Action<MyUGUISceneBase, MyUGUISubSceneBase> onSubSceneSwitchCallback)
         {
-            MyUGUIScene scene = (MyUGUIScene)Activator.CreateInstance(MyUtilities.FindTypesByName(sceneConfig.ScriptName)[0], (ESceneID)sceneConfig.ID, sceneConfig.PrefabNameCanvas, sceneConfig.PrefabName3D, sceneConfig.AddressableCanvas, sceneConfig.Addressable3D, sceneConfig.IsInitWhenLoadUnityScene, sceneConfig.IsHideHUD);
-            unitySceneBase.AddScene((MyUGUISceneBase)scene);
+            MyUGUIScene scene;
+            if (sceneConfig.ListSubScene != null && sceneConfig.ListSubScene.Count > 0)
+            {
+                scene = (MyUGUIScene)Activator.CreateInstance(MyUtilities.FindTypesByName(sceneConfig.ScriptName)[0], (ESceneID)sceneConfig.ID, sceneConfig.PrefabNameCanvas, sceneConfig.PrefabName3D, sceneConfig.AddressableCanvas, sceneConfig.Addressable3D, sceneConfig.IsInitWhenLoadUnityScene, sceneConfig.IsHideHUD, sceneConfig.ListSubScene, sceneConfig.MinWidthPercentToSwitchSubScene, sceneConfig.SwitchSubSceneTime, onSubSceneSwitchCallback);
+            }
+            else
+            {
+                scene = (MyUGUIScene)Activator.CreateInstance(MyUtilities.FindTypesByName(sceneConfig.ScriptName)[0], (ESceneID)sceneConfig.ID, sceneConfig.PrefabNameCanvas, sceneConfig.PrefabName3D, sceneConfig.AddressableCanvas, sceneConfig.Addressable3D, sceneConfig.IsInitWhenLoadUnityScene, sceneConfig.IsHideHUD);
+            }
+            unitySceneBase.AddScene(scene);
         }
 
         /// <summary>
@@ -560,6 +593,15 @@ namespace MyClasses.UI
         protected override string _GetSceneName(int id)
         {
             return ((ESceneID)id).ToString();
+        }
+
+        /// <summary>
+        /// Return the name of sub scene.
+        /// </summary>
+        protected override string _GetSubSceneName(int id)
+        {
+            string name = ((ESubSceneID)id).ToString();
+            return name.Equals("-1") ? "None" : name;
         }
 
         /// <summary>

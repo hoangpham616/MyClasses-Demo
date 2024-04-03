@@ -258,7 +258,7 @@ MonoBehaviour:
   m_Script: {fileID: -1996281491, guid: 3e1b75d5e43a2204dae0f757e26aad05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _scrollSpeed: {x: -0.02, y: -0.02}
+  _speed: {x: -0.02, y: -0.02}
 --- !u!114 &141103771
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -271,7 +271,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: a85c9248b21f56d4fa532a7f5c04a919, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}

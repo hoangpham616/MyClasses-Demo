@@ -20,7 +20,7 @@ public class BootEvent : MonoBehaviour
 
         if (Random.Range(0, 100) % 2 == 1)
         {
-            MyUGUIManager.Instance.ShowUnityScene(EUnitySceneID.MainUnityScene, ESceneID.MainMenuScene);
+            MyUGUIManager.Instance.ShowUnityScene(EUnitySceneID.MainUnityScene, ESceneID.MainScene);
         }
         else
         {
