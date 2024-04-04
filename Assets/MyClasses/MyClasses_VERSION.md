@@ -2,14 +2,16 @@
  * Copyright (c) 2016 Phạm Minh Hoàng
  * Email:       hoangpham61691@gmail.com
  * Framework:   MyClasses
- * Version:     2024.4.3
+ * Version:     2024.4.4
  */
 
 
 
-********** 2024.4.3 **********
+********** 2024.4.4 **********
 
 * MyUGUIManagerBase
+* MyUGUIConfigSceneEditorWindowBase
+* MyUGUIConfigUnityScenes
 * MyUGUISceneBase
 * MyUGUIScene
 * MyUGUIScrollRectEvent

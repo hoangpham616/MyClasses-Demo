@@ -75,6 +75,7 @@ PlayerSettings:
   androidMinimumWindowWidth: 400
   androidMinimumWindowHeight: 300
   androidFullscreenMode: 1
+  androidAutoRotationBehavior: 1
   defaultIsNativeResolution: 1
   macRetinaSupport: 1
   runInBackground: 0
@@ -782,7 +783,7 @@ PlayerSettings:
   webGLDecompressionFallback: 0
   webGLPowerPreference: 2
   scriptingDefineSymbols:
-    Android: MY_UI_DEBUG;MY_UI_ADDRESSABLE;MY_LOGGER_ALL;MY_LOGGER_INFO
+    Android: MY_UI_DEBUG;MY_UI_ADDRESSABLE;MY_LOGGER_ALL
     Standalone: DEBUG_MY_UI;UNITY_EDITOR
   additionalCompilerArguments: {}
   platformArchitecture: {}

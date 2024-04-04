@@ -2,14 +2,13 @@
  * Copyright (c) 2016 Phạm Minh Hoàng
  * Email:       hoangpham61691@gmail.com
  * Framework:   MyClasses
- * Class:       MyUGUIScene (version 2.14)
+ * Class:       MyUGUIScene (version 2.15)
  */
 
 #pragma warning disable 0108
 
 using UnityEngine;
 using System;
-using System.Collections.Generic;
 
 namespace MyClasses.UI
 {
@@ -19,7 +18,7 @@ namespace MyClasses.UI
 
         public ESceneID ID
         {
-            get { return (ESceneID)_id; }
+            get { return (ESceneID)_config.ID; }
         }
 
         public EUnitySceneID UnitySceneID
@@ -27,7 +26,7 @@ namespace MyClasses.UI
             get { return (EUnitySceneID)_unitySceneID; }
         }
 
-        public new MyUGUISubScene CurrentSubScene
+        public MyUGUISubScene CurrentSubScene
         {
             get { return (MyUGUISubScene)_currentSubScene; }
         }
@@ -39,16 +38,8 @@ namespace MyClasses.UI
         /// <summary>
         /// Constructor.
         /// </summary>
-        public MyUGUIScene(ESceneID id, string prefabNameCanvas, string prefabName3D, string addressableCanvas, string addressable3D, bool isInitWhenLoadUnityScene, bool isHideHUD, List<MyUGUIConfigSubScene> subSceneConfigs = null, float minWidthPercentToSwitchSubScene = 10, float switchSubSceneTime = 0.1f, Action<MyUGUISceneBase, MyUGUISubSceneBase> onSubSceneSwitchCallback = null)
-            : base((int)id, prefabNameCanvas, prefabName3D, addressableCanvas, addressable3D, isInitWhenLoadUnityScene, isHideHUD, subSceneConfigs, minWidthPercentToSwitchSubScene, switchSubSceneTime, onSubSceneSwitchCallback)
-        {
-        }
-
-        /// <summary>
-        /// Constructor.
-        /// </summary>
-        public MyUGUIScene(ESceneID id, string prefabNameCanvas, string prefabName3D, string addressableCanvas, string addressable3D, bool isInitWhenLoadUnityScene, bool isHideHUD)
-            : base((int)id, prefabNameCanvas, prefabName3D, addressableCanvas, addressable3D, isInitWhenLoadUnityScene, isHideHUD)
+        public MyUGUIScene(MyUGUIConfigScene config, Action<MyUGUISceneBase, MyUGUISubSceneBase> onSubSceneSwitchCallback)
+            : base(config, onSubSceneSwitchCallback)
         {
         }
 

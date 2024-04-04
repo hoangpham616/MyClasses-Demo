@@ -39,8 +39,11 @@ MonoBehaviour:
       IsInitWhenLoadUnityScene: 0
       IsHideHUD: 0
       ListSubScene: []
-      MinWidthPercentToSwitchSubScene: 10
-      SwitchSubSceneTime: 0.1
+      IsSubSceneFoldOut: 0
+      SubSceneMinWidth: 0
+      SubSceneSpacing: 0
+      SubSceneMinWidthPercentToSwitch: 10
+      SubSceneSwitchTime: 0.1
     - IsFoldOut: 1
       ID: 1
       ScriptPathIndex: 33
@@ -80,8 +83,11 @@ MonoBehaviour:
         ScriptPath: Assets/_MyAssets/Scripts/Scenes/MainUnityScene/GroupScene/GroupSubScene.cs
         ScriptName: GroupSubScene
         GameObjectPath: SubScenes/GroupESubSceneCanvas
-      MinWidthPercentToSwitchSubScene: 10
-      SwitchSubSceneTime: 0.1
+      IsSubSceneFoldOut: 1
+      SubSceneMinWidth: 0
+      SubSceneSpacing: 100
+      SubSceneMinWidthPercentToSwitch: 10
+      SubSceneSwitchTime: 0.1
     - IsFoldOut: 1
       ID: 2
       ScriptPathIndex: 31
@@ -96,5 +102,8 @@ MonoBehaviour:
       IsInitWhenLoadUnityScene: 0
       IsHideHUD: 0
       ListSubScene: []
-      MinWidthPercentToSwitchSubScene: 10
-      SwitchSubSceneTime: 0.1
+      IsSubSceneFoldOut: 1
+      SubSceneMinWidth: 0
+      SubSceneSpacing: 0
+      SubSceneMinWidthPercentToSwitch: 10
+      SubSceneSwitchTime: 0.1

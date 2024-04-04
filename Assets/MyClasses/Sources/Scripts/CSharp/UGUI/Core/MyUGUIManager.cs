@@ -2,7 +2,7 @@
  * Copyright (c) 2016 Phạm Minh Hoàng
  * Email:       hoangpham61691@gmail.com
  * Framework:   MyClasses
- * Class:       MyUGUIManager (version 2.48)
+ * Class:       MyUGUIManager (version 2.49)
  */
 
 #pragma warning disable 0108
@@ -551,15 +551,7 @@ namespace MyClasses.UI
         /// </summary>
         protected override void _CreateScene(ref MyUGUIUnitySceneBase unitySceneBase, MyUGUIConfigScene sceneConfig, Action<MyUGUISceneBase, MyUGUISubSceneBase> onSubSceneSwitchCallback)
         {
-            MyUGUIScene scene;
-            if (sceneConfig.ListSubScene != null && sceneConfig.ListSubScene.Count > 0)
-            {
-                scene = (MyUGUIScene)Activator.CreateInstance(MyUtilities.FindTypesByName(sceneConfig.ScriptName)[0], (ESceneID)sceneConfig.ID, sceneConfig.PrefabNameCanvas, sceneConfig.PrefabName3D, sceneConfig.AddressableCanvas, sceneConfig.Addressable3D, sceneConfig.IsInitWhenLoadUnityScene, sceneConfig.IsHideHUD, sceneConfig.ListSubScene, sceneConfig.MinWidthPercentToSwitchSubScene, sceneConfig.SwitchSubSceneTime, onSubSceneSwitchCallback);
-            }
-            else
-            {
-                scene = (MyUGUIScene)Activator.CreateInstance(MyUtilities.FindTypesByName(sceneConfig.ScriptName)[0], (ESceneID)sceneConfig.ID, sceneConfig.PrefabNameCanvas, sceneConfig.PrefabName3D, sceneConfig.AddressableCanvas, sceneConfig.Addressable3D, sceneConfig.IsInitWhenLoadUnityScene, sceneConfig.IsHideHUD);
-            }
+            MyUGUIScene scene = (MyUGUIScene)Activator.CreateInstance(MyUtilities.FindTypesByName(sceneConfig.ScriptName)[0], sceneConfig, onSubSceneSwitchCallback);
             unitySceneBase.AddScene(scene);
         }
 

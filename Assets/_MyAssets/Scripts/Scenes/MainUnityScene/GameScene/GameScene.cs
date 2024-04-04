@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
-using System.Collections.Generic;
+using System;
 using MyClasses;
 using MyClasses.UI;
 
@@ -16,8 +16,8 @@ namespace MyApp
 
         #region ----- Constructor -----
 
-        public GameScene(ESceneID id, string prefabNameCanvas, string prefabName3D, string addressableCanvas, string addressable3D, bool isInitWhenLoadUnityScene = false, bool isHideHUD = false)
-            : base(id, prefabNameCanvas, prefabName3D, addressableCanvas, addressable3D, isInitWhenLoadUnityScene, isHideHUD)
+        public GameScene(MyUGUIConfigScene config, Action<MyUGUISceneBase, MyUGUISubSceneBase> onSubSceneSwitchCallback)
+            : base(config, onSubSceneSwitchCallback)
         {
         }
 
