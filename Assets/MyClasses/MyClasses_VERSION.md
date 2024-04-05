@@ -16,6 +16,8 @@
 * MyUGUIScene
 * MyUGUIScrollRectEvent
 * MyUGUISubSceneBase
+* MyUGUISubScene
+* MyUGUISampleSubScene
 
 *******************************
 

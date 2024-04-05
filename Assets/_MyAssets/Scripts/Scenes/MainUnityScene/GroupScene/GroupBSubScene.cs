@@ -27,13 +27,20 @@ namespace MyApp.UI
 
         public override void OnUGUIInit()
         {
-            this.LogInfo("OnUGUIInit", null, ELogColor.DARK_UI);
+            this.LogInfo("OnUGUIInit", ID.ToString(), ELogColor.DARK_UI);
 
             base.OnUGUIInit();
 
             ScrollRect scrollRect = MyUtilities.FindObject(GameObjectCanvas, "ScrollView").GetComponent<ScrollRect>();
 
             RegisterScrollRects(new List<ScrollRect>() { scrollRect });
+        }
+
+        public override void OnUGUIVisible()
+        {
+            this.LogInfo("OnUGUIVisible", ID.ToString(), ELogColor.DARK_UI);
+
+            base.OnUGUIVisible();
         }
 
         public override void OnUGUISceneEnter()
@@ -43,27 +50,27 @@ namespace MyApp.UI
             base.OnUGUISceneEnter();
         }
 
-        public override void OnUGUIFirstEnter()
+        public override void OnUGUIEnter(bool isFirstTime)
         {
-            this.LogInfo("OnUGUIFirstEnter", ID.ToString(), ELogColor.DARK_UI);
+            this.LogInfo("OnUGUIEnter", ID.ToString() + " | isFirstTime=" + isFirstTime, ELogColor.DARK_UI);
 
-            base.OnUGUIFirstEnter();
-        }
-
-        public override void OnUGUIEnter()
-        {
-            this.LogInfo("OnUGUIEnter", ID.ToString(), ELogColor.DARK_UI);
-
-            base.OnUGUIEnter();
+            base.OnUGUIEnter(isFirstTime);
         }
 
         public override void OnUGUIUpdate(float deltaTime)
         {
         }
 
+        public override void OnUGUIInvisible()
+        {
+            this.LogInfo("OnUGUIInvisible", ID.ToString(), ELogColor.DARK_UI);
+
+            base.OnUGUIInvisible();
+        }
+
         public override void OnUGUISceneExit()
         {
-            this.LogInfo("OnUGUISceneExit", null, ELogColor.DARK_UI);
+            this.LogInfo("OnUGUISceneExit", ID.ToString(), ELogColor.DARK_UI);
 
             base.OnUGUISceneExit();
         }

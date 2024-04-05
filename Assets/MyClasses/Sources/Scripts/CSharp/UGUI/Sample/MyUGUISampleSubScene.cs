@@ -2,7 +2,7 @@
  * Copyright (c) 2016 Phạm Minh Hoàng
  * Email:       hoangpham61691@gmail.com
  * Framework:   MyClasses
- * Class:       MyUGUISampleSubScene (version 2.2)
+ * Class:       MyUGUISampleSubScene (version 2.3)
  */
 
 using UnityEngine;
@@ -37,11 +37,18 @@ namespace MyApp
 
         public override void OnUGUIInit()
         {
-            this.LogInfo("OnUGUIInit", null, ELogColor.DARK_UI);
+            this.LogInfo("OnUGUIInit", ID.ToString(), ELogColor.DARK_UI);
 
             base.OnUGUIInit();
 
             // _buttonSample = MyUtilities.FindObject(GameObject, "Something/Something/ButtonSample").GetComponent<MyUGUIButton>();
+        }
+
+        public override void OnUGUIVisible()
+        {
+            this.LogInfo("OnUGUIVisible", ID.ToString(), ELogColor.DARK_UI);
+
+            base.OnUGUIVisible();
         }
 
         public override void OnUGUISceneEnter()
@@ -51,18 +58,11 @@ namespace MyApp
             base.OnUGUISceneEnter();
         }
 
-        public override void OnUGUIFirstEnter()
+        public override void OnUGUIEnter(bool isFirstTime)
         {
-            this.LogInfo("OnUGUIFirstEnter", ID.ToString(), ELogColor.DARK_UI);
+            this.LogInfo("OnUGUIEnter", ID.ToString() + " | isFirstTime=" + isFirstTime, ELogColor.DARK_UI);
 
-            base.OnUGUIFirstEnter();
-        }
-
-        public override void OnUGUIEnter()
-        {
-            this.LogInfo("OnUGUIEnter", ID.ToString(), ELogColor.DARK_UI);
-
-            base.OnUGUIEnter();
+            base.OnUGUIEnter(isFirstTime);
 
             // _buttonSample.OnEventPointerClick.AddListener(_OnClickSample);
         }
@@ -71,9 +71,16 @@ namespace MyApp
         {
         }
 
+        public override void OnUGUIInvisible()
+        {
+            this.LogInfo("OnUGUIInvisible", ID.ToString(), ELogColor.DARK_UI);
+
+            base.OnUGUIInvisible();
+        }
+
         public override void OnUGUISceneExit()
         {
-            this.LogInfo("OnUGUISceneExit", null, ELogColor.DARK_UI);
+            this.LogInfo("OnUGUISceneExit", ID.ToString(), ELogColor.DARK_UI);
 
             base.OnUGUISceneExit();
 
