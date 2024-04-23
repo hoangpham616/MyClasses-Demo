@@ -31,9 +31,9 @@ namespace MyApp.UI
 
             base.OnUGUIInit();
 
-            ScrollRect scrollRect = MyUtilities.FindObject(GameObjectCanvas, "ScrollView").GetComponent<ScrollRect>();
-
-            RegisterScrollRects(new List<ScrollRect>() { scrollRect });
+            ScrollRect scrollRect1 = MyUtilities.FindObject(GameObjectCanvas, "ScrollViewVerticle").GetComponent<ScrollRect>();
+            ScrollRect scrollRect2 = MyUtilities.FindObject(GameObjectCanvas, "ScrollViewHorizontal").GetComponent<ScrollRect>();
+            RegisterScrollRects(new List<ScrollRect>() { scrollRect1, scrollRect2 });
         }
 
         public override void OnUGUIVisible()
@@ -59,6 +59,14 @@ namespace MyApp.UI
 
         public override void OnUGUIUpdate(float deltaTime)
         {
+            if (Input.GetKeyUp(KeyCode.N))
+            {
+                MyUGUIManager.Instance.ShowLoadingIndicator();
+            }
+            if (Input.GetKeyUp(KeyCode.M))
+            {
+                MyUGUIManager.Instance.HideLoadingIndicator();
+            }
         }
 
         public override void OnUGUIInvisible()

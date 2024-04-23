@@ -115,27 +115,42 @@ namespace MyApp.UI
 
         private void _OnClickA(PointerEventData arg0)
         {
-            SwitchSubScene(ESubSceneID.GroupASubScene);
+            SwitchSubScene(ESubSceneID.GroupASubScene, (subScene) =>
+            {
+                MyUGUIManager.Instance.ShowToastMessage("switched to A Sub Scene");
+            });
         }
 
         private void _OnClickB(PointerEventData arg0)
         {
-            SwitchSubScene(ESubSceneID.GroupBSubScene);
+            MyUGUIManager.Instance.ShowScene(ESceneID.GroupScene, ESubSceneID.GroupBSubScene, (subScene) =>
+            {
+                MyUGUIManager.Instance.ShowToastMessage("switched to B Sub Scene");
+            });
         }
 
         private void _OnClickC(PointerEventData arg0)
         {
-            SwitchSubScene(ESubSceneID.GroupCSubScene);
+            SwitchSubScene(ESubSceneID.GroupCSubScene, (subScene) =>
+            {
+                MyUGUIManager.Instance.ShowToastMessage("switched to C Sub Scene");
+            });
         }
 
         private void _OnClickD(PointerEventData arg0)
         {
-            SwitchSubScene(ESubSceneID.GroupDSubScene);
+            SwitchSubScene(ESubSceneID.GroupDSubScene, (subScene) =>
+            {
+                MyUGUIManager.Instance.ShowToastMessage("switched to D Sub Scene");
+            });
         }
 
         private void _OnClickE(PointerEventData arg0)
         {
-            SwitchSubScene(ESubSceneID.GroupESubScene);
+            SwitchSubScene(ESubSceneID.GroupESubScene, (subScene) =>
+            {
+                MyUGUIManager.Instance.ShowToastMessage("switched to E Sub Scene");
+            });
         }
 
         #endregion

@@ -2,7 +2,7 @@
  * Copyright (c) 2016 Phạm Minh Hoàng
  * Email:       hoangpham61691@gmail.com
  * Framework:   MyClasses
- * Class:       MyUGUIManager (version 2.49)
+ * Class:       MyUGUIManager (version 2.50)
  */
 
 #pragma warning disable 0108
@@ -219,7 +219,7 @@ namespace MyClasses.UI
         /// </summary>
         public void ShowScene(ESceneID sceneID, Action<MyUGUISceneBase> onPreEnterCallback = null, Action<MyUGUISceneBase> onPostEnterCallback = null, Action<MyUGUISceneBase> onPostVisibleCallback = null)
         {
-            _ShowScene((int)sceneID, -1, ESceneTransition.None, 0, false, false, false, onPreEnterCallback, onPostEnterCallback, onPostVisibleCallback);
+            _ShowScene((int)sceneID, -1, ESceneTransition.None, 0, false, false, false, onPreEnterCallback, onPostEnterCallback, onPostVisibleCallback, null);
         }
 
         /// <summary>
@@ -227,7 +227,7 @@ namespace MyClasses.UI
         /// </summary>
         public void ShowScene(ESceneID sceneID, ESceneTransition transition, float transitionDuration = 0.2f, bool isHideRunningMessageWhenSwitchingScene = false, bool isHideToastMessageWhenSwitchingScene = false, bool isHideToastNotificationWhenSwitchingScene = false, Action<MyUGUISceneBase> onPreEnterCallback = null, Action<MyUGUISceneBase> onPostEnterCallback = null, Action<MyUGUISceneBase> onPostVisibleCallback = null)
         {
-            _ShowScene((int)sceneID, -1, transition, transitionDuration, isHideRunningMessageWhenSwitchingScene, isHideToastMessageWhenSwitchingScene, isHideToastNotificationWhenSwitchingScene, onPreEnterCallback, onPostEnterCallback, onPostVisibleCallback);
+            _ShowScene((int)sceneID, -1, transition, transitionDuration, isHideRunningMessageWhenSwitchingScene, isHideToastMessageWhenSwitchingScene, isHideToastNotificationWhenSwitchingScene, onPreEnterCallback, onPostEnterCallback, onPostVisibleCallback, null);
         }
 
         /// <summary>
@@ -235,7 +235,15 @@ namespace MyClasses.UI
         /// </summary>
         public void ShowScene(ESceneID sceneID, ESubSceneID subSceneID, Action<MyUGUISceneBase> onPreEnterCallback = null, Action<MyUGUISceneBase> onPostEnterCallback = null, Action<MyUGUISceneBase> onPostVisibleCallback = null)
         {
-            _ShowScene((int)sceneID, (int)subSceneID, ESceneTransition.None, 0, false, false, false, onPreEnterCallback, onPostEnterCallback, onPostVisibleCallback);
+            _ShowScene((int)sceneID, (int)subSceneID, ESceneTransition.None, 0, false, false, false, onPreEnterCallback, onPostEnterCallback, onPostVisibleCallback, null);
+        }
+
+        /// <summary>
+        /// Show a scene.
+        /// </summary>
+        public void ShowScene(ESceneID sceneID, ESubSceneID subSceneID, Action<MyUGUISubSceneBase> onSubSceneEnterCallback)
+        {
+            _ShowScene((int)sceneID, (int)subSceneID, ESceneTransition.None, 0, false, false, false, null, null, null, onSubSceneEnterCallback);
         }
 
         /// <summary>
@@ -243,7 +251,15 @@ namespace MyClasses.UI
         /// </summary>
         public void ShowScene(ESceneID sceneID, ESubSceneID subSceneID, ESceneTransition transition, float transitionDuration = 0.2f, bool isHideRunningMessageWhenSwitchingScene = false, bool isHideToastMessageWhenSwitchingScene = false, bool isHideToastNotificationWhenSwitchingScene = false, Action<MyUGUISceneBase> onPreEnterCallback = null, Action<MyUGUISceneBase> onPostEnterCallback = null, Action<MyUGUISceneBase> onPostVisibleCallback = null)
         {
-            _ShowScene((int)sceneID, (int)subSceneID, transition, transitionDuration, isHideRunningMessageWhenSwitchingScene, isHideToastMessageWhenSwitchingScene, isHideToastNotificationWhenSwitchingScene, onPreEnterCallback, onPostEnterCallback, onPostVisibleCallback);
+            _ShowScene((int)sceneID, (int)subSceneID, transition, transitionDuration, isHideRunningMessageWhenSwitchingScene, isHideToastMessageWhenSwitchingScene, isHideToastNotificationWhenSwitchingScene, onPreEnterCallback, onPostEnterCallback, onPostVisibleCallback, null);
+        }
+
+        /// <summary>
+        /// Show a scene.
+        /// </summary>
+        public void ShowScene(ESceneID sceneID, ESubSceneID subSceneID, ESceneTransition transition, float transitionDuration, bool isHideRunningMessageWhenSwitchingScene, bool isHideToastMessageWhenSwitchingScene, bool isHideToastNotificationWhenSwitchingScene, Action<MyUGUISubSceneBase> onSubSceneEnterCallback)
+        {
+            _ShowScene((int)sceneID, (int)subSceneID, transition, transitionDuration, isHideRunningMessageWhenSwitchingScene, isHideToastMessageWhenSwitchingScene, isHideToastNotificationWhenSwitchingScene, null, null, null, onSubSceneEnterCallback);
         }
 
         /// <summary>

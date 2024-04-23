@@ -2,8 +2,10 @@
  * Copyright (c) 2016 Phạm Minh Hoàng
  * Email:       hoangpham61691@gmail.com
  * Framework:   MyClasses
- * Class:       MyToolEditor (version 1.8)
+ * Class:       MyToolEditor (version 1.9)
  */
+
+#pragma warning disable 0618
 
 #if UNITY_EDITOR
 

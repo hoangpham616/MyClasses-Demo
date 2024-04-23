@@ -2,7 +2,7 @@
  * Copyright (c) 2016 Phạm Minh Hoàng
  * Email:       hoangpham61691@gmail.com
  * Framework:   MyClasses
- * Class:       MyUGUISampleHUD (version 2.26)
+ * Class:       MyUGUISampleHUD (version 2.27)
  */
 
 using UnityEngine;
@@ -68,7 +68,7 @@ namespace MyApp
 
         public override void OnUGUISceneSwitch(MyUGUIScene scene)
         {
-            this.LogInfo("OnUGUISceneSwitch", null, ELogColor.DARK_UI);
+            this.LogInfo("OnUGUISceneSwitch", scene.ID.ToString(), ELogColor.DARK_UI);
             
             switch (scene.ID)
             {
@@ -80,9 +80,51 @@ namespace MyApp
             }
         }
 
+        public override void OnUGUISubSceneSwitch(MyUGUIScene scene, MyUGUISubScene subScene)
+        {
+            this.LogInfo("OnUGUISubSceneSwitch", scene.ID.ToString() + " | " + subScene.ID.ToString(), ELogColor.DARK_UI);
+            
+            switch (subScene.ID)
+            {
+                default:
+                    {
+
+                    }
+                    break;
+            }
+        }
+
         public override void OnUGUIPopupShow(MyUGUIPopup popup)
         {
-            this.LogInfo("OnUGUIPopupShow", null, ELogColor.DARK_UI);
+            this.LogInfo("OnUGUIPopupShow", popup.ID.ToString(), ELogColor.DARK_UI);
+            
+            switch (popup.ID)
+            {
+                default:
+                    {
+
+                    }
+                    break;
+            }
+        }
+
+        public override void OnUGUIPopupHide(MyUGUIPopup popup)
+        {
+            this.LogInfo("OnUGUIPopupHide", popup.ID.ToString(), ELogColor.DARK_UI);
+            
+            switch (popup.ID)
+            {
+                default:
+                    {
+
+                    }
+                    break;
+            }
+        }
+
+        public override void OnUGUITopLevelPopupChange(MyUGUIPopup popup)
+        {
+            this.LogInfo("OnUGUITopLevelPopupChange", popup.ID.ToString(), ELogColor.DARK_UI);
             
             switch (popup.ID)
             {

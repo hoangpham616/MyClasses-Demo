@@ -2,7 +2,7 @@
  * Copyright (c) 2016 Phạm Minh Hoàng
  * Email:       hoangpham61691@gmail.com
  * Framework:   MyClasses
- * Class:       MyUGUIScene (version 2.15)
+ * Class:       MyUGUIScene (version 2.16)
  */
 
 #pragma warning disable 0108
@@ -50,17 +50,17 @@ namespace MyClasses.UI
         /// <summary>
         /// Returns a sub scene.
         /// </summary>
-        public MyUGUISubSceneBase GetSubScene(ESubSceneID id)
+        public MyUGUISubScene GetSubScene(ESubSceneID id)
         {
-            return _GetSubScene((int)id);
+            return (MyUGUISubScene)GetSubScene((int)id);
         }
 
         /// <summary>
         /// Switches sub scene.
         /// </summary>
-        public void SwitchSubScene(ESubSceneID id)
+        public void SwitchSubScene(ESubSceneID id, Action<MyUGUISubSceneBase> onEnterCallback = null)
         {
-            _SwitchSubScene((int)id);
+            SwitchSubScene((int)id, onEnterCallback);
         }
 
         #endregion

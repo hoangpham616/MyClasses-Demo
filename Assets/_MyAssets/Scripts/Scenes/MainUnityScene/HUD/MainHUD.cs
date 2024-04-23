@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using MyClasses;
 using MyClasses.UI;
+using System;
 
 namespace MyApp
 {
@@ -54,7 +55,7 @@ namespace MyApp
 
         public override void OnUGUISceneSwitch(MyUGUIScene scene)
         {
-            this.LogInfo("OnUGUISceneSwitch", "switch to " + scene.ID.ToString(), ELogColor.UI);
+            this.LogInfo("OnUGUISceneSwitch", scene.ID.ToString(), ELogColor.UI);
 
             switch (scene.ID)
             {
@@ -84,9 +85,24 @@ namespace MyApp
             }
         }
 
+        public override void OnUGUISubSceneSwitch(MyUGUIScene scene, MyUGUISubScene subScene)
+        {
+            this.LogInfo("OnUGUISubSceneSwitch", scene.ID.ToString() + " | " + subScene.ID.ToString(), ELogColor.DARK_UI);
+        }
+
         public override void OnUGUIPopupShow(MyUGUIPopup popup)
         {
-            this.LogInfo("OnUGUIPopupShow", popup.ID.ToString() + " shows", ELogColor.UI);
+            this.LogInfo("OnUGUIPopupShow", popup.ID.ToString(), ELogColor.UI);
+        }
+
+        public override void OnUGUIPopupHide(MyUGUIPopup popup)
+        {
+            this.LogInfo("OnUGUIPopupHide", popup.ID.ToString(), ELogColor.UI);
+        }
+
+        public override void OnUGUITopLevelPopupChange(MyUGUIPopup popup)
+        {
+            this.LogInfo("OnUGUITopLevelPopupChange", popup.ID.ToString(), ELogColor.UI);
         }
 
         #endregion

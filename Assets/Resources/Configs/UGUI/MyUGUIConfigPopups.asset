@@ -49,8 +49,8 @@ MonoBehaviour:
     Addressable3D: 
   - IsFoldOut: 1
     ID: 3
-    ScriptPathIndex: 35
-    ScriptPath: Assets/_MyAssets/Scripts/Scenes/MainUnityScene/MainMenuScene/PoolPopup.cs
+    ScriptPathIndex: 40
+    ScriptPath: Assets/_MyAssets/Scripts/Scenes/MainUnityScene/MainScene/PoolPopup.cs
     ScriptName: PoolPopup
     PrefabNameIndexCanvas: 4
     PrefabNameIndex3D: 7
@@ -60,8 +60,8 @@ MonoBehaviour:
     Addressable3D: 
   - IsFoldOut: 1
     ID: 4
-    ScriptPathIndex: 33
-    ScriptPath: Assets/_MyAssets/Scripts/Scenes/MainUnityScene/MainMenuScene/LocalizationPopup.cs
+    ScriptPathIndex: 38
+    ScriptPath: Assets/_MyAssets/Scripts/Scenes/MainUnityScene/MainScene/LocalizationPopup.cs
     ScriptName: LocalizationPopup
     PrefabNameIndexCanvas: 3
     PrefabNameIndex3D: 7
@@ -71,8 +71,8 @@ MonoBehaviour:
     Addressable3D: 
   - IsFoldOut: 1
     ID: 5
-    ScriptPathIndex: 30
-    ScriptPath: Assets/_MyAssets/Scripts/Scenes/MainUnityScene/MainMenuScene/AdMobPopup.cs
+    ScriptPathIndex: 35
+    ScriptPath: Assets/_MyAssets/Scripts/Scenes/MainUnityScene/MainScene/AdMobPopup.cs
     ScriptName: AdMobPopup
     PrefabNameIndexCanvas: 0
     PrefabNameIndex3D: 7
@@ -82,8 +82,8 @@ MonoBehaviour:
     Addressable3D: 
   - IsFoldOut: 1
     ID: 6
-    ScriptPathIndex: 65
-    ScriptPath: Assets/_MyAssets/Scripts/Scenes/MainUnityScene/MainMenuScene/ResusableListViewPopup/ReusableListViewPopup.cs
+    ScriptPathIndex: 72
+    ScriptPath: Assets/_MyAssets/Scripts/Scenes/MainUnityScene/MainScene/ResusableListViewPopup/ReusableListViewPopup.cs
     ScriptName: ReusableListViewPopup
     PrefabNameIndexCanvas: 5
     PrefabNameIndex3D: 7
@@ -93,8 +93,8 @@ MonoBehaviour:
     Addressable3D: 
   - IsFoldOut: 1
     ID: 7
-    ScriptPathIndex: 67
-    ScriptPath: Assets/_MyAssets/Scripts/Scenes/MainUnityScene/MainMenuScene/ResusableListViewPopup2/ReusableListViewPopup2.cs
+    ScriptPathIndex: 74
+    ScriptPath: Assets/_MyAssets/Scripts/Scenes/MainUnityScene/MainScene/ResusableListViewPopup2/ReusableListViewPopup2.cs
     ScriptName: ReusableListViewPopup2
     PrefabNameIndexCanvas: 6
     PrefabNameIndex3D: 7
@@ -104,8 +104,8 @@ MonoBehaviour:
     Addressable3D: 
   - IsFoldOut: 1
     ID: 8
-    ScriptPathIndex: 31
-    ScriptPath: Assets/_MyAssets/Scripts/Scenes/MainUnityScene/MainMenuScene/ExtensionPopup.cs
+    ScriptPathIndex: 36
+    ScriptPath: Assets/_MyAssets/Scripts/Scenes/MainUnityScene/MainScene/ExtensionPopup.cs
     ScriptName: ExtensionPopup
     PrefabNameIndexCanvas: 1
     PrefabNameIndex3D: 7
@@ -115,8 +115,8 @@ MonoBehaviour:
     Addressable3D: 
   - IsFoldOut: 1
     ID: 9
-    ScriptPathIndex: 32
-    ScriptPath: Assets/_MyAssets/Scripts/Scenes/MainUnityScene/MainMenuScene/ForbiddenTextPopup.cs
+    ScriptPathIndex: 37
+    ScriptPath: Assets/_MyAssets/Scripts/Scenes/MainUnityScene/MainScene/ForbiddenTextPopup.cs
     ScriptName: ForbiddenTextPopup
     PrefabNameIndexCanvas: 2
     PrefabNameIndex3D: 7
