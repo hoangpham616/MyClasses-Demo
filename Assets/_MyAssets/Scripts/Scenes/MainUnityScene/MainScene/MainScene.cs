@@ -19,6 +19,7 @@ namespace MyApp.UI
         private MyUGUIButton _buttonLoadingIndicator;
         private MyUGUIButton _buttonToastNotification;
         private MyUGUIButton _buttonDialog2Buttons;
+        private MyUGUIButton _buttonScrollSnap;
         private MyUGUIButton _buttonReuasbleListView;
         private MyUGUIButton _buttonReuasbleListView2;
         private MyUGUIButton _buttonExtension;
@@ -58,6 +59,7 @@ namespace MyApp.UI
             _buttonLoadingIndicator = MyUtilities.FindObject(GameObjectCanvas, "Buttons/ButtonLoadingIndicator").GetComponent<MyUGUIButton>();
             _buttonToastNotification = MyUtilities.FindObject(GameObjectCanvas, "Buttons/ButtonToastNotification").GetComponent<MyUGUIButton>();
             _buttonDialog2Buttons = MyUtilities.FindObject(GameObjectCanvas, "Buttons/ButtonDialog2Buttons").GetComponent<MyUGUIButton>();
+            _buttonScrollSnap = MyUtilities.FindObject(GameObjectCanvas, "Buttons/ButtonScrollSnap").GetComponent<MyUGUIButton>();
             _buttonReuasbleListView = MyUtilities.FindObject(GameObjectCanvas, "Buttons/ButtonReusableListView").GetComponent<MyUGUIButton>();
             _buttonReuasbleListView2 = MyUtilities.FindObject(GameObjectCanvas, "Buttons/ButtonReusableListView2").GetComponent<MyUGUIButton>();
             _buttonExtension = MyUtilities.FindObject(GameObjectCanvas, "Buttons/ButtonExtension").GetComponent<MyUGUIButton>();
@@ -85,6 +87,7 @@ namespace MyApp.UI
             _buttonLoadingIndicator.OnEventPointerClick.AddListener(_OnClickLoadingIndicator);
             _buttonToastNotification.OnEventPointerClick.AddListener(_OnClickToastNotification);
             _buttonDialog2Buttons.OnEventPointerClick.AddListener(_OnClickDialog2Buttons);
+            _buttonScrollSnap.OnEventPointerClick.AddListener(_OnClickScrollSnap);
             _buttonReuasbleListView.OnEventPointerClick.AddListener(_OnClickReuasbleListView);
             _buttonReuasbleListView2.OnEventPointerClick.AddListener(_OnClickReuasbleListView2);
             _buttonExtension.OnEventPointerClick.AddListener(_OnClickExtension);
@@ -96,8 +99,6 @@ namespace MyApp.UI
             _buttonLocalization.OnEventPointerClick.AddListener(_OnClickLocalization);
             _buttonForbiddenText.OnEventPointerClick.AddListener(_OnClickForbiddenText);
             _buttonAdMob.OnEventPointerClick.AddListener(_OnClickAdMob);
-
-            _toggleToggle.SetToggle(false, false);
         }
 
         public override bool OnUGUIVisible()
@@ -129,6 +130,7 @@ namespace MyApp.UI
             _buttonLoadingIndicator.OnEventPointerClick.RemoveAllListeners();
             _buttonToastNotification.OnEventPointerClick.RemoveAllListeners();
             _buttonDialog2Buttons.OnEventPointerClick.RemoveAllListeners();
+            _buttonScrollSnap.OnEventPointerClick.RemoveAllListeners();
             _buttonReuasbleListView.OnEventPointerClick.RemoveAllListeners();
             _buttonReuasbleListView2.OnEventPointerClick.RemoveAllListeners();
             _buttonExtension.OnEventPointerClick.RemoveAllListeners();
@@ -270,6 +272,13 @@ namespace MyApp.UI
             {
                 this.LogInfo("_OnClickDialog2Buttons", "Click Close Button", ELogColor.UI);
             }, false);
+        }
+
+        private void _OnClickScrollSnap(PointerEventData arg0)
+        {
+            this.LogInfo("_OnClickScrollSnap", null, ELogColor.UI);
+
+            MyUGUIManager.Instance.ShowPopup(EPopupID.ScrollSnapPopup);
         }
 
         private void _OnClickReuasbleListView(PointerEventData arg0)

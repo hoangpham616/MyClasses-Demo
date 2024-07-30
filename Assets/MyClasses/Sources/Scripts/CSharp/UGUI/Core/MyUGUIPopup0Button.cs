@@ -2,7 +2,7 @@
  * Copyright (c) 2016 Phạm Minh Hoàng
  * Email:       hoangpham61691@gmail.com
  * Framework:   MyClasses
- * Class:       MyUGUIPopup0Button (version 2.19)
+ * Class:       MyUGUIPopup0Button (version 2.20)
  */
 
 #pragma warning disable 0414
@@ -35,8 +35,8 @@ namespace MyClasses.UI
         /// <summary>
         /// Constructor.
         /// </summary>
-        public MyUGUIPopup0Button(EPopupID id, string prefabNameCanvas, string prefabName3D, string addressableCanvas, string addressable3D, bool isRepeatable = false)
-            : base(id, prefabNameCanvas, prefabName3D, addressableCanvas, addressable3D, isRepeatable)
+        public MyUGUIPopup0Button(MyUGUIConfigPopup config, bool isRepeatable = false)
+            : base(config, isRepeatable)
         {
 #if UNITY_EDITOR
             if (!_CheckPrefab())
@@ -59,7 +59,7 @@ namespace MyClasses.UI
 
             GameObject container = MyUtilities.FindObjectInAllLayers(GameObjectCanvas, "Container");
 
-            GameObject title = MyUtilities.FindObjectInFirstLayer(container, "Title");
+            GameObject title = MyUtilities.FindObject(container, "Title");
             if (title != null)
             {
                 _textTitleTMPro = title.GetComponent<TextMeshProUGUI>();
@@ -69,7 +69,7 @@ namespace MyClasses.UI
                 }
             }
 
-            GameObject body = MyUtilities.FindObjectInFirstLayer(container, "Body");
+            GameObject body = MyUtilities.FindObject(container, "Body");
             if (body != null)
             {
                 _textBodyTMPro = body.GetComponent<TextMeshProUGUI>();
@@ -79,7 +79,7 @@ namespace MyClasses.UI
                 }
             }
 
-            GameObject close = MyUtilities.FindObjectInFirstLayer(container, "ButtonClose");
+            GameObject close = MyUtilities.FindObject(container, "ButtonClose");
             if (close != null)
             {
                 _buttonClose = close.GetComponent<MyUGUIButton>();
@@ -241,12 +241,10 @@ namespace MyClasses.UI
             string[] paths = new string[] { "Assets/MyClasses", "Assets/Core/MyClasses", "Assets/Plugin/MyClasses", "Assets/Plugins/MyClasses", "Assets/Framework/MyClasses", "Assets/Frameworks/MyClasses" };
             for (int i = 0; i < paths.Length; i++)
             {
-                if (System.IO.File.Exists(paths[i] + "/Sources/Animations/MyAnimatorDialog.controller"))
+                if (System.IO.File.Exists(paths[i] + "/Sources/Animations/MyAnimatorPopup.controller"))
                 {
-                    root_animator.runtimeAnimatorController = (RuntimeAnimatorController)UnityEditor.AssetDatabase.LoadAssetAtPath(paths[i] + "/Sources/Animations/MyAnimatorDialog.controller", typeof(RuntimeAnimatorController));
-                    Debug.LogError("[" + typeof(MyUGUIPopup0Button).Name + "] CreateTemplate(): please setup \"MyAnimatorDialog\" controller.");
-                    Debug.LogError("[" + typeof(MyUGUIPopup0Button).Name + "] CreateTemplate(): mapping \"MyAnimationDialogShow\" motion for \"Show\" state.");
-                    Debug.LogError("[" + typeof(MyUGUIPopup0Button).Name + "] CreateTemplate(): mapping \"MyAnimationDialogHide\" motion for \"Hide\" state.");
+                    root_animator.runtimeAnimatorController = (RuntimeAnimatorController)UnityEditor.AssetDatabase.LoadAssetAtPath(paths[i] + "/Sources/Animations/MyAnimatorPopup.controller", typeof(RuntimeAnimatorController));
+                    Debug.LogError("[" + typeof(MyUGUIPopup0Button).Name + "] CreateTemplate(): please setup \"MyAnimatorPopup\" controller.");
                     break;
                 }
             }

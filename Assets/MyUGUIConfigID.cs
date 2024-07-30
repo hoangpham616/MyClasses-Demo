@@ -9,41 +9,42 @@ namespace MyClasses.UI
 {
 	public enum EUnitySceneID
 	{
-		MainUnityScene,
+		MainUnityScene = 0,
 	}
 
 	public enum ESceneID
 	{
-		MainScene,
-		GroupScene,
-		GameScene,
+		MainScene = 0,
+		GroupScene = 1,
+		GameScene = 2,
 	}
 
 	public enum ESubSceneID
 	{
-		GroupASubScene,
-		GroupBSubScene,
-		GroupCSubScene,
-		GroupDSubScene,
-		GroupESubScene,
+		GroupASubScene = 0,
+		GroupBSubScene = 1,
+		GroupCSubScene = 2,
+		GroupDSubScene = 3,
+		GroupESubScene = 4,
 	}
 
 	public enum EPopupID
 	{
-		Dialog0ButtonPopup,
-		Dialog1ButtonPopup,
-		Dialog2ButtonsPopup,
-		PoolPopup,
-		LocalizationPopup,
-		AdMobPopup,
-		ReusableListViewPopup,
-		ReusableListViewPopup2,
-		ExtensionPopup,
-		ForbiddenTextPopup,
+		Dialog0ButtonPopup = 0,
+		Dialog1ButtonPopup = 1,
+		Dialog2ButtonsPopup = 2,
+		PoolPopup = 3,
+		LocalizationPopup = 4,
+		AdMobPopup = 5,
+		ReusableListViewPopup = 6,
+		ReusableListViewPopup2 = 7,
+		ExtensionPopup = 8,
+		ForbiddenTextPopup = 9,
+		ScrollSnapPopup = 10,
 	}
 
 	public enum EToastNotificationID
 	{
-		TopCenterToastNotification,
+		TopCenterToastNotification = 0,
 	}
 }

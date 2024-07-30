@@ -17,7 +17,7 @@ MonoBehaviour:
     ID: 0
     SceneName: MainUnityScene
     SceneNameIndex: 1
-    HUDScriptPathIndex: 35
+    HUDScriptPathIndex: 68
     HUDPrefabNameIndexCanvas: 1
     HUDPrefabNameIndex3D: 0
     HUDScriptPath: Assets/_MyAssets/Scripts/Scenes/MainUnityScene/HUD/MainHUD.cs
@@ -25,9 +25,9 @@ MonoBehaviour:
     HUDPrefabNameCanvas: MainHUDCanvas
     HUDPrefabName3D: 
     ListScene:
-    - IsFoldOut: 1
+    - IsFoldOut: 0
       ID: 0
-      ScriptPathIndex: 40
+      ScriptPathIndex: 73
       PrefabNameIndexCanvas: 9
       PrefabNameIndex3D: 0
       ScriptPath: Assets/_MyAssets/Scripts/Scenes/MainUnityScene/MainScene/MainScene.cs
@@ -42,11 +42,12 @@ MonoBehaviour:
       IsSubSceneFoldOut: 0
       SubSceneMinWidth: 0
       SubSceneSpacing: 0
+      SubSceneMinHeightPercentToSwipe: 2.5
       SubSceneMinWidthPercentToSwitch: 10
       SubSceneSwitchTime: 0.1
-    - IsFoldOut: 1
+    - IsFoldOut: 0
       ID: 1
-      ScriptPathIndex: 33
+      ScriptPathIndex: 66
       PrefabNameIndexCanvas: 8
       PrefabNameIndex3D: 0
       ScriptPath: Assets/_MyAssets/Scripts/Scenes/MainUnityScene/GroupScene/GroupScene.cs
@@ -59,38 +60,39 @@ MonoBehaviour:
       IsHideHUD: 0
       ListSubScene:
       - ID: 0
-        ScriptPathIndex: 34
+        ScriptPathIndex: 67
         ScriptPath: Assets/_MyAssets/Scripts/Scenes/MainUnityScene/GroupScene/GroupSubScene.cs
         ScriptName: GroupSubScene
         GameObjectPath: SubScenes/GroupASubSceneCanvas
       - ID: 1
-        ScriptPathIndex: 32
+        ScriptPathIndex: 65
         ScriptPath: Assets/_MyAssets/Scripts/Scenes/MainUnityScene/GroupScene/GroupBSubScene.cs
         ScriptName: GroupBSubScene
         GameObjectPath: SubScenes/GroupBSubSceneCanvas
       - ID: 2
-        ScriptPathIndex: 34
+        ScriptPathIndex: 67
         ScriptPath: Assets/_MyAssets/Scripts/Scenes/MainUnityScene/GroupScene/GroupSubScene.cs
         ScriptName: GroupSubScene
         GameObjectPath: SubScenes/GroupCSubSceneCanvas
       - ID: 3
-        ScriptPathIndex: 34
+        ScriptPathIndex: 67
         ScriptPath: Assets/_MyAssets/Scripts/Scenes/MainUnityScene/GroupScene/GroupSubScene.cs
         ScriptName: GroupSubScene
         GameObjectPath: SubScenes/GroupDSubSceneCanvas
       - ID: 4
-        ScriptPathIndex: 34
+        ScriptPathIndex: 67
         ScriptPath: Assets/_MyAssets/Scripts/Scenes/MainUnityScene/GroupScene/GroupSubScene.cs
         ScriptName: GroupSubScene
         GameObjectPath: SubScenes/GroupESubSceneCanvas
       IsSubSceneFoldOut: 1
       SubSceneMinWidth: 0
       SubSceneSpacing: 100
+      SubSceneMinHeightPercentToSwipe: 2.5
       SubSceneMinWidthPercentToSwitch: 10
       SubSceneSwitchTime: 0.1
     - IsFoldOut: 1
       ID: 2
-      ScriptPathIndex: 31
+      ScriptPathIndex: 64
       PrefabNameIndexCanvas: 2
       PrefabNameIndex3D: 1
       ScriptPath: Assets/_MyAssets/Scripts/Scenes/MainUnityScene/GameScene/GameScene.cs
@@ -105,5 +107,6 @@ MonoBehaviour:
       IsSubSceneFoldOut: 1
       SubSceneMinWidth: 0
       SubSceneSpacing: 0
+      SubSceneMinHeightPercentToSwipe: 2.5
       SubSceneMinWidthPercentToSwitch: 10
       SubSceneSwitchTime: 0.1

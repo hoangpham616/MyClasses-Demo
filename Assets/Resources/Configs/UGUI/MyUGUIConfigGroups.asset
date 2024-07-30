@@ -17,28 +17,35 @@ MonoBehaviour:
   - IsFoldOut: 1
     Name: EUnitySceneID
     NumDefault: 0
-    ListID:
+    ListID: []
+    ListIDName:
     - MainUnityScene
+    ListIDNumber: 00000000
   - IsFoldOut: 1
     Name: ESceneID
     NumDefault: 0
-    ListID:
+    ListID: []
+    ListIDName:
     - MainScene
     - GroupScene
     - GameScene
+    ListIDNumber: 000000000100000002000000
   - IsFoldOut: 1
     Name: ESubSceneID
     NumDefault: 0
-    ListID:
+    ListID: []
+    ListIDName:
     - GroupASubScene
     - GroupBSubScene
     - GroupCSubScene
     - GroupDSubScene
     - GroupESubScene
+    ListIDNumber: 0000000001000000020000000300000004000000
   - IsFoldOut: 1
     Name: EPopupID
     NumDefault: 3
-    ListID:
+    ListID: []
+    ListIDName:
     - Dialog0ButtonPopup
     - Dialog1ButtonPopup
     - Dialog2ButtonsPopup
@@ -49,8 +56,12 @@ MonoBehaviour:
     - ReusableListViewPopup2
     - ExtensionPopup
     - ForbiddenTextPopup
+    - ScrollSnapPopup
+    ListIDNumber: 000000000100000002000000030000000400000005000000060000000700000008000000090000000a000000
   - IsFoldOut: 1
     Name: EToastNotificationID
     NumDefault: 0
-    ListID:
+    ListID: []
+    ListIDName:
     - TopCenterToastNotification
+    ListIDNumber: 00000000

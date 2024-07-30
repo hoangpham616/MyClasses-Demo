@@ -2,8 +2,70 @@
  * Copyright (c) 2016 Phạm Minh Hoàng
  * Email:       hoangpham61691@gmail.com
  * Framework:   MyClasses
- * Version:     2024.4.18
+ * Version:     2024.7.29
  */
+
+
+
+********** 2024.7.29 *********
+
+* MyUGUIManagerBase
+* MyUGUIPopupBase
+* MyUGUIReusableListView
+* MyUGUIScrollSnap
+* MyIAPManager
+* MyPoolManager
+
+******************************
+
+
+
+********** 2024.6.27 *********
+
+* MyUGUIManagerBase: new property IsEnableBackKey
+* MyUGUICanvasScaler
+* MyUGUICanvasScalerCopy
+
+******************************
+
+
+
+********** 2024.6.22 *********
+
+* MyUGUIConfigGroups
+* MyUGUIManagerBase
+* MyUGUIPopupBase: new constructor
+* MyUGUISceneBase: new property MinHeightPercentToSwipeSubScene
+* MyUGUIConfigPopupEditorWindowBase
+* MyUGUIConfigSceneEditorWindowBase
+* MyUGUIConfigToastNotificationEditorWindowBase
+* MyUGUIConfigIDEditorWindow
+
+******************************
+
+
+
+********** 2024.5.13 *********
+
+* MyUGUIConfigPopupEditorWindowBase
+* MyUGUIConfigSceneEditorWindowBase
+* MyUGUICanvasScaler
+
+******************************
+
+
+
+********** 2024.5.5 **********
+
++ MyClasses_Benchmark.unity
++ MyBenchmark
++ MyUGUICanvasScaler
++ MyUGUICanvasScalerCopy
+* MyUGUIButton: optimize
+* MyUtilities.Find: optimize
+* MyPoolManager: optimized for runtime
+
+*******************************
 
 
 

@@ -15,6 +15,7 @@ namespace MyApp
         private MyUGUIButton _buttonUseString;
         private MyUGUIButton _buttonUsePrefab;
         private MyUGUIButton _buttonReturn;
+        private MyUGUIButton _buttonReturnAll;
         private Transform _transformItemParent;
 
         private List<Text> _textItems = new List<Text>();
@@ -23,8 +24,8 @@ namespace MyApp
 
         #region ----- Constructor -----
 
-        public PoolPopup(EPopupID id, string prefabNameCanvas, string prefabName3D, string addressableCanvas, string addressable3D, bool isRepeatable = false)
-            : base(id, prefabNameCanvas, prefabName3D, addressableCanvas, addressable3D, isRepeatable)
+        public PoolPopup(MyUGUIConfigPopup config, bool isRepeatable = false)
+            : base(config, isRepeatable)
         {
         }
 
@@ -42,6 +43,7 @@ namespace MyApp
             _buttonUseString = MyUtilities.FindObject(GameObjectCanvas, "Container/ButtonUseString").GetComponent<MyUGUIButton>();
             _buttonUsePrefab = MyUtilities.FindObject(GameObjectCanvas, "Container/ButtonUsePrefab").GetComponent<MyUGUIButton>();
             _buttonReturn = MyUtilities.FindObject(GameObjectCanvas, "Container/ButtonReturn").GetComponent<MyUGUIButton>();
+            _buttonReturnAll = MyUtilities.FindObject(GameObjectCanvas, "Container/ButtonReturnAll").GetComponent<MyUGUIButton>();
             _transformItemParent = MyUtilities.FindObject(GameObjectCanvas, "Container/Items").transform;
         }
 
@@ -55,6 +57,7 @@ namespace MyApp
             _buttonUseString.OnEventPointerClick.AddListener(_OnClickUseString);
             _buttonUsePrefab.OnEventPointerClick.AddListener(_OnClickUsePrefab);
             _buttonReturn.OnEventPointerClick.AddListener(_OnClickReturn);
+            _buttonReturnAll.OnEventPointerClick.AddListener(_OnClickReturnAll);
         }
 
         public override bool OnUGUIVisible()
@@ -82,6 +85,7 @@ namespace MyApp
             _buttonUseString.OnEventPointerClick.RemoveAllListeners();
             _buttonUsePrefab.OnEventPointerClick.RemoveAllListeners();
             _buttonReturn.OnEventPointerClick.RemoveAllListeners();
+            _buttonReturnAll.OnEventPointerClick.RemoveAllListeners();
 
             for (int i = _textItems.Count - 1; i >= 0; --i)
             {
@@ -146,6 +150,15 @@ namespace MyApp
                 MyPoolManager.Instance.Return(_textItems[0].gameObject);
                 _textItems.RemoveAt(0);
             }
+        }
+
+        private void _OnClickReturnAll(PointerEventData arg0)
+        {
+            this.LogInfo("_OnClickReturnAll", null, ELogColor.UI);
+
+            MyPoolManager.Instance.ReturnAll("TextPoolObject");
+            MyPoolManager.Instance.ReturnAll("Prefabs/TextPoolObject");
+            _textItems.Clear();
         }
 
         #endregion

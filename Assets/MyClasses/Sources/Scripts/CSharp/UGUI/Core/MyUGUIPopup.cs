@@ -2,7 +2,7 @@
  * Copyright (c) 2016 Phạm Minh Hoàng
  * Email:       hoangpham61691@gmail.com
  * Framework:   MyClasses
- * Class:       MyUGUIPopup (version 2.27)
+ * Class:       MyUGUIPopup (version 2.28)
  */
 
 #pragma warning disable 0108
@@ -26,8 +26,8 @@ namespace MyClasses.UI
         /// Constructor.
         /// </summary>
         /// <param name="isRepeatable">show multiple popups at the same time</param>
-        public MyUGUIPopup(EPopupID id, string prefabNameCanvas, string prefabName3D, string addressableCanvas, string addressable3D, bool isRepeatable = false)
-            : base((int)id, prefabNameCanvas, prefabName3D, addressableCanvas, addressable3D, isRepeatable)
+        public MyUGUIPopup(MyUGUIConfigPopup config, bool isRepeatable = false)
+            : base(config, isRepeatable)
         {
         }
 

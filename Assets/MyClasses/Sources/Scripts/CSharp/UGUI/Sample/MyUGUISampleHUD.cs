@@ -2,7 +2,7 @@
  * Copyright (c) 2016 Phạm Minh Hoàng
  * Email:       hoangpham61691@gmail.com
  * Framework:   MyClasses
- * Class:       MyUGUISampleHUD (version 2.27)
+ * Class:       MyUGUISampleHUD (version 2.28)
  */
 
 using UnityEngine;
@@ -41,7 +41,7 @@ namespace MyApp
 
             base.OnUGUIInit();
 
-            // _buttonBack = MyUtilities.FindObject(GameObject, "Something/Something/ButtonBack").GetComponent<MyUGUIButton>();
+            // _buttonBack = MyUtilities.FindObject(GameObjectCanvas, "Something/Something/ButtonBack").GetComponent<MyUGUIButton>();
         }
 
         public override void OnUGUIEnter()

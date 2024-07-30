@@ -25,6 +25,8 @@ MonoBehaviour:
     PrefabName3D: 
     AddressableCanvas: 
     Addressable3D: 
+    ShowAnimation: 0
+    HideAnimation: 0
   - IsFoldOut: 1
     ID: 1
     ScriptPathIndex: 0
@@ -36,6 +38,8 @@ MonoBehaviour:
     PrefabName3D: 
     AddressableCanvas: 
     Addressable3D: 
+    ShowAnimation: 0
+    HideAnimation: 0
   - IsFoldOut: 1
     ID: 2
     ScriptPathIndex: 0
@@ -47,80 +51,109 @@ MonoBehaviour:
     PrefabName3D: 
     AddressableCanvas: 
     Addressable3D: 
+    ShowAnimation: 0
+    HideAnimation: 0
   - IsFoldOut: 1
     ID: 3
-    ScriptPathIndex: 40
+    ScriptPathIndex: 75
     ScriptPath: Assets/_MyAssets/Scripts/Scenes/MainUnityScene/MainScene/PoolPopup.cs
     ScriptName: PoolPopup
     PrefabNameIndexCanvas: 4
-    PrefabNameIndex3D: 7
+    PrefabNameIndex3D: 8
     PrefabNameCanvas: PoolPopupCanvas
     PrefabName3D: 
     AddressableCanvas: 
     Addressable3D: 
+    ShowAnimation: 0
+    HideAnimation: 0
   - IsFoldOut: 1
     ID: 4
-    ScriptPathIndex: 38
+    ScriptPathIndex: 73
     ScriptPath: Assets/_MyAssets/Scripts/Scenes/MainUnityScene/MainScene/LocalizationPopup.cs
     ScriptName: LocalizationPopup
     PrefabNameIndexCanvas: 3
-    PrefabNameIndex3D: 7
+    PrefabNameIndex3D: 8
     PrefabNameCanvas: LocalizationPopupCanvas
     PrefabName3D: 
     AddressableCanvas: 
     Addressable3D: 
+    ShowAnimation: 0
+    HideAnimation: 0
   - IsFoldOut: 1
     ID: 5
-    ScriptPathIndex: 35
+    ScriptPathIndex: 70
     ScriptPath: Assets/_MyAssets/Scripts/Scenes/MainUnityScene/MainScene/AdMobPopup.cs
     ScriptName: AdMobPopup
     PrefabNameIndexCanvas: 0
-    PrefabNameIndex3D: 7
+    PrefabNameIndex3D: 8
     PrefabNameCanvas: AdMobPopupCanvas
     PrefabName3D: 
     AddressableCanvas: 
     Addressable3D: 
+    ShowAnimation: 0
+    HideAnimation: 0
   - IsFoldOut: 1
     ID: 6
-    ScriptPathIndex: 72
+    ScriptPathIndex: 108
     ScriptPath: Assets/_MyAssets/Scripts/Scenes/MainUnityScene/MainScene/ResusableListViewPopup/ReusableListViewPopup.cs
     ScriptName: ReusableListViewPopup
     PrefabNameIndexCanvas: 5
-    PrefabNameIndex3D: 7
+    PrefabNameIndex3D: 8
     PrefabNameCanvas: ReusableListViewPopupCanvas
     PrefabName3D: 
     AddressableCanvas: 
     Addressable3D: 
+    ShowAnimation: 0
+    HideAnimation: 0
   - IsFoldOut: 1
     ID: 7
-    ScriptPathIndex: 74
+    ScriptPathIndex: 110
     ScriptPath: Assets/_MyAssets/Scripts/Scenes/MainUnityScene/MainScene/ResusableListViewPopup2/ReusableListViewPopup2.cs
     ScriptName: ReusableListViewPopup2
     PrefabNameIndexCanvas: 6
-    PrefabNameIndex3D: 7
+    PrefabNameIndex3D: 8
     PrefabNameCanvas: ReusableListViewPopupCanvas2
     PrefabName3D: 
     AddressableCanvas: 
     Addressable3D: 
+    ShowAnimation: 0
+    HideAnimation: 0
   - IsFoldOut: 1
     ID: 8
-    ScriptPathIndex: 36
+    ScriptPathIndex: 71
     ScriptPath: Assets/_MyAssets/Scripts/Scenes/MainUnityScene/MainScene/ExtensionPopup.cs
     ScriptName: ExtensionPopup
     PrefabNameIndexCanvas: 1
-    PrefabNameIndex3D: 7
+    PrefabNameIndex3D: 8
     PrefabNameCanvas: ExtensionPopupCanvas
     PrefabName3D: 
     AddressableCanvas: 
     Addressable3D: 
+    ShowAnimation: 0
+    HideAnimation: 0
   - IsFoldOut: 1
     ID: 9
-    ScriptPathIndex: 37
+    ScriptPathIndex: 72
     ScriptPath: Assets/_MyAssets/Scripts/Scenes/MainUnityScene/MainScene/ForbiddenTextPopup.cs
     ScriptName: ForbiddenTextPopup
     PrefabNameIndexCanvas: 2
-    PrefabNameIndex3D: 7
+    PrefabNameIndex3D: 8
     PrefabNameCanvas: ForbiddenTextPopupCanvas
     PrefabName3D: 
     AddressableCanvas: 
     Addressable3D: 
+    ShowAnimation: 0
+    HideAnimation: 0
+  - IsFoldOut: 1
+    ID: 10
+    ScriptPathIndex: 76
+    ScriptPath: Assets/_MyAssets/Scripts/Scenes/MainUnityScene/MainScene/ScrollSnapPopup.cs
+    ScriptName: ScrollSnapPopup
+    PrefabNameIndexCanvas: 7
+    PrefabNameIndex3D: 8
+    PrefabNameCanvas: ScrollSnapPopupCanvas
+    PrefabName3D: 
+    AddressableCanvas: 
+    Addressable3D: 
+    ShowAnimation: 0
+    HideAnimation: 0

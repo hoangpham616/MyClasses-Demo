@@ -2,7 +2,7 @@
  * Copyright (c) 2016 Phạm Minh Hoàng
  * Email:       hoangpham61691@gmail.com
  * Framework:   MyClasses
- * Class:       MyUGUISampleToastNotification (version 2.0)
+ * Class:       MyUGUISampleToastNotification (version 2.1)
  */
 
 using UnityEngine;
@@ -42,7 +42,7 @@ namespace MyApp
 
             base.OnUGUIInit();
 
-            // _buttonClose = MyUtilities.FindObject(GameObject, "Container/ButtonClose").GetComponent<MyUGUIButton>();
+            // _buttonClose = MyUtilities.FindObject(GameObjectCanvas, "Container/ButtonClose").GetComponent<MyUGUIButton>();
         }
 
         public override void OnUGUIEnter()

@@ -2,7 +2,7 @@
  * Copyright (c) 2016 Phạm Minh Hoàng
  * Email:       hoangpham61691@gmail.com
  * Framework:   MyClasses
- * Class:       MyUGUIToolEditor (version 2.35)
+ * Class:       MyUGUIToolEditor (version 2.36)
  */
 
 #if UNITY_EDITOR
@@ -127,7 +127,7 @@ namespace MyClasses.UI.Tool
         [MenuItem("MyClasses/UGUI/Setup/Create Portrait Canvases (Screen Space - Camera)", false, 5)]
         public static void CreatePortraitCanvasesCamera()
         {
-            GameObject goCamera = MyUtilities.FindObjectInRoot("UICamera");
+            GameObject goCamera = MyUtilities.FindObjectFromRoot("UICamera");
             Camera camera = goCamera != null ? goCamera.GetComponent<Camera>() : null;
             if (camera != null)
             {
@@ -179,7 +179,7 @@ namespace MyClasses.UI.Tool
         [MenuItem("MyClasses/UGUI/Setup/Create Landscape Canvases (Screen Space - Camera)", false, 6)]
         public static void CreateLandscapeCanvasesCamera()
         {
-            GameObject goCamera = MyUtilities.FindObjectInRoot("UICamera");
+            GameObject goCamera = MyUtilities.FindObjectFromRoot("UICamera");
             Camera camera = goCamera != null ? goCamera.GetComponent<Camera>() : null;
             if (camera != null)
             {

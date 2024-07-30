@@ -35,7 +35,6 @@ RectTransform:
   - {fileID: 279272113893940652}
   - {fileID: 2794157961130944715}
   m_Father: {fileID: 940951316580872480}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -111,7 +110,6 @@ RectTransform:
   m_Children:
   - {fileID: 8304826663799235798}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -128,7 +126,7 @@ Animator:
   m_GameObject: {fileID: 3332699962593033905}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a944904b74923aa4c847f99c5c95db92, type: 2}
+  m_Controller: {fileID: 9100000, guid: e386e1dde51f3cb4cb41eb254b8dc7d6, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -170,7 +168,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8304826663799235798}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -253,7 +250,6 @@ RectTransform:
   m_Children:
   - {fileID: 5952912697282992592}
   m_Father: {fileID: 8304826663799235798}
-  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
@@ -357,6 +353,8 @@ MonoBehaviour:
   mButton: {fileID: 0}
   mImage: {fileID: 0}
   mIcon: {fileID: 0}
+  mTitleTMPro: {fileID: 0}
+  mTitle: {fileID: 0}
   mTextTMPro: {fileID: 0}
   mText: {fileID: 0}
   mOriginalScale: {x: 1, y: 1, z: 1}
@@ -409,7 +407,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2794157961130944715}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -491,7 +488,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8304826663799235798}
-  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -595,6 +591,8 @@ MonoBehaviour:
   mButton: {fileID: 0}
   mImage: {fileID: 0}
   mIcon: {fileID: 0}
+  mTitleTMPro: {fileID: 0}
+  mTitle: {fileID: 0}
   mTextTMPro: {fileID: 0}
   mText: {fileID: 0}
   mOriginalScale: {x: 1, y: 1, z: 1}
@@ -647,7 +645,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8304826663799235798}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}

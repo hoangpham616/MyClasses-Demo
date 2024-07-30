@@ -2,7 +2,7 @@
  * Copyright (c) 2016 Phạm Minh Hoàng
  * Email:       hoangpham61691@gmail.com
  * Framework:   MyClasses
- * Class:       MyUGUIPopup2Buttons (version 2.18)
+ * Class:       MyUGUIPopup2Buttons (version 2.19)
  */
 
 #pragma warning disable 0414
@@ -41,8 +41,8 @@ namespace MyClasses.UI
         /// <summary>
         /// Constructor.
         /// </summary>
-        public MyUGUIPopup2Buttons(EPopupID id, string prefabNameCanvas, string prefabName3D, string addressableCanvas, string addressable3D, bool isRepeatable = false)
-            : base(id, prefabNameCanvas, prefabName3D, addressableCanvas, addressable3D, isRepeatable)
+        public MyUGUIPopup2Buttons(MyUGUIConfigPopup config, bool isRepeatable = false)
+            : base(config, isRepeatable)
         {
 #if UNITY_EDITOR
             if (!_CheckPrefab())
@@ -66,10 +66,10 @@ namespace MyClasses.UI
             base.OnUGUIInit();
 
             GameObject container = MyUtilities.FindObjectInAllLayers(GameObjectCanvas, "Container");
-            _buttonLeft = MyUtilities.FindObjectInFirstLayer(container, "ButtonLeft").GetComponent<MyUGUIButton>();
-            _buttonRight = MyUtilities.FindObjectInFirstLayer(container, "ButtonRight").GetComponent<MyUGUIButton>();
+            _buttonLeft = MyUtilities.FindObject(container, "ButtonLeft").GetComponent<MyUGUIButton>();
+            _buttonRight = MyUtilities.FindObject(container, "ButtonRight").GetComponent<MyUGUIButton>();
 
-            GameObject title = MyUtilities.FindObjectInFirstLayer(container, "Title");
+            GameObject title = MyUtilities.FindObject(container, "Title");
             if (title != null)
             {
                 _textTitleTMPro = title.GetComponent<TextMeshProUGUI>();
@@ -79,7 +79,7 @@ namespace MyClasses.UI
                 }
             }
 
-            GameObject body = MyUtilities.FindObjectInFirstLayer(container, "Body");
+            GameObject body = MyUtilities.FindObject(container, "Body");
             if (body != null)
             {
                 _textBodyTMPro = body.GetComponent<TextMeshProUGUI>();
@@ -89,7 +89,7 @@ namespace MyClasses.UI
                 }
             }
 
-            GameObject close = MyUtilities.FindObjectInFirstLayer(container, "ButtonClose");
+            GameObject close = MyUtilities.FindObject(container, "ButtonClose");
             if (close != null)
             {
                 _buttonClose = close.GetComponent<MyUGUIButton>();
@@ -329,12 +329,10 @@ namespace MyClasses.UI
             string[] paths = new string[] { "Assets/MyClasses", "Assets/Core/MyClasses", "Assets/Plugin/MyClasses", "Assets/Plugins/MyClasses", "Assets/Framework/MyClasses", "Assets/Frameworks/MyClasses" };
             for (int i = 0; i < paths.Length; i++)
             {
-                if (System.IO.File.Exists(paths[i] + "/Sources/Animations/MyAnimatorDialog.controller"))
+                if (System.IO.File.Exists(paths[i] + "/Sources/Animations/MyAnimatorPopup.controller"))
                 {
-                    root_animator.runtimeAnimatorController = (RuntimeAnimatorController)UnityEditor.AssetDatabase.LoadAssetAtPath(paths[i] + "/Sources/Animations/MyAnimatorDialog.controller", typeof(RuntimeAnimatorController));
-                    Debug.LogError("[" + typeof(MyUGUIPopup2Buttons).Name + "] CreateTemplate(): please setup \"MyAnimatorDialog\" controller.");
-                    Debug.LogError("[" + typeof(MyUGUIPopup2Buttons).Name + "] CreateTemplate(): mapping \"MyAnimationDialogShow\" motion for \"Show\" state.");
-                    Debug.LogError("[" + typeof(MyUGUIPopup2Buttons).Name + "] CreateTemplate(): mapping \"MyAnimationDialogHide\" motion for \"Hide\" state.");
+                    root_animator.runtimeAnimatorController = (RuntimeAnimatorController)UnityEditor.AssetDatabase.LoadAssetAtPath(paths[i] + "/Sources/Animations/MyAnimatorPopup.controller", typeof(RuntimeAnimatorController));
+                    Debug.LogError("[" + typeof(MyUGUIPopup2Buttons).Name + "] CreateTemplate(): please setup \"MyAnimatorPopup\" controller.");
                     break;
                 }
             }

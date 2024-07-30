@@ -2,10 +2,10 @@
  * Copyright (c) 2016 Phạm Minh Hoàng
  * Email:       hoangpham61691@gmail.com
  * Framework:   MyClasses
- * Class:       MyIAPManager (version 1.8)
+ * Class:       MyIAPManager (version 1.9)
  */
 
-#if USE_MY_IAP && (UNITY_ANDROID || UNITY_IOS)
+#if MY_IAP && (UNITY_ANDROID || UNITY_IOS)
 
 using System;
 using UnityEngine;
@@ -89,6 +89,7 @@ public class MyIAPManager : MonoBehaviour, IDetailedStoreListener
         _storeController = controller;
         _storeExtensionProvider = extensions;
 
+#if UNITY_IOS
         _storeExtensionProvider.GetExtension<IAppleExtensions>().RestoreTransactions((result, error) =>
         {
             if (result)
@@ -96,12 +97,6 @@ public class MyIAPManager : MonoBehaviour, IDetailedStoreListener
 #if DEBUG_MY_IAP || UNITY_EDITOR
                 Debug.Log(string.Format("[" + typeof(MyIAPManager).Name + "] OnInitialized(): restoration process succeeded"));
 #endif
-
-                if (_onInitializationSuccessCallback != null)
-                {
-                    _onInitializationSuccessCallback();
-                    _onInitializationSuccessCallback = null;
-                }
             }
             else
             {
@@ -109,7 +104,20 @@ public class MyIAPManager : MonoBehaviour, IDetailedStoreListener
                 Debug.LogError(string.Format("[" + typeof(MyIAPManager).Name + "] OnInitialized(): restoration process failed"));
 #endif
             }
+            
+            if (_onInitializationSuccessCallback != null)
+            {
+                _onInitializationSuccessCallback();
+                _onInitializationSuccessCallback = null;
+            }
         });
+#else
+        if (_onInitializationSuccessCallback != null)
+        {
+            _onInitializationSuccessCallback();
+            _onInitializationSuccessCallback = null;
+        }
+#endif
     }
     
     /// <summary>

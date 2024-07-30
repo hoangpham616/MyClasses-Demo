@@ -2,7 +2,7 @@
  * Copyright (c) 2016 Phạm Minh Hoàng
  * Email:       hoangpham61691@gmail.com
  * Framework:   MyClasses
- * Class:       MyUGUISamplePopup (version 2.26)
+ * Class:       MyUGUISamplePopup (version 2.27)
  */
 
 using UnityEngine;
@@ -26,11 +26,10 @@ namespace MyApp
 
         #region ----- Constructor -----
 
-        public MyUGUISamplePopup(EPopupID id, string prefabNameCanvas, string prefabName3D, string addressableCanvas, string addressable3D, bool isRepeatable = false)
-            : base(id, prefabNameCanvas, prefabName3D, addressableCanvas, addressable3D, isRepeatable)
+        public MyUGUISamplePopup(MyUGUIConfigPopup config, bool isRepeatable = false)
+            : base(config, isRepeatable)
         {
         }
-
 
         #endregion
 
@@ -42,7 +41,7 @@ namespace MyApp
 
             base.OnUGUIInit();
 
-            // _buttonClose = MyUtilities.FindObject(GameObject, "Container/ButtonClose").GetComponent<MyUGUIButton>();
+            // _buttonClose = MyUtilities.FindObject(GameObjectCanvas, "Container/ButtonClose").GetComponent<MyUGUIButton>();
         }
 
         public override void OnUGUIEnter()

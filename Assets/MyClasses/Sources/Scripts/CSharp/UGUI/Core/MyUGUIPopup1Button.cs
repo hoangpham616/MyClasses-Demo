@@ -2,7 +2,7 @@
  * Copyright (c) 2016 Phạm Minh Hoàng
  * Email:       hoangpham61691@gmail.com
  * Framework:   MyClasses
- * Class:       MyUGUIPopup1Button (version 2.18)
+ * Class:       MyUGUIPopup1Button (version 2.19)
  */
 
 #pragma warning disable 0414
@@ -39,8 +39,8 @@ namespace MyClasses.UI
         /// <summary>
         /// Constructor.
         /// </summary>
-        public MyUGUIPopup1Button(EPopupID id, string prefabNameCanvas, string prefabName3D, string addressableCanvas, string addressable3D, bool isRepeatable = false)
-            : base(id, prefabNameCanvas, prefabName3D, addressableCanvas, addressable3D, isRepeatable)
+        public MyUGUIPopup1Button(MyUGUIConfigPopup config, bool isRepeatable = false)
+            : base(config, isRepeatable)
         {
 #if UNITY_EDITOR
             if (!_CheckPrefab())
@@ -62,9 +62,9 @@ namespace MyClasses.UI
             base.OnUGUIInit();
 
             GameObject container = MyUtilities.FindObjectInAllLayers(GameObjectCanvas, "Container");
-            _buttonMain = MyUtilities.FindObjectInFirstLayer(container, "ButtonMain").GetComponent<MyUGUIButton>();
+            _buttonMain = MyUtilities.FindObject(container, "ButtonMain").GetComponent<MyUGUIButton>();
 
-            GameObject title = MyUtilities.FindObjectInFirstLayer(container, "Title");
+            GameObject title = MyUtilities.FindObject(container, "Title");
             if (title != null)
             {
                 _textTitleTMPro = title.GetComponent<TextMeshProUGUI>();
@@ -74,7 +74,7 @@ namespace MyClasses.UI
                 }
             }
 
-            GameObject body = MyUtilities.FindObjectInFirstLayer(container, "Body");
+            GameObject body = MyUtilities.FindObject(container, "Body");
             if (body != null)
             {
                 _textBodyTMPro = body.GetComponent<TextMeshProUGUI>();
@@ -84,7 +84,7 @@ namespace MyClasses.UI
                 }
             }
 
-            GameObject close = MyUtilities.FindObjectInFirstLayer(container, "ButtonClose");
+            GameObject close = MyUtilities.FindObject(container, "ButtonClose");
             if (close != null)
             {
                 _buttonClose = close.GetComponent<MyUGUIButton>();

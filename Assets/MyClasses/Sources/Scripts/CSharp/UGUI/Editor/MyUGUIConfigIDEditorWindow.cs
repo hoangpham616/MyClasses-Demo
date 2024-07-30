@@ -2,7 +2,7 @@
  * Copyright (c) 2016 Phạm Minh Hoàng
  * Email:       hoangpham61691@gmail.com
  * Framework:   MyClasses
- * Class:       MyUGUIConfigIDEditor (version 2.12)
+ * Class:       MyUGUIConfigIDEditor (version 2.13)
  */
 
 using UnityEngine;
@@ -57,6 +57,7 @@ namespace MyClasses.UI.Tool
             }
 
             _LoadAssetFile();
+            _CorrectValues();
         }
 
         /// <summary>
@@ -75,40 +76,46 @@ namespace MyClasses.UI.Tool
             {
                 MyUGUIConfigGroup group = _groups.ListGroup[i];
 
-                EditorGUILayout.BeginHorizontal();
-                group.IsFoldOut = EditorGUILayout.Foldout(group.IsFoldOut, group.Name + " (" + group.ListID.Count + ")");
+                group.IsFoldOut = EditorGUILayout.Foldout(group.IsFoldOut, group.Name + " (" + group.ListIDName.Count + ")");
                 if (group.IsFoldOut)
                 {
-                    if (GUILayout.Button("+", GUILayout.Width(30)))
-                    {
-                        group.ListID.Add(string.Empty);
-                    }
-                    EditorGUI.BeginDisabledGroup(group.ListID.Count <= group.NumDefault);
-                    if (GUILayout.Button("-", GUILayout.Width(30)))
-                    {
-                        if (group.ListID.Count > group.NumDefault)
-                        {
-                            group.ListID.RemoveAt(group.ListID.Count - 1);
-                        }
-                    }
-                    EditorGUI.EndDisabledGroup();
-                }
-                EditorGUILayout.EndHorizontal();
+                    int removeIndex = -1;
 
-                if (group.IsFoldOut)
-                {
                     EditorGUI.indentLevel++;
                     EditorGUI.BeginDisabledGroup(true);
                     for (int j = 0; j < group.NumDefault; j++)
                     {
-                        EditorGUILayout.TextField(group.ListID[j], GUILayout.Width(400));
+                        EditorGUILayout.TextField(group.ListIDName[j], GUILayout.Width(400));
                     }
                     EditorGUI.EndDisabledGroup();
-                    for (int j = group.NumDefault, countJ = group.ListID.Count; j < countJ; j++)
+                    for (int j = group.NumDefault, countJ = group.ListIDName.Count; j < countJ; j++)
                     {
-                        group.ListID[j] = EditorGUILayout.TextField(group.ListID[j], GUILayout.Width(400));
+                        EditorGUILayout.BeginHorizontal();
+                        group.ListIDName[j] = EditorGUILayout.TextField(group.ListIDName[j], GUILayout.Width(400));
+                        if (GUILayout.Button("-", GUILayout.Width(30)))
+                        {
+                            if (group.ListIDName.Count > group.NumDefault)
+                            {
+                                removeIndex = j;
+                            }
+                        }
+                        EditorGUILayout.EndHorizontal();
                     }
+                    GUILayout.BeginHorizontal();
+                    GUILayout.Space(17);
+                    if (GUILayout.Button("+", GUILayout.Width(387)))
+                    {
+                        group.ListIDName.Add(string.Empty);
+                        group.ListIDNumber.Add(group.ListIDNumber[group.ListIDNumber.Count - 1] + 1);
+                    }
+                    GUILayout.EndHorizontal();
                     EditorGUI.indentLevel--;
+
+                    if (removeIndex >= 0)
+                    {
+                        group.ListIDName.RemoveAt(removeIndex);
+                        group.ListIDNumber.RemoveAt(removeIndex);
+                    }
                 }
 
                 if (i < countI - 1)
@@ -173,7 +180,8 @@ namespace MyClasses.UI.Tool
                     IsFoldOut = true,
                     Name = "EPopupID",
                     NumDefault = 3,
-                    ListID = new List<string>() { "Dialog0ButtonPopup", "Dialog1ButtonPopup", "Dialog2ButtonsPopup" }
+                    ListIDName = new List<string>() { "Dialog0ButtonPopup", "Dialog1ButtonPopup", "Dialog2ButtonsPopup" },
+                    ListIDNumber = new List<int>() { 0, 1, 2 }
                 });
                 _groups.ListGroup.Add(new MyUGUIConfigGroup()
                 {
@@ -201,6 +209,29 @@ namespace MyClasses.UI.Tool
         }
 
         /// <summary>
+        /// Correct values.
+        /// </summary>
+        private void _CorrectValues()
+        {
+            for (int i = 0, countI = _groups.ListGroup.Count; i < countI; ++i)
+            {
+                MyUGUIConfigGroup groupPopup = _groups.ListGroup[i];
+                if (groupPopup.ListID != null && groupPopup.ListID.Count > 0)
+                {
+                    groupPopup.ListIDName = new List<string>();
+                    groupPopup.ListIDNumber = new List<int>();
+                    for (int j = 0, countJ = groupPopup.ListID.Count; j < countJ; ++j)
+                    {
+                        groupPopup.ListIDName.Add(groupPopup.ListID[j]);
+                        groupPopup.ListIDNumber.Add(j);
+                    }
+
+                    groupPopup.ListID.Clear();
+                }
+            }
+        }
+
+        /// <summary>
         /// Generate the script.
         /// </summary>
         private void _GenerateScript()
@@ -223,29 +254,29 @@ namespace MyClasses.UI.Tool
 
             string scriptName = typeof(MyUGUIConfigIDEditorWindow).Name;
             string unityScenes = string.Empty;
-            for (int i = 0, countI = _groups.ListGroup[0].ListID.Count; i < countI; i++)
+            for (int i = 0, countI = _groups.ListGroup[0].ListIDName.Count; i < countI; i++)
             {
-                unityScenes += "\n\t\t" + _groups.ListGroup[0].ListID[i] + ",";
+                unityScenes += "\n\t\t" + _groups.ListGroup[0].ListIDName[i] + " = " + _groups.ListGroup[0].ListIDNumber[i] + ",";
             }
             string scenes = string.Empty;
-            for (int i = 0, countI = _groups.ListGroup[1].ListID.Count; i < countI; i++)
+            for (int i = 0, countI = _groups.ListGroup[1].ListIDName.Count; i < countI; i++)
             {
-                scenes += "\n\t\t" + _groups.ListGroup[1].ListID[i] + ",";
+                scenes += "\n\t\t" + _groups.ListGroup[1].ListIDName[i] + " = " + _groups.ListGroup[1].ListIDNumber[i] + ",";
             }
             string subScenes = string.Empty;
-            for (int i = 0, countI = _groups.ListGroup[2].ListID.Count; i < countI; i++)
+            for (int i = 0, countI = _groups.ListGroup[2].ListIDName.Count; i < countI; i++)
             {
-                subScenes += "\n\t\t" + _groups.ListGroup[2].ListID[i] + ",";
+                subScenes += "\n\t\t" + _groups.ListGroup[2].ListIDName[i] + " = " + _groups.ListGroup[2].ListIDNumber[i] + ",";
             }
             string popups = string.Empty;
-            for (int i = 0, countI = _groups.ListGroup[3].ListID.Count; i < countI; i++)
+            for (int i = 0, countI = _groups.ListGroup[3].ListIDName.Count; i < countI; i++)
             {
-                popups += "\n\t\t" + _groups.ListGroup[3].ListID[i] + ",";
+                popups += "\n\t\t" + _groups.ListGroup[3].ListIDName[i] + " = " + _groups.ListGroup[3].ListIDNumber[i] + ",";
             }
             string toastNotifications = string.Empty;
-            for (int i = 0, countI = _groups.ListGroup[4].ListID.Count; i < countI; i++)
+            for (int i = 0, countI = _groups.ListGroup[4].ListIDName.Count; i < countI; i++)
             {
-                toastNotifications += "\n\t\t" + _groups.ListGroup[4].ListID[i] + ",";
+                toastNotifications += "\n\t\t" + _groups.ListGroup[4].ListIDName[i] + " = " + _groups.ListGroup[4].ListIDNumber[i] + ",";
             }
             string content = "/*\n * Copyright (c) 2016 Phạm Minh Hoàng\n * Email:\t\thoangpham61691@gmail.com\n * Framework:\tMyClasses\n * Description:\tThis script is generated by " + scriptName + "\n */\n\nnamespace MyClasses.UI\n{\n\tpublic enum EUnitySceneID\n\t{" + unityScenes + "\n\t}\n\n\tpublic enum ESceneID\n\t{" + scenes + "\n\t}\n\n\tpublic enum ESubSceneID\n\t{" + subScenes + "\n\t}\n\n\tpublic enum EPopupID\n\t{" + popups + "\n\t}\n\n\tpublic enum EToastNotificationID\n\t{" + toastNotifications + "\n\t}\n}";
 

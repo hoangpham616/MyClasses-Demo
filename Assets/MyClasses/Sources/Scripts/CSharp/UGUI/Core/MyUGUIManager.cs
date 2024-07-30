@@ -576,7 +576,7 @@ namespace MyClasses.UI
         /// </summary>
         protected override void _CreatePopup(ref MyUGUIPopupBase popupBase, MyUGUIConfigPopup popupConfig, bool isRepeatable)
         {
-            popupBase = (MyUGUIPopup)Activator.CreateInstance(MyUtilities.FindTypesByName(popupConfig.ScriptName)[0], (EPopupID)popupConfig.ID, popupConfig.PrefabNameCanvas, popupConfig.PrefabName3D, popupConfig.AddressableCanvas, popupConfig.Addressable3D, isRepeatable);
+            popupBase = (MyUGUIPopup)Activator.CreateInstance(MyUtilities.FindTypesByName(popupConfig.ScriptName)[0], popupConfig, isRepeatable);
         }
 
         /// <summary>

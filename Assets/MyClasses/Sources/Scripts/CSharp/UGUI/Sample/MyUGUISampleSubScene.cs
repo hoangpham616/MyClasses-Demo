@@ -2,7 +2,7 @@
  * Copyright (c) 2016 Phạm Minh Hoàng
  * Email:       hoangpham61691@gmail.com
  * Framework:   MyClasses
- * Class:       MyUGUISampleSubScene (version 2.3)
+ * Class:       MyUGUISampleSubScene (version 2.4)
  */
 
 using UnityEngine;
@@ -41,7 +41,7 @@ namespace MyApp
 
             base.OnUGUIInit();
 
-            // _buttonSample = MyUtilities.FindObject(GameObject, "Something/Something/ButtonSample").GetComponent<MyUGUIButton>();
+            // _buttonSample = MyUtilities.FindObject(GameObjectCanvas, "Something/Something/ButtonSample").GetComponent<MyUGUIButton>();
         }
 
         public override void OnUGUIVisible()

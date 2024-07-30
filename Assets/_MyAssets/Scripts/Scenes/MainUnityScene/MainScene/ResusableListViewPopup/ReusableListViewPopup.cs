@@ -1,12 +1,7 @@
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.EventSystems;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using MyClasses;
 using MyClasses.UI;
-using System.Linq;
 
 namespace MyApp
 {
@@ -25,8 +20,8 @@ namespace MyApp
 
         #region ----- Constructor -----
 
-        public ReusableListViewPopup(EPopupID id, string prefabNameCanvas, string prefabName3D, string addressableCanvas, string addressable3D, bool isRepeatable = false)
-            : base(id, prefabNameCanvas, prefabName3D, addressableCanvas, addressable3D, isRepeatable)
+        public ReusableListViewPopup(MyUGUIConfigPopup config, bool isRepeatable = false)
+            : base(config, isRepeatable)
         {
         }
 
