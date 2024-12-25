@@ -2,7 +2,7 @@
  * Copyright (c) 2016 Phạm Minh Hoàng
  * Email:       hoangpham61691@gmail.com
  * Framework:   MyClasses
- * Class:       MyUGUIPopup1Button (version 2.19)
+ * Class:       MyUGUIPopup1Button (version 2.20)
  */
 
 #pragma warning disable 0414
@@ -62,7 +62,7 @@ namespace MyClasses.UI
             base.OnUGUIInit();
 
             GameObject container = MyUtilities.FindObjectInAllLayers(GameObjectCanvas, "Container");
-            _buttonMain = MyUtilities.FindObject(container, "ButtonMain").GetComponent<MyUGUIButton>();
+            _buttonMain = MyUtilities.FindObjectInAllLayers(container, "ButtonMain").GetComponent<MyUGUIButton>();
 
             GameObject title = MyUtilities.FindObject(container, "Title");
             if (title != null)
@@ -84,7 +84,7 @@ namespace MyClasses.UI
                 }
             }
 
-            GameObject close = MyUtilities.FindObject(container, "ButtonClose");
+            GameObject close = MyUtilities.FindObjectInAllLayers(container, "ButtonClose");
             if (close != null)
             {
                 _buttonClose = close.GetComponent<MyUGUIButton>();
@@ -295,6 +295,7 @@ namespace MyClasses.UI
                     break;
                 }
             }
+            root_animator.updateMode = AnimatorUpdateMode.UnscaledTime;
 
             RectTransform root_rect = prefab.AddComponent<RectTransform>();
             MyUtilities.Anchor(ref root_rect, MyUtilities.EAnchorPreset.DualStretch, MyUtilities.EAnchorPivot.MiddleCenter, Vector2.zero, Vector2.zero);

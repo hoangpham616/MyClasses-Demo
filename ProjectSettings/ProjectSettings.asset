@@ -235,6 +235,7 @@ PlayerSettings:
   iOSMetalForceHardShadows: 0
   metalEditorSupport: 1
   metalAPIValidation: 1
+  metalCompileShaderBinary: 0
   iOSRenderExtraFrameOnPause: 0
   iosCopyPluginsCodeInsteadOfSymlink: 0
   appleDeveloperTeamID: 
@@ -804,7 +805,7 @@ PlayerSettings:
   webGLMemoryGeometricGrowthCap: 96
   webGLPowerPreference: 2
   scriptingDefineSymbols:
-    Android: MY_UI_DEBUG;MY_UI_ADDRESSABLE;MY_LOGGER_ALL
+    Android: MY_UI_DEBUG;MY_UI_ADDRESSABLE;MY_RANDOM_DEBUG;MY_LOGGER_ALL
     Standalone: DEBUG_MY_UI;UNITY_EDITOR
   additionalCompilerArguments: {}
   platformArchitecture: {}

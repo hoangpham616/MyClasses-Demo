@@ -2,8 +2,73 @@
  * Copyright (c) 2016 Phạm Minh Hoàng
  * Email:       hoangpham61691@gmail.com
  * Framework:   MyClasses
- * Version:     2024.7.29
+ * Version:     2024.12.11
  */
+
+
+
+********** 2024.12.11 *********
+
+* MySoundManager
++ MySoundTimescaleBGM
++ MySoundTimescaleSFX
++ MyButton
++ MyGlobalEventEmitter
+* MyImageDownloader
+* MyUGUIToggleButton
+* MyUGUIParticleSystem
+* MyExtension.Object
+* MyToolEditor
+
+******************************
+
+
+
+********** 2024.10.8 *********
+
++ MyUGUIStretch
+* MyUGUIToggleButton
+* MyUGUIBooter
+* MyUGUIManagerBase
+* MyUGUIPopupBase
+* MyUGUIPopupOverlay
+* MyUGUIConfigIDEditorWindow
+* MyExtension.String
++ MyUtilities.Random
+* MyRandom
+
+******************************
+
+
+
+********** 2024.9.5 *********
+
+* MyCompileFlag
+* MyRandom
+* MyCoroutiner
+* MyPrivateCoroutiner
+* MyPoolManager
++ MyMeshScrollingUV
+
+******************************
+
+
+
+********** 2024.8.14 *********
+
+* MyImageDownloader
+* MyIAPManager
+
+******************************
+
+
+
+********** 2024.8.7 *********
+
+* MyExtension
+* MyLogger
+
+******************************
 
 
 

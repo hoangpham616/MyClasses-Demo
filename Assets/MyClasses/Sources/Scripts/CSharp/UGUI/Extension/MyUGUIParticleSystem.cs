@@ -1,8 +1,8 @@
-﻿/*
+﻿﻿/*
  * Copyright (c) 2016 Phạm Minh Hoàng
  * Email:       hoangpham61691@gmail.com
  * Framework:   MyClasses
- * Class:       MyUGUIParticleSystem (version 2.1)
+ * Class:       MyUGUIParticleSystem (version 2.2)
  */
 
 #pragma warning disable 0114
@@ -81,6 +81,22 @@ namespace MyClasses.UI
             get { return mIsPlaying; }
         }
 
+        public Sprite Sprite
+        {
+            get { return mSprite; }
+            set
+            {
+                mSprite = value;
+                if (mParticles != null)
+                {
+                    foreach (var particle in mParticles)
+                    {
+                        particle.sprite = value;
+                    }
+                }
+            }
+        }
+
         #endregion
 
         #region ----- MonoBehaviour Implementation -----
@@ -154,7 +170,7 @@ namespace MyClasses.UI
         /// </summary>
         public void Play()
         {
-            if (!mIsPlaying)
+            if (!mIsPlaying && gameObject.activeInHierarchy)
             {
                 StartCoroutine(_DoPlayParticles(mDelayTime));
             }

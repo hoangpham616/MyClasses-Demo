@@ -2,7 +2,7 @@
  * Copyright (c) 2016 Phạm Minh Hoàng
  * Email:       hoangpham61691@gmail.com
  * Framework:   MyClasses
- * Class:       MyUGUISamplePopup (version 2.27)
+ * Class:       MyUGUISamplePopup (version 2.28)
  */
 
 using UnityEngine;
@@ -88,12 +88,12 @@ namespace MyApp
             return false;
         }
 
-        public override void OnUGUIBackKey()
-        {
-            this.LogInfo("OnUGUIBackKey", null, ELogColor.DARK_UI);
+        // public override void OnUGUIBackKey()
+        // {
+        //     this.LogInfo("OnUGUIBackKey", null, ELogColor.DARK_UI);
 
-            MyUGUIManager.Instance.Back();
-        }
+        //     MyUGUIManager.Instance.Back();
+        // }
 
         #endregion
 

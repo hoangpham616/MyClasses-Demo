@@ -2,7 +2,7 @@
  * Copyright (c) 2016 Phạm Minh Hoàng
  * Email:       hoangpham61691@gmail.com
  * Framework:   MyClasses
- * Class:       MyUGUIBooter (version 2.14)
+ * Class:       MyUGUIBooter (version 2.15)
  */
 
 #pragma warning disable 0414
@@ -31,6 +31,8 @@ namespace MyClasses.UI
         private EUnitySceneID _defaultUnitySceneID;
         [SerializeField]
         private ESceneID _defaultSceneID;
+        [SerializeField]
+        private ESubSceneID _defaultSubSceneID;
 #if UNITY_EDITOR
         [SerializeField]
         private float _delayTimeOnEditor = 0;
@@ -251,6 +253,10 @@ namespace MyClasses.UI
             {
                 _onCustomShow.Invoke();
             }
+            else if (Enum.IsDefined(typeof(ESubSceneID), "None") && _defaultSubSceneID != (ESubSceneID)Enum.Parse(typeof(ESubSceneID), "None"))
+            {
+                MyUGUIManager.Instance.ShowUnityScene(_defaultUnitySceneID, _defaultSceneID, _defaultSubSceneID);
+            }
             else
             {
                 MyUGUIManager.Instance.ShowUnityScene(_defaultUnitySceneID, _defaultSceneID);
@@ -294,6 +300,7 @@ namespace MyClasses.UI
         private SerializedProperty _bootMode;
         private SerializedProperty _defaultUnitySceneID;
         private SerializedProperty _defaultSceneID;
+        private SerializedProperty _defaultSubSceneID;
         private SerializedProperty _delayTimeOnEditor;
         private SerializedProperty _delayTimeOnDevice;
         private SerializedProperty _onPreShowSync;
@@ -311,6 +318,7 @@ namespace MyClasses.UI
             _bootMode = serializedObject.FindProperty("_bootMode");
             _defaultUnitySceneID = serializedObject.FindProperty("_defaultUnitySceneID");
             _defaultSceneID = serializedObject.FindProperty("_defaultSceneID");
+            _defaultSubSceneID = serializedObject.FindProperty("_defaultSubSceneID");
             _delayTimeOnEditor = serializedObject.FindProperty("_delayTimeOnEditor");
             _delayTimeOnDevice = serializedObject.FindProperty("_delayTimeOnDevice");
             _onPreShowSync = serializedObject.FindProperty("_onPreShowSync");
@@ -334,6 +342,10 @@ namespace MyClasses.UI
             {
                 _defaultUnitySceneID.enumValueIndex = (int)(EUnitySceneID)EditorGUILayout.EnumPopup("Default Unity Scene", (EUnitySceneID)_defaultUnitySceneID.enumValueIndex);
                 _defaultSceneID.enumValueIndex = (int)(ESceneID)EditorGUILayout.EnumPopup("Default Scene", (ESceneID)_defaultSceneID.enumValueIndex);
+                if (Enum.IsDefined(typeof(ESubSceneID), "None"))
+                {
+                    _defaultSubSceneID.enumValueIndex = (int)(ESubSceneID)EditorGUILayout.EnumPopup("Default Sub Scene", (ESubSceneID)_defaultSubSceneID.enumValueIndex);
+                }
             }
             switch ((MyUGUIBooter.EBootMode)_bootMode.enumValueIndex)
             {

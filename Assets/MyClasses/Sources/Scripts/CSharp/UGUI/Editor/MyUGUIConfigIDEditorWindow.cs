@@ -2,7 +2,7 @@
  * Copyright (c) 2016 Phạm Minh Hoàng
  * Email:       hoangpham61691@gmail.com
  * Framework:   MyClasses
- * Class:       MyUGUIConfigIDEditor (version 2.13)
+ * Class:       MyUGUIConfigIDEditorWindow (version 2.15)
  */
 
 using UnityEngine;
@@ -159,21 +159,24 @@ namespace MyClasses.UI.Tool
                     IsFoldOut = true,
                     Name = "EUnitySceneID",
                     NumDefault = 0,
-                    ListID = new List<string>() { "StartupUnityScene", "MainUnityScene", "GameUnityScene" }
+                    ListIDName = new List<string>() { "MainUnityScene" },
+                    ListIDNumber = new List<int>() { 0 }
                 });
                 _groups.ListGroup.Add(new MyUGUIConfigGroup()
                 {
                     IsFoldOut = true,
                     Name = "ESceneID",
                     NumDefault = 0,
-                    ListID = new List<string>()
+                    ListIDName = new List<string>() { "LoadingScene", "MainScene", "GameScene" },
+                    ListIDNumber = new List<int>() { 0, 1, 2 }
                 });
                 _groups.ListGroup.Add(new MyUGUIConfigGroup()
                 {
                     IsFoldOut = true,
                     Name = "ESubSceneID",
                     NumDefault = 0,
-                    ListID = new List<string>()
+                    ListIDName = new List<string>() { "None" },
+                    ListIDNumber = new List<int>() { 0 }
                 });
                 _groups.ListGroup.Add(new MyUGUIConfigGroup()
                 {
@@ -188,13 +191,29 @@ namespace MyClasses.UI.Tool
                     IsFoldOut = true,
                     Name = "EToastNotificationID",
                     NumDefault = 0,
-                    ListID = new List<string>()
+                    ListIDName = new List<string>(),
+                    ListIDNumber = new List<int>()
                 });
                 AssetDatabase.CreateAsset(_groups, filePath);
                 AssetDatabase.SaveAssets();
             }
             else
             {
+                if (_groups.ListGroup[2].Name == "ESubSceneID")
+                {
+                    if (_groups.ListGroup[2].ListIDName.Count == 0 || !_groups.ListGroup[2].ListIDName.Contains("None"))
+                    {
+                        _groups.ListGroup[2].ListIDName.Insert(0, "None");
+                        if (!_groups.ListGroup[2].ListIDNumber.Contains(0))
+                        {
+                            _groups.ListGroup[2].ListIDNumber.Insert(0, 0);
+                        }
+                        else
+                        {
+                            _groups.ListGroup[2].ListIDNumber.Insert(0, _groups.ListGroup[2].ListIDNumber[_groups.ListGroup[2].ListIDNumber.Count - 1] + 1);
+                        }
+                    }
+                }
                 if (_groups.ListGroup.Count == 3)
                 {
                     _groups.ListGroup.Add(new MyUGUIConfigGroup()
@@ -256,16 +275,25 @@ namespace MyClasses.UI.Tool
             string unityScenes = string.Empty;
             for (int i = 0, countI = _groups.ListGroup[0].ListIDName.Count; i < countI; i++)
             {
+                _groups.ListGroup[0].ListIDNumber[i] = i;
                 unityScenes += "\n\t\t" + _groups.ListGroup[0].ListIDName[i] + " = " + _groups.ListGroup[0].ListIDNumber[i] + ",";
             }
             string scenes = string.Empty;
             for (int i = 0, countI = _groups.ListGroup[1].ListIDName.Count; i < countI; i++)
             {
+                if (_groups.ListGroup[1].ListIDNumber.Count <= i)
+                {
+                    _groups.ListGroup[1].ListIDNumber.Add(_groups.ListGroup[1].ListIDNumber.Count);
+                }
                 scenes += "\n\t\t" + _groups.ListGroup[1].ListIDName[i] + " = " + _groups.ListGroup[1].ListIDNumber[i] + ",";
             }
             string subScenes = string.Empty;
             for (int i = 0, countI = _groups.ListGroup[2].ListIDName.Count; i < countI; i++)
             {
+                if (_groups.ListGroup[2].ListIDNumber.Count <= i)
+                {
+                    _groups.ListGroup[2].ListIDNumber.Add(_groups.ListGroup[2].ListIDNumber.Count);
+                }
                 subScenes += "\n\t\t" + _groups.ListGroup[2].ListIDName[i] + " = " + _groups.ListGroup[2].ListIDNumber[i] + ",";
             }
             string popups = string.Empty;

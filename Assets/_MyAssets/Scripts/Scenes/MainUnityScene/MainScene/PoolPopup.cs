@@ -156,8 +156,8 @@ namespace MyApp
         {
             this.LogInfo("_OnClickReturnAll", null, ELogColor.UI);
 
-            MyPoolManager.Instance.ReturnAll("TextPoolObject");
-            MyPoolManager.Instance.ReturnAll("Prefabs/TextPoolObject");
+            MyPoolManager.Instance.Return("TextPoolObject");
+            MyPoolManager.Instance.Return("Prefabs/TextPoolObject");
             _textItems.Clear();
         }
 

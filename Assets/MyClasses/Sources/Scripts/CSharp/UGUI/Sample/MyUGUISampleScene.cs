@@ -2,7 +2,7 @@
  * Copyright (c) 2016 Phạm Minh Hoàng
  * Email:       hoangpham61691@gmail.com
  * Framework:   MyClasses
- * Class:       MyUGUISampleScene (version 2.29)
+ * Class:       MyUGUISampleScene (version 2.30)
  */
 
 using UnityEngine;
@@ -66,6 +66,7 @@ namespace MyApp
 
         public override void OnUGUIUpdate(float deltaTime)
         {
+            // base.OnUGUIUpdate(deltaTime); // unrem this line if you want to use sub scenes
         }
 
         public override void OnUGUIExit()
@@ -88,12 +89,12 @@ namespace MyApp
             return false;
         }
 
-        public override void OnUGUIBackKey()
-        {
-            this.LogInfo("OnUGUIBackKey", null, ELogColor.DARK_UI);
+        // public override void OnUGUIBackKey()
+        // {
+        //     this.LogInfo("OnUGUIBackKey", null, ELogColor.DARK_UI);
 
-            MyUGUIManager.Instance.Back();
-        }
+        //     MyUGUIManager.Instance.Back();
+        // }
 
         public override void OnUGUISubSceneSwitch(MyUGUISubSceneBase subScene)
         {

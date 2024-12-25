@@ -13,11 +13,11 @@ public class MyClasses_Benchmark_Script_Dictionary_Hashtable : MyBenchmark
     [SerializeField] private int _iteration = 1000000;
     [SerializeField] private string _note = "- Generic Winner: Dictionary\n- Solution Winner: Add()";
 
-    private Dictionary<int, string> _dictionary = new Dictionary<int, string>();
-    private Dictionary<int, string> _dictionary2 = new Dictionary<int, string>();
-    private Dictionary<int, string> _dictionary3 = new Dictionary<int, string>();
-    private Hashtable _hashtable = new Hashtable();
-    private Hashtable _hashtable2 = new Hashtable();
+    private Dictionary<int, string> _dictionary = new();
+    private Dictionary<int, string> _dictionary2 = new();
+    private Dictionary<int, string> _dictionary3 = new();
+    private Hashtable _hashtable = new();
+    private Hashtable _hashtable2 = new();
 
     #endregion
 

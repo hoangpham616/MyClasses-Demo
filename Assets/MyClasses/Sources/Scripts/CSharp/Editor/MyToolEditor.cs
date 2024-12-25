@@ -12,6 +12,8 @@
 using UnityEditor;
 using UnityEngine;
 using System.Collections.Generic;
+using System.Linq;
+using System.IO;
 
 namespace MyClasses.Tool
 {
@@ -225,7 +227,7 @@ namespace MyClasses.Tool
         /// <summary>
         /// Check Packing Tag and Asset Bundle.
         /// </summary>
-        [MenuItem("MyClasses/Utilities/Check Sprite (Packing Tag and Asset Bundle)", false, 12)]
+        [MenuItem("MyClasses/Utilities/Check Sprite (Packing Tag and Asset Bundle)", false, 1)]
         public static void CheckSpriteTagsAndBundles()
         {
             Dictionary<string, string> spriteDict = new Dictionary<string, string>();
@@ -248,9 +250,53 @@ namespace MyClasses.Tool
         }
 
         /// <summary>
+        /// Find missing scripts in scene.
+        /// </summary>
+        [MenuItem("MyClasses/Utilities/Find Missing Scripts In Scene", false, 1)]
+        public static void FindMissingScriptsInScene()
+        {
+            foreach (GameObject gameObject in GameObject.FindObjectsOfType<GameObject>(true))
+            {
+                foreach (Component component in gameObject.GetComponentsInChildren<Component>())
+                {
+                    if (component == null)
+                    {
+                        Debug.Log("[MyClasses] GameObject found with missing script: \"" + gameObject.name + "\".", gameObject);
+                        break;
+                    }
+                }
+            }
+
+            Debug.Log("[MyClasses] Finding process completed.");
+        }
+
+        /// <summary>
+        /// Find missing scripts in project.
+        /// </summary>
+        [MenuItem("MyClasses/Utilities/Find Missing Scripts In Project", false, 1)]
+        public static void FindMissingScriptsInProject()
+        {
+            string[] prefabPaths = AssetDatabase.GetAllAssetPaths().Where(prefab => prefab.EndsWith(".prefab", System.StringComparison.OrdinalIgnoreCase)).ToArray();
+            foreach (string prefabPath in prefabPaths)
+            {
+                GameObject prefab = AssetDatabase.LoadAssetAtPath<GameObject>(prefabPath);
+                foreach (Component component in prefab.GetComponentsInChildren<Component>())
+                {
+                    if (component == null)
+                    {
+                        Debug.Log("[MyClasses] GameObject found with missing prefab: \"" + prefabPath + "\".", prefab);
+                        break;
+                    }
+                }
+            }
+
+            Debug.Log("[MyClasses] Finding process completed.");
+        }
+
+        /// <summary>
         /// Create some 32x32 noise texture.
         /// </summary>
-        [MenuItem("MyClasses/Utilities/Create Noise Texture (32x32)", false, 23)]
+        [MenuItem("MyClasses/Utilities/Create Noise Texture (32x32)", false, 12)]
         public static void CreateNoiseTexture32()
         {
             int quantity = 5;
@@ -267,7 +313,7 @@ namespace MyClasses.Tool
         /// <summary>
         /// Create some 64x64 noise texture.
         /// </summary>
-        [MenuItem("MyClasses/Utilities/Create Noise Texture (64x64)", false, 23)]
+        [MenuItem("MyClasses/Utilities/Create Noise Texture (64x64)", false, 12)]
         public static void CreateNoiseTexture64()
         {
             int quantity = 5;
@@ -284,7 +330,7 @@ namespace MyClasses.Tool
         /// <summary>
         /// Create some 128x128 noise texture.
         /// </summary>
-        [MenuItem("MyClasses/Utilities/Create Noise Texture (128x128)", false, 23)]
+        [MenuItem("MyClasses/Utilities/Create Noise Texture (128x128)", false, 12)]
         public static void CreateNoiseTexture128()
         {
             int quantity = 5;
@@ -336,7 +382,7 @@ namespace MyClasses.Tool
         /// <summary>
         /// Create some 256x256 perlin noise textures.
         /// </summary>
-        [MenuItem("MyClasses/Utilities/Create Perlin Noise Texture (256x256)", false, 23)]
+        [MenuItem("MyClasses/Utilities/Create Perlin Noise Texture (256x256)", false, 12)]
         public static void CreatePerlinNoiseTexture256()
         {
             int quantity = 5;
@@ -353,7 +399,7 @@ namespace MyClasses.Tool
         /// <summary>
         /// Create some 512x512 perlin noise textures.
         /// </summary>
-        [MenuItem("MyClasses/Utilities/Create Perlin Noise Texture (512x512)", false, 23)]
+        [MenuItem("MyClasses/Utilities/Create Perlin Noise Texture (512x512)", false, 12)]
         public static void CreatePerlinNoiseTexture512()
         {
             int quantity = 5;
@@ -370,7 +416,7 @@ namespace MyClasses.Tool
         /// <summary>
         /// Create some 1024x1024 perlin noise textures.
         /// </summary>
-        [MenuItem("MyClasses/Utilities/Create Perlin Noise Texture (1024x1024)", false, 23)]
+        [MenuItem("MyClasses/Utilities/Create Perlin Noise Texture (1024x1024)", false, 12)]
         public static void CreatePerlinNoiseTexture1024()
         {
             int quantity = 5;

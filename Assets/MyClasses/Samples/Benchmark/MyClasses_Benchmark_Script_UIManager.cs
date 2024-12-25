@@ -23,8 +23,11 @@ public class MyClasses_Benchmark_Script_UIManager : MonoBehaviour
     [SerializeField] private GameObject _gameObjectExternCall;
     [SerializeField] private GameObject _gameObjectFindObject;
     [SerializeField] private GameObject _gameObjectIf;
+    [SerializeField] private GameObject _gameObjectIncrementOperator;
     [SerializeField] private GameObject _gameObjectIteration;
+    [SerializeField] private GameObject _gameObjectMyLogger;
     [SerializeField] private GameObject _gameObjectOrderOfOperation;
+    [SerializeField] private GameObject _gameObjectString;
     [SerializeField] private GameObject _gameObjectStringBuilder;
 
     private Rect[] _rects;
@@ -48,14 +51,6 @@ public class MyClasses_Benchmark_Script_UIManager : MonoBehaviour
         float paddingX = 10;
         float paddingY = 5;
 
-        _rects = new Rect[10];
-        for (int i = 0; i < _rects.Length; ++i)
-        {
-            int row = i / numCol;
-            int col = i % numCol;
-            _rects[i] = new Rect(marginX + (width + paddingX) * col, marginY + (paddingY + height) * row, width, height);
-        }
-
         List<Button> buttons = new List<Button>();
         buttons.Add(new Button() { name = "Arithmetic\nOperators", gameObject = _gameObjectArithmeticOperators });
         buttons.Add(new Button() { name = "Comparison\nOperators", gameObject = _gameObjectComparisonOperators });
@@ -64,10 +59,21 @@ public class MyClasses_Benchmark_Script_UIManager : MonoBehaviour
         buttons.Add(new Button() { name = "Extern\nCall", gameObject = _gameObjectExternCall });
         buttons.Add(new Button() { name = "Find\nObject", gameObject = _gameObjectFindObject });
         buttons.Add(new Button() { name = "If", gameObject = _gameObjectIf });
+        buttons.Add(new Button() { name = "Increment\nOperator", gameObject = _gameObjectIncrementOperator });
         buttons.Add(new Button() { name = "Iteration", gameObject = _gameObjectIteration });
+        buttons.Add(new Button() { name = "MyLogger", gameObject = _gameObjectMyLogger });
         buttons.Add(new Button() { name = "Order of\nOperation", gameObject = _gameObjectOrderOfOperation });
+        buttons.Add(new Button() { name = "String", gameObject = _gameObjectString });
         buttons.Add(new Button() { name = "String\nBuilder", gameObject = _gameObjectStringBuilder });
         _buttons = buttons.ToArray();
+
+        _rects = new Rect[_buttons.Length];
+        for (int i = 0; i < _rects.Length; ++i)
+        {
+            int row = i / numCol;
+            int col = i % numCol;
+            _rects[i] = new Rect(marginX + (width + paddingX) * col, marginY + (paddingY + height) * row, width, height);
+        }
 
         _Active(null);
     }
